@@ -61,6 +61,9 @@
     "Convert outputs on all selected nodes to Set/Get": "将所有选定节点的输出转换为设置/获取",
     "Convert selected Set/Get to links": "将选定的设置/获取节点转换为链接",
     "More...": "更多...",
+    "Recreate node": "重建节点",
+    "Keep widget values": "保留组件值",
+    "Reset widget values": "重置组件值",
 
     "ON_TRUE_Mode": "真值模式(ON_TRUE)",
     "on_true_Mode": "真值模式(on_true)",
