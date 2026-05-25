@@ -6483,6 +6483,7 @@
             "audio_1": "音频1",
             "audio_2": "音频2",
             "audio_3": "音频3",
+            "asset_1": "资产1",
             "prompt": "提示词"
         },
         "widgets": {
@@ -6920,6 +6921,32 @@
             "string": "字符串"
         }
     },
+    "OpenAIGPTImageNodeV2": {
+        "title": "OpenAI GPT 图像 2",
+        "inputs": {
+            "image_1": "图像1",
+            "image_2": "图像2",
+            "image_3": "图像3",
+            "mask": "遮罩",
+            "prompt": "提示词"
+        },
+        "widgets": {
+            "model": "模型",
+            "size": "尺寸",
+            "custom_width": "设置宽度",
+            "custom_height": "设置高度",
+            "background": "背景",
+            "quality": "质量",
+            "n": "数量",
+            "seed": "种子",
+            "control_after_generate": "生成后控制",
+            "auth_token": "授权令牌"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "string": "字符串"
+        }
+    },
     "OpenAIChatConfig": {
         "title": "OpenAI聊天高级选项",
         "inputs": {
@@ -6979,6 +7006,25 @@
             "video_id": "视频ID",
             "duration": "时长",
             "STRING": "字符串"
+        }
+    },
+    "OpenRouterLLMNode": {
+        "title": "OpenRouter大语言模型",
+        "inputs": {
+            "image_1": "图像1",
+            "image_2": "图像2",
+            "prompt": "提示词"
+        },
+        "widgets": {
+            "model": "模型",
+            "reasoning_effort": "努力推理",
+            "seed": "种子",
+            "control_after_generate": "生成后控制",
+            "auth_token": "授权令牌"
+        },
+        "outputs": {
+            "OPENAI_CHAT_CONFIG": "高级选项",
+            "string": "字符串"
         }
     },
     "PikaImageToVideoNode2_2": {
