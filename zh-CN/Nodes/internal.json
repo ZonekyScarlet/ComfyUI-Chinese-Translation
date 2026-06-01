@@ -10825,6 +10825,112 @@
         "outputs": {},
         "description": "使用Anthropic的Claude模型生成文本响应。提供一个文本提示，并可选地附上一张或多张图像以构建多模态上下文。"
     },
+    "ModelNoiseScale": {
+        "title": "模型噪声缩放",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "noise_scale": "噪声放大系数"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": ""
+    },
+    "LoadMoGeModel": {
+        "title": "MoGe模型加载器",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "model_name": "模型名称"
+        },
+        "outputs": {
+            "MOGE_MODEL": "MoGe模型"
+        },
+        "description": ""
+    },
+    "HiDreamO1PatchSeamSmoothing": {
+        "title": "HiDream-O1 补丁缝合平滑处理",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比",
+            "pattern": "模式",
+            "passes": "遍数",
+            "blend": "混合方式",
+            "strength": "强度"
+        },
+        "outputs": {
+            "model": "用于平滑模型缝合处的节点"
+        },
+        "description": ""
+    },
+    "MoGeInference": {
+        "title": "MoGe推理",
+        "inputs": {
+            "moge_model": "MoGe模型",
+            "image": "图像"
+        },
+        "widgets": {
+            "resolution_level": "分辨率级别",
+            "fov_x_degrees": "水平视场角（度）",
+            "batch_size": "批次大小",
+            "force_projection": "强制投影",
+            "apply_mask": "应用遮罩"
+        },
+        "outputs": {
+            "moge_geometry": "MoGe几何结构"
+        },
+        "description": "MoGe推理节点"
+    },
+    "MoGePanoramaInference": {
+        "title": "MoGe全景推理",
+        "inputs": {
+            "moge_model": "MoGe模型",
+            "image": "图像"
+        },
+        "widgets": {
+            "resolution_level": "分辨率级别",
+            "split_resolution": "分割分辨率",
+            "merge_resolution": "合并分辨率",
+            "batch_size": "批次大小"
+        },
+        "outputs": {
+            "moge_geometry": "MoGe几何结构"
+        },
+        "description": "MoGe全景图像推理节点"
+    },
+    "MoGePointMapToMesh": {
+        "title": "MoGe 点云到网格",
+        "inputs": {
+            "moge_geometry": "MoGe几何结构"
+        },
+        "widgets": {
+            "batch_index": "批次索引",
+            "decimation": "提取",
+            "discontinuity_threshold": "不连续阈值",
+            "texture": "纹理"
+        },
+        "outputs": {},
+        "description": "将点云地图转换为网格模型"
+    },
+    "MoGeRender": {
+        "title": "MoGe渲染器",
+        "inputs": {
+            "moge_geometry": "MoGe几何结构"
+        },
+        "widgets": {
+            "output": "深度图"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "生成深度图的节点"
+    },
     "SaveImageWebsocket": {
         "title": "保存图像到网络接口",
         "inputs": {
