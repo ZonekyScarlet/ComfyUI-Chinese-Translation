@@ -5076,6 +5076,15 @@
     "remove_small_holes": "移除小孔洞",
     "OPAQUE": "不透明",
     "BLEND": "混合",
+    "single_shift": "单次偏移",
+    "symmetric": "对称",
+    "window": "窗口",
+    "depth_colored": "深度着色",
+    "normal_opengl": "OpenGL法线",
+    "normal_directx": "DirectX法线",
+    "kornia_reinhard": "Kornia Reinhard",
+    "Directional": "定向光",
+    "Point": "点光源",
 
-    "zhudefeixingmeng": "猪的飞行梦汉化20260430 14:22更新"
+    "zhudefeixingmeng": "猪的飞行梦汉化20260601 19:45更新"
 }
