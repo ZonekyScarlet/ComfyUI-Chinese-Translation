@@ -90,6 +90,10 @@
     "TTS Params": "TTS语音合成参数",
     "vLLM-Omni": "🤖vLLM-Omni多模态解析开源模型",
     "Video Params": "视频参数",
+    "multigpu": "💎多GPU",
+    "kandinsky5": "kandinsky康定斯基5",
+    "10S Nodes": "💫10S Nodes10秒节点",
+    "VoxCPM": "➰VoxCPM语音克隆",
 
     "🌏 Nodes": "🌏节点",
     "🌏 Add Group": "🌏添加组",
