@@ -5082,9 +5082,25 @@
     "depth_colored": "深度着色",
     "normal_opengl": "OpenGL法线",
     "normal_directx": "DirectX法线",
-    "kornia_reinhard": "Kornia Reinhard",
+    "kornia_reinhard": "Kornia Reinhard 色彩迁移",
     "Directional": "定向光",
     "Point": "点光源",
+    "maintain aspect ratio": "保持宽高比",
+    "stretch to fit": "拉伸以适配",
+    "directional": "定向",
+    "silent_reference": "静默参考",
+    "keyframe": "关键帧",
+    "whole_frame": "完整帧",
+    "bbox_only": "仅边界框",
+    "bbox_softfade": "边界框软淡入淡出",
+    "extended": "扩展",
+    "schedule": "计划表",
+    "live_extraction": "实时提取",
+    "manual_calls": "手动调用",
+    "hermite": "埃尔米特",
+    "ramp_up": "渐增",
+    "ramp_down": "渐减",
+    "late_focus": "后期聚焦"
 
-    "zhudefeixingmeng": "猪的飞行梦汉化20260601 19:45更新"
+    "zhudefeixingmeng": "猪的飞行梦汉化20260602 13:50更新"
 }
