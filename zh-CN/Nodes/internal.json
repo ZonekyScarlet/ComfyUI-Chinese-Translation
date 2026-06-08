@@ -7238,9 +7238,9 @@
         "description": "构建一个相机信息模式“orbit”，围绕目标进行偏航/俯仰/距离瞄准；“look_at”将相机置于世界位置。坐标为查看者的笛卡尔空间（右手坐标系，Y轴向上）。"
     },
     "SplatToFile3D": {
-        "title": "创建3D文件 (来自 喷溅)",
+        "title": "创建3D文件 (来自 泼溅)",
         "inputs": {
-            "splat": "喷溅 数据"
+            "splat": "泼溅 数据"
         },
         "widgets": {
             "format": "格式"
@@ -7251,20 +7251,20 @@
         "description": "将高斯散射体序列化为File3D对象，用于保存/预览3D节点。仅支持每批一个项目。"
     },
     "File3DToSplat": {
-        "title": "获取 喷溅",
+        "title": "获取 泼溅",
         "inputs": {
             "model_3d": "3D模型"
         },
         "widgets": {},
         "outputs": {
-            "splat": "喷溅"
+            "splat": "泼溅"
         },
-        "description": "将一个喷溅3D文件解析为高斯型喷溅。此为Create3DFile(源自喷溅）的逆操作。支持的格式：PLY、SPLAT、KSPLAT、SPZ。PLY格式包含完整球谐函数，而其他格式仅包含基色信息。格式会根据文件内容自动识别。"
+        "description": "将一个泼溅3D文件解析为高斯型泼溅。此为Create3DFile(源自泼溅）的逆操作。支持的格式：PLY、SPLAT、KSPLAT、SPZ。PLY格式包含完整球谐函数，而其他格式仅包含基色信息。格式会根据文件内容自动识别。"
     },
     "RenderSplat": {
-        "title": "渲染 喷溅",
+        "title": "渲染 泼溅",
         "inputs": {
-            "splat": "喷溅",
+            "splat": "泼溅",
             "bg_image": "背景图像",
             "camera_info": "相机信息"
         },
@@ -7272,7 +7272,7 @@
             "width": "宽度",
             "height": "高度",
             "frames": "帧数",
-            "splat_scale": "喷溅 缩放",
+            "splat_scale": "泼溅 缩放",
             "sharpen": "锐化",
             "headlight_shading": "车灯阴影",
             "opacity_threshold": "透明度阈值",
@@ -7283,12 +7283,12 @@
             "image": "图像",
             "mask": "遮罩"
         },
-        "description": "以高斯喷溅形式渲染图像，并使用各向异性EWA光栅化器（定向椭圆喷溅、抗锯齿处理、深度排序的前至后）。摄像机来自相机信息输入（加载/预览3D或创建摄像机信息节点）；保持其内容为空以自动框定喷溅。设置帧数大于1用于旋转一批图像以馈入视频节点。"
+        "description": "以高斯泼溅形式渲染图像，并使用各向异性EWA光栅化器（定向椭圆泼溅、抗锯齿处理、深度排序的前至后）。摄像机来自相机信息输入（加载/预览3D或创建摄像机信息节点）；保持其内容为空以自动框定泼溅。设置帧数大于1用于旋转一批图像以馈入视频节点。"
     },
     "TransformSplat": {
-        "title": "变形喷溅",
+        "title": "变形泼溅",
         "inputs": {
-            "splat": "喷溅"
+            "splat": "泼溅"
         },
         "widgets": {
             "translate_x": "X 轴平移",
@@ -7302,39 +7302,39 @@
             "scale_z": "Z 轴缩放"
         },
         "outputs": {
-            "splat": "喷溅"
+            "splat": "泼溅"
         },
-        "description": "平移、旋转和缩放高斯喷溅。非均匀缩放也会重塑每个单独的喷溅，过程较慢。"
+        "description": "平移、旋转和缩放高斯泼溅。非均匀缩放也会重塑每个单独的泼溅，过程较慢。"
     },
     "GetSplatCount": {
-        "title": "获取喷溅计数",
+        "title": "获取泼溅计数",
         "inputs": {
-            "splat": "喷溅"
+            "splat": "泼溅"
         },
         "widgets": {},
         "outputs": {
-            "splat": "喷溅",
+            "splat": "泼溅",
             "count": "计数"
         },
-        "description": "返回批次中所有喷溅的总和数量。"
+        "description": "返回批次中所有泼溅的总和数量。"
     },
     "MergeSplat": {
-        "title": "合并 喷溅",
+        "title": "合并 泼溅",
         "inputs": {
-            "splat0": "喷溅 输入 0",
-            "splat1": "喷溅 输入 1",
-            "splat2": "喷溅 输入 2"
+            "splat0": "泼溅 输入 0",
+            "splat1": "泼溅 输入 1",
+            "splat2": "泼溅 输入 2"
         },
         "widgets": {},
         "outputs": {
-            "splat": "喷溅"
+            "splat": "泼溅"
         },
-        "description": "将任意数量的高斯喷溅合并为一个。在不同种子下联合多个相同潜在变量的解可以增加表面密度，从而改善网格化时的表面质量。"
+        "description": "将任意数量的高斯泼溅合并为一个。在不同种子下联合多个相同潜在变量的解可以增加表面密度，从而改善网格化时的表面质量。"
     },
     "SplatToMesh": {
-        "title": "从 喷溅 提取网格",
+        "title": "从 泼溅 提取网格",
         "inputs": {
-            "splat": "喷溅"
+            "splat": "泼溅"
         },
         "widgets": {
             "resolution": "分辨率",
@@ -7348,10 +7348,10 @@
         "outputs": {
             "mesh": "网格"
         },
-        "description": "从高斯喷溅中提取彩色网格。"
+        "description": "从高斯泼溅中提取彩色网格。"
     },
     "TripoSplatPreprocessImage": {
-        "title": "Tripo喷溅 图像预处理",
+        "title": "Tripo泼溅 图像预处理",
         "inputs": {
             "image": "图像",
             "mask": "遮罩"
@@ -7366,7 +7366,7 @@
         "description": "将每张图像裁剪为黑色背景上的正方形画布，并添加填充。"
     },
     "TripoSplatConditioning": {
-        "title": "Tripo喷溅 条件化",
+        "title": "Tripo泼溅 条件化",
         "inputs": {
             "clip_vision": "CLIP 视觉",
             "vae": "VAE",
@@ -7378,10 +7378,10 @@
             "negative": "负向条件",
             "latent": "Latent"
         },
-        "description": "Tripo喷溅 条件化节点，用于生成图像的条件。"
+        "description": "Tripo泼溅 条件化节点，用于生成图像的条件。"
     },
     "VAEDecodeTripoSplat": {
-        "title": "Tripo喷溅 解码",
+        "title": "Tripo泼溅 解码",
         "inputs": {
             "samples": "采样",
             "vae": "VAE"
@@ -7392,12 +7392,12 @@
             "control_after_generate": "生成后控制"
         },
         "outputs": {
-            "splat": "喷溅"
+            "splat": "泼溅"
         },
-        "description": "将采样的Tripo喷溅Latent解码为一个三维高斯斑点。通过修改高斯数量来改变密度。"
+        "description": "将采样的Tripo泼溅Latent解码为一个三维高斯斑点。通过修改高斯数量来改变密度。"
     },
     "TripoSplatSamplingPreview": {
-        "title": "Tripo喷溅 采样预览",
+        "title": "Tripo泼溅 采样预览",
         "inputs": {
             "model": "模型",
             "vae": "VAE"
@@ -7412,7 +7412,7 @@
         "outputs": {
             "MODEL": "模型"
         },
-        "description": "为标准K采样器节点的Tripo喷溅模型打补丁，以在每一步显示实时解码高斯贴图预览。"
+        "description": "为标准K采样器节点的Tripo泼溅模型打补丁，以在每一步显示实时解码高斯贴图预览。"
     },
     "MediaPipeFaceLandmarker": {
         "title": "检测面部特征点 (MediaPipe)",
