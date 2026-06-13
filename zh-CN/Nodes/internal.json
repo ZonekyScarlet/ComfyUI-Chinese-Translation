@@ -876,7 +876,7 @@
         "widgets": {
             "width": "宽度",
             "height": "高度",
-            "batch_size": "批次大小",
+            "batch_size": "批次数量",
             "elevation": "俯仰角",
             "azimuth": "方位角"
         },
@@ -896,7 +896,7 @@
         "widgets": {
             "width": "宽度",
             "height": "高度",
-            "batch_size": "批次大小",
+            "batch_size": "批次数量",
             "elevation": "俯仰角",
             "azimuth": "方位角",
             "elevation_batch_increment": "俯仰角增量",
@@ -1205,7 +1205,7 @@
             "latents": "Latent"
         },
         "widgets": {
-            "batch_size": "批次大小"
+            "batch_size": "批次数量"
         },
         "outputs": {
             "LATENT": "Latent"
@@ -1371,7 +1371,7 @@
         "widgets": {
             "width": "宽度",
             "height": "高度",
-            "batch_size": "批次大小"
+            "batch_size": "批次数量"
         },
         "outputs": {
             "LATENT": "Latent"
@@ -1386,7 +1386,7 @@
             "width": "宽度",
             "height": "高度",
             "layers": "层",
-            "batch_size": "批次大小"
+            "batch_size": "批次数量"
         },
         "outputs": {
             "LATENT": "Latent"
@@ -1412,7 +1412,7 @@
         "widgets": {
             "frames_number": "帧数",
             "frame_rate": "帧率",
-            "batch_size": "批次大小"
+            "batch_size": "批次数量"
         },
         "outputs": {
             "LATENT": "Latent"
@@ -1532,7 +1532,7 @@
             "width": "宽度",
             "height": "高度",
             "compression": "压缩等级",
-            "batch_size": "批次大小"
+            "batch_size": "批次数量"
         },
         "outputs": {
             "stage_c": "阶段C",
@@ -1558,7 +1558,7 @@
         "widgets": {
             "width": "宽度",
             "height": "高度",
-            "batch_size": "批次大小"
+            "batch_size": "批次数量"
         },
         "outputs": {
             "LATENT": "Latent"
@@ -1575,7 +1575,7 @@
             "width": "宽度",
             "height": "高度",
             "length": "长度",
-            "batch_size": "批次大小"
+            "batch_size": "批次数量"
         },
         "outputs": {
             "LATENT": "Latent"
@@ -1613,7 +1613,7 @@
             "The width of the latent images in pixels.": "Latent 图像的像素宽度。",
             "height": "高度",
             "The height of the latent images in pixels.": "Latent 图像的像素高度",
-            "batch_size": "批次大小",
+            "batch_size": "批次数量",
             "The number of latent images in the batch.": "单个批次中 Latent 的数量。"
         },
         "outputs": {
@@ -1936,7 +1936,7 @@
             "images": "图像组"
         },
         "widgets": {
-            "batch_size": "批次大小"
+            "batch_size": "批次数量"
         },
         "outputs": {
             "IMAGE": "图像"
@@ -1951,7 +1951,7 @@
         "outputs": {
             "width": "宽度",
             "height": "高度",
-            "batch_size": "批次大小"
+            "batch_size": "批次数量"
         }
     },
     "SaveAnimatedWEBP": {
@@ -2128,7 +2128,7 @@
         "widgets": {
             "width": "宽度",
             "height": "高度",
-            "batch_size": "批次大小",
+            "batch_size": "批次数量",
             "color": "颜色"
         },
         "outputs": {
@@ -2466,7 +2466,7 @@
         "title": "空Latent音频",
         "widgets": {
             "seconds": "秒数",
-            "batch_size": "批次大小",
+            "batch_size": "批次数量",
             "The number of latent images in the batch.": "单个批次中 Latent 的数量。"
         },
         "outputs": {
@@ -5534,7 +5534,7 @@
             "latents": "Latents"
         },
         "widgets": {
-            "batch_size": "批次大小",
+            "batch_size": "批次数量",
             "grad_accumulation_steps": "梯度累积步数",
             "steps": "步数",
             "learning_rate": "学习率",
@@ -5759,7 +5759,7 @@
         "widgets": {
             "width": "宽度",
             "height": "高度",
-            "batch_size": "批次大小"
+            "batch_size": "批次数量"
         },
         "outputs": {
             "model": "模型",
@@ -6330,7 +6330,7 @@
         "inputs": {},
         "widgets": {
             "seconds": "秒",
-            "batch_size": "批次大小"
+            "batch_size": "批次数量"
         },
         "outputs": {
             "LATENT": "Latent"
@@ -7029,7 +7029,7 @@
             "width": "宽度",
             "height": "高度",
             "length": "长度",
-            "batch_size": "批次大小"
+            "batch_size": "批次数量"
         },
         "outputs": {},
         "description": "生成 空AR视频Latent"
@@ -7163,7 +7163,7 @@
         "widgets": {
             "resolution_level": "分辨率级别",
             "fov_x_degrees": "水平视场角（度）",
-            "batch_size": "批次大小",
+            "batch_size": "批次数量",
             "force_projection": "强制投影",
             "apply_mask": "应用遮罩"
         },
@@ -7182,7 +7182,7 @@
             "resolution_level": "分辨率级别",
             "split_resolution": "分割分辨率",
             "merge_resolution": "合并分辨率",
-            "batch_size": "批次大小"
+            "batch_size": "批次数量"
         },
         "outputs": {
             "moge_geometry": "MoGe几何结构"
@@ -7500,6 +7500,34 @@
             "FACE_DETECTION_MODEL": "人脸检测模型"
         },
         "description": ""
+    },
+    "EmptyHiDreamO1LatentImage": {
+        "title": "HiDream-O1图像 空Latent",
+        "inputs": {},
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "batch_size": "批次数量"
+        },
+        "outputs": {
+            "latent": "Latent"
+        },
+        "description": "HiDream-O1-lmage中预留的空像素空间。该模型是在约4百万像素的分辨率下进行训l练的；分辨率低于此范围会导致分布偏离且质量显著下降。已训l练分辨率:2048x2048、2304x1728、1728x2304、2560x1440、1440x2560、2496x1664、1664x2496、3104x1312、1312x3104、2304x1792、1792x2304。"
+    },
+    "HiDreamO1ReferenceImages": {
+        "title": "HiDream-O1 参考图片",
+        "inputs": {
+            "positive": "正向条件",
+            "negative": "负面条件",
+            "image_1": "图像1",
+            "image_2": "图像2"
+        },
+        "widgets": {},
+        "outputs": {
+            "positive": "正向条件",
+            "negative": "负面条件"
+        },
+        "description": "附加1至10张参考图像用于条件设置，一张用于编辑指令，多张用于主题驱动的个性化。"
     },
     "SaveImageWebsocket": {
         "title": "保存图像到网络接口",
