@@ -5148,6 +5148,13 @@
     "Ellipse Blur Out": "椭圆向外模糊",
     "megapixels": "百万像素",
     "shrink": "收缩",
+    "upper_bound_resize": "上界缩放",
+    "lower_bound_resize": "下界缩放",
+    "v2_style": "V2风格",
+    "min_max": "最小/最大值",
+    "sky_mask": "天空蒙版",
+    "Absolute time (seconds)": "绝对时间（秒）",
+    "Fraction of duration (0.0-1.0)": "持续时间的比例（0.0-1.0）",
 
-    "zhudefeixingmeng": "猪的飞行梦汉化20260608 20:00更新"
+    "zhudefeixingmeng": "猪的飞行梦汉化20260624 22:12更新"
 }
