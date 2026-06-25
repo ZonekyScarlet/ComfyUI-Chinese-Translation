@@ -5152,9 +5152,20 @@
     "lower_bound_resize": "下界缩放",
     "v2_style": "V2风格",
     "min_max": "最小/最大值",
-    "sky_mask": "天空蒙版",
+    "sky_mask": "天空遮罩",
     "Absolute time (seconds)": "绝对时间（秒）",
     "Fraction of duration (0.0-1.0)": "持续时间的比例（0.0-1.0）",
+    "z_only": "仅Z轴",
+    "z_only_firstlayer": "仅Z轴_第一层",
+    "xyz_full": "完整XYZ",
+    "xyz_full_firstlayer": "完整XYZ_第一层",
+    "planar_z": "平面Z",
+    "ray_distance": "光线距离",
+    "closest": "最近点",
+    "slice": "切片",
+    "blender_exact": "Blender精确",
+    "taubin": "平滑",
 
-    "zhudefeixingmeng": "猪的飞行梦汉化20260624 22:12更新"
+
+    "zhudefeixingmeng": "猪的飞行梦汉化20260625 18:25更新"
 }
