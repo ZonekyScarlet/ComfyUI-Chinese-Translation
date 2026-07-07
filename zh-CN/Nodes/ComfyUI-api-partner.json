@@ -10,6 +10,7 @@
             "model": "模型",
             "max_tokens": "最大词元数",
             "temperature": "温度",
+            "reasoning_effort": "推理动力",
             "seed": "种子"
         },
         "outputs": {
@@ -4129,6 +4130,132 @@
             "model task_id": "模型任务 ID"
         },
         "description": "将外部3D模型（例如来自Rodin、Hunyuan3D或本地文件）导入Tripo，以便在Tripo的后处理节点中使用：纹理、骨骼、转换。建议使用GLB格式：当纹理仅嵌入文件中时，导入后仍可保留。请注意，对导入的模型进行纹理贴图时需要先设置纹理提示。"
+    },
+    "GeminiVideoOmni": {
+        "title": "谷歌 Gemini Omni（视频）",
+        "inputs": {
+            "image_1": "图像_1",
+            "video_1": "视频_1"
+        },
+        "widgets": {
+            "model": "模型",
+            "model_prompt": "模型提示",
+            "temperature": "温度",
+            "seed": "种子",
+            "generate_after_control": "生成后控制"
+        },
+        "outputs": {},
+        "description": "使用谷歌的GeminiOmniFlash模型根据文本提示生成带音频的视频。可选择提供参考图像或视频以指导或编辑生成结果。直接在提示中说明所需时长（3-10秒）和纵横比（16:9或9：16）。"
+    },
+    "LumaRay32TextToVideoNode": {
+        "title": "Luma Ray 3.2 文生视频",
+        "inputs": {
+            "prompt": "提示词"
+        },
+        "widgets": {
+            "aspect_ratio": "宽高比",
+            "resolution": "分辨率",
+            "duration": "时长",
+            "seed": "种子",
+            "loop": "循环"
+        },
+        "outputs": {
+            "VIDEO": "视频",
+            "generation_id": "生成ID"
+        },
+        "description": "使用Luma的Ray3.2模型从文本提示生成视频。"
+    },
+    "LumaRay32ImageToVideoNode": {
+        "title": "Luma Ray 3.2 图生视频",
+        "inputs": {
+            "start_frame": "开始帧",
+            "end_frame": "结束帧",
+            "prompt": "提示词"
+        },
+        "widgets": {
+            "resolution": "分辨率",
+            "loop": "循环",
+            "seed": "随机种子",
+            "generate_after_control": "生成后控制"
+        },
+        "outputs": {
+            "video": "视频",
+            "generation_id": "生成ID"
+        },
+        "description": "使用Luma的Ray3.2模型从起始和/或结束帧生成视频。图像锚定生成始终为5秒。"
+    },
+    "LumaRay32KeyframesToVideoNode": {
+        "title": "Luma Ray 3.2 关键帧转视频",
+        "inputs": {
+            "keyframes": "关键帧",
+            "prompt": "提示词"
+        },
+        "widgets": {
+            "resolution": "分辨率",
+            "duration": "持续时间",
+            "seed": "种子",
+            "generate_after_control": "生成后控制"
+        },
+        "outputs": {
+            "VIDEO": "视频",
+            "generation_id": "生成ID"
+        },
+        "description": "将关键帧转换为视频"
+    },
+    "LumaRay32VideoEditNode": {
+        "title": "Luma Ray 3.2 视频编辑",
+        "inputs": {
+            "video": "视频"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "resolution": "分辨率",
+            "strength": "强度",
+            "seed": "种子",
+            "generate_after_control": "生成后控制"
+        },
+        "outputs": {
+            "VIDEO": "视频",
+            "generation_id": "生成ID"
+        },
+        "description": "使用LumaRay3.2软件根据新的提示重新渲染现有视频（重新设计、重新布光、添加或移除元素）的同时保持原动作不变。源视频最长可达18秒；而编辑后的视频则保持源视频的长度。"
+    },
+    "LumaRay32VideoReframeNode": {
+        "title": "Luma Ray 3.2 视频重置",
+        "inputs": {
+            "video": "视频"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "aspect_ratio": "宽高比",
+            "resolution": "分辨率",
+            "strength": "强度",
+            "seed": "种子",
+            "generate_after_control": "生成后控制"
+        },
+        "outputs": {
+            "VIDEO": "视频",
+            "generation_id": "生成ID"
+        },
+        "description": "使用LumaRay3.2更改现有视频的宽高比，以填充新暴露的画布区域。源视频最长可达30秒。按输出每秒计费。"
+    },
+    "LumaRay32ExtendVideoNode": {
+        "title": "Luma Ray 3.2 视频扩展",
+        "inputs": {},
+        "widgets": {
+            "source_generation_id": "源生成ID",
+            "direction": "方向",
+            "loop": "循环",
+            "prompt": "提示词",
+            "resolution": "分辨率",
+            "seed": "种子",
+            "generate_after_control": "生成后控制"
+        },
+        "outputs": {
+            "VIDEO": "视频",
+            "generation_id": "生成ID"
+        },
+        "description": "向前扩展之前的Ray3.2生成（在之后继续）或向后扩展（在之前引入）。连接先前LumaRay3.2节点的源生成ID输出。扩展始终为5秒。"
     },
     "TripoConversionNode": {
         "title": "Tripo：转换模型",

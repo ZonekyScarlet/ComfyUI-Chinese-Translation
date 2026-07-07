@@ -7748,6 +7748,158 @@
         },
         "description": "用于将文本编码并结合图像进行编辑的节点"
     },
+    "SaveImageAdvanced": {
+        "title": "保存图像(高级)",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "format": "格式",
+            "bit_depth": "位深度",
+            "input_color_space": "输入颜色空间"
+        },
+        "outputs": {
+            "images": "图像"
+        },
+        "description": "将输入图像保存到您的Comfyul输出目录。"
+    },
+    "SamplerLCM": {
+        "title": "采样器",
+        "inputs": {},
+        "widgets": {
+            "s_noise": "s_噪声",
+            "s_noise_end": "s_噪声结束",
+            "noise_clip_std": "噪声_剪辑_标准"
+        },
+        "outputs": {
+            "Sampling": "采样"
+        },
+        "description": "具有可调每步噪声的LCM采样器。S_noise是模型训练噪声尺度的倍数"
+    },
+    "LTXVContextWindows": {
+        "title": "LTXV 上下文窗口",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "context_length": "上下文长度",
+            "context_overlap": "上下文重叠",
+            "context_schedule": "上下文调度",
+            "context_stride": "上下文步长",
+            "closed_loop": "闭环",
+            "fuse_method": "融合方法",
+            "freenoise": "降噪",
+            "retain_first_frame": "保留第一帧",
+            "split_conds_to_windows": "拆分条件到窗口"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "为LTXV类模型设置上下文窗口。"
+    },
+    "ModelMergeKrea2": {
+        "title": "模型合并Krea2",
+        "inputs": {
+            "model1": "模型1",
+            "model2": "模型2"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "用于合并两个模型的节点"
+    },
+    "CreateBoundingBoxes": {
+        "title": "创建边界框",
+        "inputs": {
+            "background": "背景图"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度"
+        },
+        "outputs": {
+            "preview": "预览",
+            "bboxes": "边界框",
+            "elements": "元素"
+        },
+        "description": "在画布上绘制边界框。输出意象提示元素、像素空间边界框和预览图像。"
+    },
+    "BuildJsonPromptIdeogram": {
+        "title": "构建 JSON 提示词 (Ideogram)",
+        "inputs": {
+            "element": "元素",
+            "background": "背景"
+        },
+        "widgets": {
+            "high_level_description": "高级描述",
+            "style": "风格",
+            "aesthetics": "美学",
+            "lighting": "照明",
+            "medium": "中等"
+        },
+        "outputs": {
+            "prompt": "提示词"
+        },
+        "description": "为Ideogram4模型构建一个JSON提示。"
+    },
+    "ConvertDictionaryToString": {
+        "title": "转换字典为字符串",
+        "inputs": {
+            "dictionary": "字典串"
+        },
+        "widgets": {
+            "indent": "缩进"
+        },
+        "outputs": {
+            "String": "字典串"
+        },
+        "description": "将字典转换为字符串格式"
+    },
+    "ConvertArrayToString": {
+        "title": "将数组转换为字符串",
+        "inputs": {
+            "array": "数组"
+        },
+        "widgets": {
+            "indent": "缩进"
+        },
+        "outputs": {
+            "string": "字符串"
+        },
+        "description": "将输入的数组转换为字符串格式。"
+    },
+    "Load3DAdvanced": {
+        "title": "加载 3D模型（高级）",
+        "inputs": {},
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "model_file": "模型文件"
+        },
+        "outputs": {
+            "model_3d": "3D 模型",
+            "model_3d_info": "3D 模型信息",
+            "camera_info": "相机信息",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "description": "加载 3D 模型并返回模型、信息和相机数据。"
+    },
+    "LumaRay32KeyframeNode": {
+        "title": "Luma Ray 3.2 关键帧",
+        "inputs": {
+            "image": "图像",
+            "keyframes": "关键帧"
+        },
+        "widgets": {
+            "position": "时间占比 (0.0-1.0)",
+            "fraction": "比例"
+        },
+        "outputs": {
+            "keyframes": "关键帧"
+        },
+        "description": "用于在图像上设置关键帧的节点"
+    },
     "SaveImageWebsocket": {
         "title": "保存图像到网络接口",
         "inputs": {
