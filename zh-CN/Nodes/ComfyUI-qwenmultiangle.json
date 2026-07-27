@@ -10,6 +10,11 @@
       "zoom": "缩放级别",
       "default_prompts": "默认提示词",
       "camera_view": "相机视角",
+      "Horizontal Angle": "水平角度",
+      "Vertical Angle": "垂直角度",
+      "Zoom": "变焦",
+      "Default Prompts": "默认提示",
+      "Camera View": "相机视图",
       "image": "图像",
       "unique_id": "唯一标识符",
       "front view, eye level, medium shot": "正面视角，与眼睛平齐，中景镜头",
@@ -22,7 +27,21 @@
     },
     "outputs": {
       "string": "字符串",
+      "prompt": "提示词",
+      "Prompt": "提示词",
+      "Camera Info": "相机信息"
+    }
+  },
+  "QwenMultiangleCameraTranslateNode": {
+    "title": "千问多角度相机翻译",
+    "inputs": {
       "prompt": "提示词"
+    },
+    "widgets": {
+      "Target Language": "目标语言"
+    },
+    "outputs": {
+      "Prompt": "提示词"
     }
   }
 }
