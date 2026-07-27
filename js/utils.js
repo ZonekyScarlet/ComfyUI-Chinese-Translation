@@ -38,6 +38,13 @@ export function isAlreadyTranslated(originalName, currentLabel) {
         return true;
     }
     
+    // V3 API 节点常用 display_name 作为 label（如 name: "horizontal_angle", label: "Horizontal Angle"），
+    // 若 label 仅是 name 的美化形式（大小写/空格/下划线/连字符差异），不视为已翻译
+    const normalize = (s) => s.toLowerCase().replace(/[\s_-]+/g, "");
+    if (normalize(currentLabel) === normalize(originalName)) {
+        return false;
+    }
+    
     if (currentLabel !== originalName && 
         currentLabel !== originalName.toLowerCase() &&
         currentLabel !== originalName.toUpperCase()) {
