@@ -38,6 +38,8 @@
       "prompt": "提示词"
     },
     "widgets": {
+      "prompt": "提示词",
+      "target_language": "目标语言",
       "Target Language": "目标语言"
     },
     "outputs": {
