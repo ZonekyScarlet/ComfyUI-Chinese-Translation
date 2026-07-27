@@ -1259,13 +1259,15 @@
             "modality": "模态",
             "cfg": "CFG",
             "stg": "STG",
-            "perturb_atttn": "扰动注意力",
+            "perturb_attn": "扰动注意力",
             "rescale": "重缩放",
             "modality_scale": "模态缩放",
             "skip_step": "跳过步数",
-            "cross_atttn": "交叉注意力"
+            "cross_attn": "交叉注意力"
         },
-        "outputs": {},
+        "outputs": {
+            "GUIDER_PARAMETERS": "引导参数"
+        },
         "description": "LTXVideo 指导参数节点"
     },
     "MultimodalGuider": {
@@ -1366,11 +1368,14 @@
     "LTXQ8Patch": {
         "title": "🅛🅣🅧 LTXFP8模型优化",
         "inputs": {
-            "model": "模型",
-            "use_fp8_attention": "启用FP8注意力"
+            "model": "模型"
         },
         "widgets": {
-            "use_fp8_attention": "优化开关"
+            "use_fp8_attention": "启用FP8注意力",
+            "quantization_preset": "量化预设",
+            "quantize_self_attn": "量化自注意力",
+            "quantize_cross_attn": "量化交叉注意力",
+            "quantize_ffn": "量化前馈网络"
         },
         "outputs": {
             "model": "模型"
