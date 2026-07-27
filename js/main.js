@@ -64,20 +64,21 @@ export class TUtils {
         }
         
         // ---- 构建判断用的 Set，提取所有字典内容 ----
+        // 注意：跳过“恒等翻译”（值与键相同，如 "cfg": "cfg"），避免英文原名污染已翻译判定
         for (const dict of [TUtils.T.Menu, TUtils.T.NodeCategory]) {
           if (!dict) continue;
-          for (const val of Object.values(dict)) {
-            if (val && typeof val === 'string') translatedValueSet.add(val);
+          for (const [k, val] of Object.entries(dict)) {
+            if (val && typeof val === 'string' && val !== k) translatedValueSet.add(val);
           }
         }
         for (const nodeKey in TUtils.T.Nodes) {
           const nodeDict = TUtils.T.Nodes[nodeKey];
           if (!nodeDict) continue;
-          if (nodeDict.title && typeof nodeDict.title === 'string') translatedValueSet.add(nodeDict.title);
+          if (nodeDict.title && typeof nodeDict.title === 'string' && nodeDict.title !== nodeKey) translatedValueSet.add(nodeDict.title);
           for (const cat of ['inputs', 'outputs', 'widgets']) {
             if (nodeDict[cat]) {
-              for (const val of Object.values(nodeDict[cat])) {
-                 if (val && typeof val === 'string') translatedValueSet.add(val);
+              for (const [k, val] of Object.entries(nodeDict[cat])) {
+                 if (val && typeof val === 'string' && val !== k) translatedValueSet.add(val);
               }
             }
           }
