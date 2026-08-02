@@ -1,0 +1,1739 @@
+{
+    "AspectRatioFromSize|Mie": {
+        "title": "🐑 从尺寸获取宽高比 ",
+        "inputs": {},
+        "widgets": {
+            "width": "宽度",
+            "height": "高度"
+        },
+        "outputs": {
+            "aspect_ratio": "宽高比"
+        },
+        "description": "根据像素宽度和高度计算简化的W:H比例字符串"
+    },
+    "ShowAnything|Mie": {
+        "title": "🐑 显示任意内容",
+        "inputs": {
+            "anything": "任意内容"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": ""
+    },
+    "ShowAndSaveAnything|Mie": {
+        "title": "🐑 显示并保存任意内容",
+        "inputs": {
+            "anything": "任意内容"
+        },
+        "widgets": {
+            "save_to_log": "保存到日志",
+            "log_file_name": "日志文件名"
+        },
+        "outputs": {},
+        "description": "类似「ShowAnythingMie」，但还会追加结构化日志行。\n\n日志条目为JSON-Lines格式，包含时间戳、当前节点的ID/标题/类型、连接到「任意信号thing」的上游节点（ID/标题/类型）以及结果。文件按大小轮转，存储在「<插件>/logs/」目录中；用户可选择文件名。"
+    },
+    "SaveAnythingAsFile|Mie": {
+        "title": "🐑 将任意内容保存为文件",
+        "inputs": {
+            "data": "数据"
+        },
+        "widgets": {
+            "directory": "目录",
+            "file_name": "文件名",
+            "save_format": "保存格式"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "CompareFiles|Mie": {
+        "title": "🐑 比较文件",
+        "inputs": {},
+        "widgets": {
+            "file1_path": "文件1路径",
+            "file2_path": "文件2路径",
+            "file_format": "文件格式"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "GetAbsolutePath|Mie": {
+        "title": "🐑 获取绝对路径",
+        "inputs": {},
+        "widgets": {
+            "relative_path": "相对路径"
+        },
+        "outputs": {
+            "absolute_path": "绝对路径"
+        },
+        "description": ""
+    },
+    "GetFileInfo|Mie": {
+        "title": "🐑 获取文件信息",
+        "inputs": {},
+        "widgets": {
+            "file_path": "文件路径",
+            "hash_algorithm": "哈希算法"
+        },
+        "outputs": {
+            "file_info": "文件信息"
+        },
+        "description": ""
+    },
+    "GetFileBasename|Mie": {
+        "title": "🐑 获取文件基名",
+        "inputs": {},
+        "widgets": {
+            "file_path": "文件路径"
+        },
+        "outputs": {
+            "basename": "基名"
+        },
+        "description": "返回文件路径的基名，不含文件扩展名。\n\n当需要从输入文件（如驱动视频、参考图像）派生缓存键或输出文件名时使用。输出为纯字符串，可拼接至字符串Concat|Mie链中。\n\n输入：\n- 文件_path：字符串类型路径（绝对路径或相对于ComfyUI的底数_path）。非字符串输入返回空字符串。\n\n输出：\n- 底数名称：路径的最终组件，例如「输入/视频.mp4」或「/abs/path/视频.mp4」对应「视频」。\n\n这仅为控制平面工具：无磁盘I/O、无哈希计算、除计算字符串外无副作用。不强制要求文件存在；调用方可后续运行FileExists|Mie检查。"
+    },
+    "GetDirectoryFilesInfo|Mie": {
+        "title": "🐑 获取目录文件信息",
+        "inputs": {},
+        "widgets": {
+            "directory_path": "目录路径",
+            "hash_algorithm": "哈希算法",
+            "pattern": "匹配模式"
+        },
+        "outputs": {
+            "directory_files_info": "目录文件信息"
+        },
+        "description": ""
+    },
+    "CopyFiles|Mie": {
+        "title": "🐑 复制文件",
+        "inputs": {},
+        "widgets": {
+            "source_directory": "源目录",
+            "destination_directory": "目标目录",
+            "pattern": "匹配模式",
+            "delete_origin": "删除源文件",
+            "mock": "模拟运行"
+        },
+        "outputs": {
+            "copied_file_count": "复制文件数",
+            "log": "日志"
+        },
+        "description": ""
+    },
+    "DeleteFiles|Mie": {
+        "title": "🐑 删除文件",
+        "inputs": {},
+        "widgets": {
+            "path": "路径",
+            "mock": "模拟运行"
+        },
+        "outputs": {
+            "log": "日志"
+        },
+        "description": ""
+    },
+    "ClassicAspectRatio|Mie": {
+        "title": "🐑 经典宽高比",
+        "inputs": {
+            "resolution": "分辨率"
+        },
+        "widgets": {
+            "ratio": "比例"
+        },
+        "outputs": {
+            "width": "宽度",
+            "height": "高度"
+        },
+        "description": ""
+    },
+    "FileExists|Mie": {
+        "title": "🐑 文件是否存在",
+        "inputs": {},
+        "widgets": {
+            "file_path": "文件路径"
+        },
+        "outputs": {
+            "exists": "是否存在"
+        },
+        "description": "轻量级单文件路径存在性检查。\n\n设计极简：仅调用一次「os.path.is文件()」，不查询大小/哈希/修改时间（如需使用「GetFileInfo|Mie」）。路径原样使用（绝对路径或相对于ComfyUI当前工作目录）；可搭配「GetAbsolutePath|Mie」先解析工作流相对路径。\n\n空/含空白的输入视为不存在，不会抛出异常，因此可安全连接至缓存门，在路径未生成前使用。"
+    },
+    "IfElse|Mie": {
+        "title": "🐑 条件分支",
+        "inputs": {
+            "condition": "条件",
+            "then_value": "条件为真时的值",
+            "else_value": "条件为假时的值"
+        },
+        "widgets": {},
+        "outputs": {
+            "value": "值"
+        },
+        "description": "由外部布尔值驱动的通用if/else路由。\n\n与「MieLoopIfIsLast」（仅识别循环的「is_last」标志）和「MieLoopIfCurrentIdx」（仅比较循环索引）不同——此节点可接收上游任意位置计算的布尔值，用于选择分支。布尔值通常是「FileExists|Mie」的输出（缓存命中/未命中），但也可以是图中其他任意条件。\n\n「then_值」和「else_值」为「任意信号_typ」，因此任何数据类型（图像、视频、字符串、字典、循环次数_ctx等）均可通过。未连接的分支回退为「None」。"
+    },
+    "SaveImageBatch|Mie": {
+        "title": "🐑 保存图像批次",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "file_path": "文件路径"
+        },
+        "outputs": {},
+        "description": "将ComfyUI的图像批次（N,H,W,3 float32，范围[0,1]）以无损.pt文件格式持久化存储。\n\n路径原样使用（绝对路径或相对于ComfyUI当前工作目录）。按需创建父目录。这是SCAIL-2材质缓存循环使用的缓存写入端：81帧的SCAIL-2材质批次是工作流中耗时部分，因此我们将其一次性持久化，后续运行同一源视频时直接加载。\n\n选择.pt而非.mp4是因为数据完全是ComfyUI的图像张量（无编解码往返），文件路径具有确定性（VHS按帧率/计数器自动编号），且磁盘大小接近N*H*W*3*4字节。"
+    },
+    "LoadImageBatch|Mie": {
+        "title": "🐑 加载图像批次",
+        "inputs": {
+            "fallback": "备用值"
+        },
+        "widgets": {
+            "file_path": "文件路径"
+        },
+        "outputs": {
+            "images": "图像"
+        },
+        "description": "SaveImageBatch|Mie的逆操作：加载.pt格式的图像批次。\n\n设计用于缓存门：当文件_path缺失或为空时，节点回退到可选的备用图像输入（通常是刚生成的材质批次）。若备用也未连接，则返回空批次，确保下游图仍能接收有效图像并决定后续操作。\n\n仅当消费者需要单独的存在信号时，才在FileExists|Mie后连接此节点——此节点内部已完成存在性检查，因此多数调用点无需IfElse包装。"
+    },
+    "SaveAny|Mie": {
+        "title": "🐑 任意内容保存",
+        "inputs": {
+            "value": "值"
+        },
+        "widgets": {
+            "file_path": "文件路径"
+        },
+        "outputs": {},
+        "description": "通过pickle将任意Python对象持久化到确定的文件路径。\n\n是SaveImageBatch|Mie的通用同类节点：它不对ComfyUI的IMAGE张量执行torch.save，而是使用原生pickle，因此调用方可通过相同的文件门控机制往返传递任意数据（字典、SAM3_TRACK_DATA等自定义插件输出、列表等）。当值类型不符合SaveImageBatch的IMAGE约定时使用此节点——例如为SCAIL2ColoredMask提供输入的SAM3驱动/参考轨迹字典。\n\n可与LoadAny|Mie、FileExists|Mie、IfElse|Mie配合，构建与351[0]/351[1] IMAGE缓存结构相同的缓存门（详见v5工作流）。"
+    },
+    "LoadAny|Mie": {
+        "title": "🐑 任意内容加载",
+        "inputs": {
+            "fallback": "回退值"
+        },
+        "widgets": {
+            "file_path": "文件路径"
+        },
+        "outputs": {
+            "value": "值"
+        },
+        "description": "SaveAny|Mie的反向操作：从文件路径反序列化（unpickle）任意Python对象。\n\n与LoadImageBatch|Mie的约定一致：当文件缺失或为空时，回退到可选的通配符回退输入；若回退输入也未连接，则返回None，使下游图仍能接收到有效（None）值并自行决定处理逻辑。仅当使用者需要单独的存在性信号时才与FileExists|Mie配合——此节点已在内部完成存在性检查。"
+    },
+    "LoadOrCompute|Mie": {
+        "title": "🐑 加载或计算",
+        "inputs": {
+            "value": "值"
+        },
+        "widgets": {
+            "cache_path": "缓存路径"
+        },
+        "outputs": {
+            "value": "值"
+        },
+        "description": "磁盘缓存门，在缓存命中时可跳过自身上游节点。\n\n这是基于ComfyUI官方惰性求值（Lazy Evaluation）机制构建的单个ComfyUI节点，实现了“加载或计算-保存”模式。它替代了``LoadAny + SaveAny + IfElse``组合（以及旧版MieLoopCacheMarker图重写方法）：``值``上游的计算完全通过``check_lazy_status``在运行时控制，无需修改图结构。\n\n约定：\n  - ``cache_路径``是提前解析的字符串（必须在调用``check_lazy_status``前已知）。根据T22的缓存键设计，它源自高负载目标上游的输入（视频文件名/尺寸/模式/帧范围），因此绝不依赖惰性的``值``本身。\n  - ``值``是``任意信号_typ``类型，且声明为``lazy=True``。引擎不会预先计算它，而是先调用``check_lazy_status``。\n  - 命中（文件存在）：``check_lazy_status``返回``[]``→引擎完全跳过上游节点→``execute``加载并返回缓存的有效载荷。这是核心优势：缓存命中时，高开销的上游节点（如SAM3_VideoTrack）不会运行。\n  - 未命中（文件缺失）：``check_lazy_status``返回``[\"值\"]``→引擎运行上游节点→``execute``接收新计算的值，将其持久化到``cache_路径``并返回。\n\n设计决策（符合用户需求）：\n  - 空/空白的``cache_路径``会抛出异常（选项B）：没有合理的理由在未设置缓存键的情况下连接此节点。静默透传会掩盖连接错误。\n  - 序列化逻辑与SaveAny/LoadAny一致：使用pickle处理任意Python对象（如SAM3TrackData字典等）。IMAGE批次应使用SaveImageBatch/LoadImageBatch缓存为无损.pt格式；此节点是通用pickle变体。\n  - 单一职责：它不知道上游节点计算的内容，是任意惰性输入的通用门。\n\n参考：ComfyUI惰性求值文档及``comfy_extras/nodes_logic.py``中的``SwitchNode``，以获取权威的``check_lazy_status``约定。"
+    },
+    "ImageHash|Mie": {
+        "title": "🐑 图像哈希",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "frame_limit": "帧限制"
+        },
+        "outputs": {
+            "hash": "哈希值"
+        },
+        "description": "ComfyUI图像批次的确定性内容哈希，以字符串形式返回。\n\n解决了文件名未作为字符串输出的输入的缓存键问题——最典型的是``LoadImage``（其``图像``控件存储文件名，但仅输出IMAGE/MASK）和``VHS_LoadVideo``（其``视频``控件隐藏在VHS_VIDEOINFO输出后）。通过对IMAGE张量进行哈希，我们得到一个稳定的键，可跟踪用户选择的实际内容，无需手动同步文件名，也无需遍历图来读取上游控件。\n\n用法：将其直接连接到IMAGE源的下游（参考图像用LoadImage，驱动视频用VHS_LoadVideo），并将生成的短哈希拼接至字符串Concat|Mie缓存键链中。单个节点，完全自动：用户只需操作LoadImage/VHS控件。\n\n``帧限制``控制哈希的批次范围：\n  - 0 ：哈希整个批次（用于参考图像——1帧，耗时<10ms）\n  - >0：仅哈希前N帧（用于驱动视频标识）。驱动视频仅通过哈希其第一帧（帧限制=1）来识别：两个不同的视频几乎肯定在第0帧不同，因此这是可靠的标识键，且成本可忽略（无论视频长度如何，约10ms）。完整81帧的哈希将花费约100ms以上，且对标识无额外价值。\n\n确定性：\n  - 输入在哈希前会被分离、移至CPU并转为连续内存，因此值相同的GPU张量和CPU张量会得到相同的哈希。\n  - 使用sha256对原始float32字节进行哈希；截断为12个十六进制字符（48位）——对每个用户的缓存目录而言，碰撞风险极低。"
+    },
+    "AnyToString|Mie": {
+        "title": "🐑 任意转字符串",
+        "inputs": {
+            "value": "值"
+        },
+        "widgets": {},
+        "outputs": {
+            "string": "字符串"
+        },
+        "description": "通过 ``str()`` 将任意 Python 值转换为 STRING。\n\n是 IntTo字符串 的通用同级节点：接受任意类型（BOOLEAN、INT、FLOAT、STRING 或任意通配符）并返回其字符串表示。用于将标量组件拼接至 字符串Concat|Mie 缓存键链中，当源并非 STRING 类型时使用——例如 替换_众数 BOOLEAN（True/False → \"True\"/\"False\"）或 宽度 INT（512 → \"512\"）。\n\n新工作流建议优先使用此节点而非 IntTo字符串；IntTo字符串 仅为兼容已提交的旧图而保留。"
+    },
+    "RoundToMultiple|Mie": {
+        "title": "🐑 四舍五入到倍数",
+        "inputs": {
+            "rounding": "取整方式"
+        },
+        "widgets": {
+            "value": "值",
+            "multiple": "倍数"
+        },
+        "outputs": {
+            "float": "浮点数",
+            "int": "整数"
+        },
+        "description": "将数字调整为另一个数字的倍数（向上取整/向下取整/四舍五入）。"
+    },
+    "StringConcat|Mie": {
+        "title": "🐑 字符串拼接",
+        "inputs": {},
+        "widgets": {
+            "str1": "字符串1",
+            "str2": "字符串2",
+            "delimiter": "分隔符"
+        },
+        "outputs": {
+            "result": "结果"
+        },
+        "description": ""
+    },
+    "IntToString|Mie": {
+        "title": "🐑 整数转字符串",
+        "inputs": {},
+        "widgets": {
+            "value": "值"
+        },
+        "outputs": {
+            "string": "字符串"
+        },
+        "description": "将 INT（或数字字符串）转换为其十进制字符串形式。\n\n当需要将 int 组件/链接（例如 MieLoopGetIndex、PrimitiveInt）拼接至 STRING 路径或文件名构建器（例如 字符串Concat|Mie）时使用此节点。输出为纯 STRING，因此下游 字符串Concat 可静态解析它。\n\n替代 ComfyUI-CR-Node 第三方设置中的 \"CR Integer To 字符串\" 节点。用于将循环索引拼接至 LoadOrCompute|Mie 或类似文件名构建器的缓存路径 字符串Concat 中。\n\n输入：\n- 值：INT（已链接或字面量）。浮点数将向零截断；数字字符串会被解析；非数字输入回退为 \"0\"。"
+    },
+    "StringFormat|Mie": {
+        "title": "🐑 字符串格式化",
+        "inputs": {},
+        "widgets": {
+            "template": "模板"
+        },
+        "outputs": {
+            "result": "结果"
+        },
+        "description": "使用最多 N 个位置值格式化 Python str.格式 风格的模板。\n\n模板使用 {0}、{1}、{2}……占位符（PEP 3101）。未连接的值视为空字符串，因此部分接线的节点仍能生成可用结果——例如引用 {2} 但仅连接 值_0/值_1 的模板会渲染为 ``\"foo + bar + \"``，而非因 IndexError 崩溃。随着用户连接更多组件，值槽数量会自动增长：前端 UX 参见 js/字符串FormatAutogrow.js（Bernini Conditioning 风格）。\n\n输入：\n- template：格式字符串，多行 STRING 组件。\n- 值_0..值_{N-1}：位置参数，STRING 类型。节点放置时默认显示前 DEFAULT_FORMAT_VALUES 个槽；每次最后一个可见槽连接后，JS 扩展会追加一个槽，最多 MAX_FORMAT_VALUES。\n\n输出：\n- result：格式化后的字符串。若 str.格式 抛出异常（括号不匹配、无法解析的规范等），错误会被记录并返回原始模板，因此用户仍可在连线上检查。"
+    },
+    "StringHash|Mie": {
+        "title": "🐑 字符串哈希",
+        "inputs": {},
+        "widgets": {
+            "text": "文本",
+            "length": "长度"
+        },
+        "outputs": {
+            "hash": "哈希值"
+        },
+        "description": "将 STRING 哈希为短十六进制摘要，用于缓存键文件名。\n\n与 ImageHash|Mie 配套，适用于已为 STRING 的输入（例如 SAM3 提示词）。使缓存键的提示词组件保持简短、确定性且无文件名禁用字符（空格、斜杠），因此缓存键模板无需担心提示词措辞，直接拼接哈希即可。\n\n默认与 ImageHash|Mie 匹配：12 个十六进制字符（48 位）的 sha256，对每个用户缓存目录而言碰撞安全。\n\n输入：\n- 文本：要哈希的 STRING。None/空会生成常量标记（\"0\" * 长度），因此未连接的输入仍能生成有效文件名组件而非崩溃。\n- 长度：INT 组件，保留的十六进制字符数。默认 12，范围 [4, 64]。\n\n输出：\n- hash：sha256(文本.编码(\"utf-8\"))[:长度] 的小写十六进制。"
+    },
+    "_MieTextAnnotationBase|Mie": {
+        "title": "🐑 _Mie文本注释基类",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {},
+        "description": "SimpleText/RichText 注释节点的共用无操作配置。"
+    },
+    "BatchRenameFiles|Mie": {
+        "title": "🐑 批量重命名文件",
+        "inputs": {
+            "trigger_signal": "触发信号"
+        },
+        "widgets": {
+            "directory": "目录",
+            "file_extension": "文件扩展名",
+            "numbering_format": "编号格式",
+            "update_caption_as_well": "同时更新标题",
+            "prefix": "前缀"
+        },
+        "outputs": {
+            "updated_file_count": "更新文件数",
+            "log": "日志"
+        },
+        "description": ""
+    },
+    "BatchDeleteFiles|Mie": {
+        "title": "🐑 批量删除文件",
+        "inputs": {
+            "trigger_signal": "触发信号"
+        },
+        "widgets": {
+            "directory": "目录",
+            "file_extension": "文件扩展名",
+            "prefix": "前缀"
+        },
+        "outputs": {
+            "deleted_file_count": "删除文件数",
+            "log": "日志"
+        },
+        "description": ""
+    },
+    "BatchEditTextFiles|Mie": {
+        "title": "🐑 批量编辑文本文件",
+        "inputs": {
+            "trigger_signal": "触发信号"
+        },
+        "widgets": {
+            "directory": "目录",
+            "operation": "操作",
+            "file_extension": "文件扩展名",
+            "target_text": "目标文本",
+            "new_text": "新文本"
+        },
+        "outputs": {
+            "updated_file_count": "更新文件数",
+            "log": "日志"
+        },
+        "description": ""
+    },
+    "BatchSyncImageCaptionFiles|Mie": {
+        "title": "🐑 批量同步图像标题文件",
+        "inputs": {
+            "trigger_signal": "触发信号"
+        },
+        "widgets": {
+            "directory": "目录",
+            "caption_content": "标题内容"
+        },
+        "outputs": {
+            "log": "日志"
+        },
+        "description": ""
+    },
+    "SummaryTextFiles|Mie": {
+        "title": "🐑 汇总文本文件",
+        "inputs": {
+            "trigger_signal": "触发信号"
+        },
+        "widgets": {
+            "directory": "目录",
+            "add_separator": "添加分隔符",
+            "save_to_file": "保存到文件",
+            "file_extension": "文件扩展名",
+            "summary_file_name": "汇总文件名"
+        },
+        "outputs": {
+            "log": "日志"
+        },
+        "description": ""
+    },
+    "BatchConvertImageFiles|Mie": {
+        "title": "🐑 批量转换图像文件",
+        "inputs": {
+            "trigger_signal": "触发信号"
+        },
+        "widgets": {
+            "directory": "目录",
+            "target_format": "目标格式",
+            "save_original": "保存原始文件"
+        },
+        "outputs": {
+            "converted_file_count": "转换文件数",
+            "log": "日志"
+        },
+        "description": ""
+    },
+    "DedupImageFiles|Mie": {
+        "title": "🐑 去重图像文件",
+        "inputs": {
+            "trigger_signal": "触发信号"
+        },
+        "widgets": {
+            "directory": "目录",
+            "max_distance_threshold": "最大距离阈值"
+        },
+        "outputs": {
+            "deleted_file_count": "已删除文件数",
+            "log": "日志"
+        },
+        "description": ""
+    },
+    "ModelDownloader|Mie": {
+        "title": "🐑 模型下载器",
+        "inputs": {
+            "trigger_signal": "触发信号"
+        },
+        "widgets": {
+            "url": "网址",
+            "save_path": "保存路径",
+            "override": "覆盖",
+            "use_hf_mirror": "使用Hugging Face镜像",
+            "rename_to": "重命名为",
+            "hf_token": "Hugging Face令牌",
+            "skip_ssl_verify": "跳过SSL验证",
+            "timeout": "超时时间"
+        },
+        "outputs": {
+            "log": "日志"
+        },
+        "description": ""
+    },
+    "HFRepoDownloader|Mie": {
+        "title": "🐑 HF仓库下载器",
+        "inputs": {
+            "trigger_signal": "触发信号"
+        },
+        "widgets": {
+            "url_or_repo_id": "网址或仓库ID",
+            "save_path": "保存路径",
+            "use_hf_mirror": "使用Hugging Face镜像",
+            "hf_token": "Hugging Face令牌",
+            "revision": "版本",
+            "allow_patterns": "允许的模式",
+            "exclude_patterns": "排除的模式"
+        },
+        "outputs": {
+            "log": "日志"
+        },
+        "description": ""
+    },
+    "BerniniPromptGenerator|Mie": {
+        "title": "🐑 Bernini提示词生成器",
+        "inputs": {
+            "llm_service_connector": "LLM服务连接器",
+            "task_type": "任务类型",
+            "source": "来源",
+            "reference_images": "参考图像",
+            "reference_video": "参考视频"
+        },
+        "widgets": {
+            "user_prompt": "用户提示词",
+            "seed": "随机种子",
+            "video_frames": "视频帧",
+            "reference_video_frames": "参考视频帧",
+            "image_detail": "图像细节",
+            "temperature": "温度",
+            "top_p": "top_p",
+            "max_tokens": "最大token数",
+            "timeout": "超时时间"
+        },
+        "outputs": {
+            "bernini_prompt": "Bernini提示词"
+        },
+        "description": "ComfyUI节点，使用Bernini任务模板重写用户提示词。\n可选模式：\n  t2i, t2v, i2i, r2i, ri2i, i2v, v2v, mv2v, r2v, vi2v, rv2v, vrc2v, ads2v\n注意：`ri2i`是MieNodes扩展任务（不属于上游bytedance/Bernini的12任务集），用于填补`i2i`（单源图像）和`r2i`（参考驱动的新图像）之间的对称空白。"
+    },
+    "CustomSystemPromptGenerator|Mie": {
+        "title": "🐑 自定义系统提示词生成器",
+        "inputs": {
+            "llm_service_connector": "LLM服务连接器",
+            "system_prompt_name": "系统提示词名称",
+            "source": "来源",
+            "reference_images": "参考图像",
+            "reference_video": "参考视频"
+        },
+        "widgets": {
+            "input_text": "输入文本",
+            "seed": "随机种子",
+            "video_frames": "视频帧",
+            "reference_video_frames": "参考视频帧",
+            "image_detail": "图像细节",
+            "temperature": "温度",
+            "max_tokens": "最大token数"
+        },
+        "outputs": {
+            "custom_prompt": "自定义提示词"
+        },
+        "description": "对LLM运行任何内置/用户自定义系统提示词，支持可选媒体。"
+    },
+    "AddCustomSystemPrompt|Mie": {
+        "title": "🐑 添加自定义系统提示词",
+        "inputs": {},
+        "widgets": {
+            "prompt_name": "提示词名称",
+            "system_prompt": "系统提示词"
+        },
+        "outputs": {
+            "success": "成功",
+            "log": "日志"
+        },
+        "description": "将用户定义的系统提示词持久化到user_system_提示词s.json。"
+    },
+    "RemoveCustomSystemPrompt|Mie": {
+        "title": "🐑 移除自定义系统提示词",
+        "inputs": {
+            "preset_name": "预设名称"
+        },
+        "widgets": {},
+        "outputs": {
+            "success": "成功",
+            "log": "日志"
+        },
+        "description": "删除用户定义的系统提示词（下拉列表仅显示用户提示词）。"
+    },
+    "Ideogram4PromptGenerator|Mie": {
+        "title": "🐑 Ideogram4提示词生成器",
+        "inputs": {
+            "llm_service_connector": "LLM服务连接器",
+            "composition_mode": "合成模式",
+            "aspect_ratio": "宽高比"
+        },
+        "widgets": {
+            "user_prompt": "用户提示词",
+            "seed": "随机种子",
+            "temperature": "温度",
+            "timeout": "超时时间"
+        },
+        "outputs": {
+            "ideogram4_prompt": "Ideogram4提示词"
+        },
+        "description": "ComfyUI节点：通过LLM将纯文本转换为经过验证的Ideogram 4 JSON格式说明。"
+    },
+    "Krea2PromptGenerator|Mie": {
+        "title": "🐑 Krea2提示词生成器",
+        "inputs": {
+            "llm_service_connector": "LLM服务连接器",
+            "aspect_ratio": "宽高比"
+        },
+        "widgets": {
+            "user_prompt": "用户提示词",
+            "seed": "随机种子",
+            "temperature": "温度",
+            "timeout": "超时时间",
+            "max_tokens": "最大token数"
+        },
+        "outputs": {
+            "krea2_prompt": "Krea2提示词"
+        },
+        "description": "ComfyUI节点：纯文本→扩展后的Krea-2图像提示词段落。将用户的创意发送到已配置的LLM，并使用Krea-2官方的``扩展.txt``系统提示词（逐字包含），返回单段落答案。可选的``宽高比``提示会在用户消息中转发；传入``\"auto\"``让模型自行决定。"
+    },
+    "PromptGenerator|Mie": {
+        "title": "🐑 提示词生成器",
+        "inputs": {
+            "llm_service_connector": "LLM服务连接器"
+        },
+        "widgets": {
+            "input_text": "输入文本",
+            "mode": "模式",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "prompt": "提示词"
+        },
+        "description": ""
+    },
+    "KontextPromptGenerator|Mie": {
+        "title": "🐑 Kon文本提示词生成器",
+        "inputs": {
+            "llm_service_connector": "LLM服务连接器",
+            "preset": "预设"
+        },
+        "widgets": {
+            "image1_description": "图像1描述",
+            "image2_description": "图像2描述",
+            "edit_instruction": "编辑指令",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "kontext_prompt": "Kon文本提示词"
+        },
+        "description": ""
+    },
+    "AddUserKontextPreset|Mie": {
+        "title": "🐑 添加用户Kon文本预设",
+        "inputs": {},
+        "widgets": {
+            "preset_name": "预设名称",
+            "system_prompt": "系统提示词"
+        },
+        "outputs": {
+            "success": "成功",
+            "log": "日志"
+        },
+        "description": ""
+    },
+    "RemoveUserKontextPreset|Mie": {
+        "title": "🐑 移除用户Kon文本预设",
+        "inputs": {
+            "preset_name": "预设名称"
+        },
+        "widgets": {},
+        "outputs": {
+            "success": "成功",
+            "log": "日志"
+        },
+        "description": ""
+    },
+    "FrameTransitionPromptGenerator|Mie": {
+        "title": "🐑 帧过渡提示词生成器",
+        "inputs": {
+            "llm_service_connector": "LLM服务连接器",
+            "model": "模型"
+        },
+        "widgets": {
+            "start_image_description": "起始图像描述",
+            "end_image_description": "结束图像描述",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "transition_prompt": "过渡提示词"
+        },
+        "description": ""
+    },
+    "HunyuanVideoT2VPromptGenerator|Mie": {
+        "title": "🐑 混元文生视频提示词生成器",
+        "inputs": {
+            "llm_service_connector": "LLM服务连接器"
+        },
+        "widgets": {
+            "input_text": "输入文本",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "hyvideo_t2v_prompt": "混元文生视频提示词"
+        },
+        "description": ""
+    },
+    "HunyuanVideoI2VPromptGenerator|Mie": {
+        "title": "🐑 混元图生视频提示词生成器",
+        "inputs": {
+            "llm_service_connector": "LLM服务连接器"
+        },
+        "widgets": {
+            "image_description": "图像描述",
+            "input_text": "输入文本",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "hyvideo_i2v_prompt": "混元图生视频提示词"
+        },
+        "description": ""
+    },
+    "ZImagePromptGenerator|Mie": {
+        "title": "🐑 Z图像提示词生成器",
+        "inputs": {
+            "llm_service_connector": "LLM服务连接器"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "zimage_prompt": "Z图像提示词"
+        },
+        "description": ""
+    },
+    "ZImagePromptGeneratorWithImageInput|Mie": {
+        "title": "🐑 带图像输入的Z图像提示词生成器",
+        "inputs": {
+            "llm_service_connector": "LLM服务连接器",
+            "image": "图像"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "seed": "随机种子",
+            "image_detail": "图像细节"
+        },
+        "outputs": {
+            "zimage_prompt": "Z图像提示词"
+        },
+        "description": ""
+    },
+    "Flux2PromptGenerator|Mie": {
+        "title": "🐑 Flux2提示词生成器",
+        "inputs": {
+            "llm_service_connector": "大语言模型服务连接器"
+        },
+        "widgets": {
+            "input_text": "输入文本",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "flux2_prompt_json": "Flux2提示词JSON"
+        },
+        "description": ""
+    },
+    "FluxKleinT2VPromptGenerator|Mie": {
+        "title": "🐑 FluxKlein文本转视频提示词生成器",
+        "inputs": {
+            "llm_service_connector": "大语言模型服务连接器"
+        },
+        "widgets": {
+            "input_text": "输入文本",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "flux_klein_t2v_prompt": "FluxKlein文本转视频提示词"
+        },
+        "description": ""
+    },
+    "LTX2PromptGenerator|Mie": {
+        "title": "🐑 LTX2提示词生成器",
+        "inputs": {
+            "llm_service_connector": "大语言模型服务连接器"
+        },
+        "widgets": {
+            "input_text": "输入文本",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "ltx2_prompt": "LTX2提示词"
+        },
+        "description": ""
+    },
+    "Scail2PromptGenerator|Mie": {
+        "title": "🐑 Scail2提示词生成器",
+        "inputs": {
+            "llm_service_connector": "大语言模型服务连接器",
+            "task_type": "任务类型",
+            "driving_video": "驱动视频",
+            "reference_images": "参考图像"
+        },
+        "widgets": {
+            "user_prompt": "用户提示词",
+            "seed": "随机种子",
+            "num_frames": "帧数",
+            "image_detail": "图像细节",
+            "temperature": "温度",
+            "max_tokens_caption": "字幕最大token数",
+            "max_tokens_enhance": "增强最大token数",
+            "timeout": "超时时间"
+        },
+        "outputs": {
+            "scail2_prompt": "Scail2提示词"
+        },
+        "description": "ComfyUI节点：使用SCAIL-2的两阶段流程重写用户提示词。可选模式：字符替换、动作迁移。输出：包含增强后SCAIL-2提示词的单个字符串。中间阶段1的字幕会通过mie_log记录用于调试，但不作为端口返回。"
+    },
+    "TextTranslator|Mie": {
+        "title": "🐑 文本翻译器",
+        "inputs": {
+            "llm_service_connector": "大语言模型服务连接器"
+        },
+        "widgets": {
+            "text": "文本",
+            "target_language": "目标语言"
+        },
+        "outputs": {
+            "translated_text": "翻译后的文本"
+        },
+        "description": ""
+    },
+    "MieLoopStart|Mie": {
+        "title": "🐑 Mie循环开始",
+        "inputs": {},
+        "widgets": {
+            "loop_id": "循环ID",
+            "param_type": "参数类型",
+            "param_mode": "参数模式",
+            "initial_state_json": "初始状态JSON",
+            "int_list": "整数列表",
+            "float_list": "浮点数列表",
+            "string_list": "字符串列表",
+            "json_list": "JSON列表",
+            "int_range_start": "整数范围起始",
+            "int_range_end": "整数范围结束",
+            "int_range_step": "整数范围步长",
+            "float_range_start": "浮点数范围起始",
+            "float_range_end": "浮点数范围结束",
+            "float_range_step": "浮点数范围步长",
+            "int_decrement_total": "整数递减总量",
+            "int_decrement_step": "整数递减步长",
+            "float_decrement_total": "浮点数递减总量",
+            "float_decrement_step": "浮点数递减步长",
+            "meta_json": "元数据JSON",
+            "resume_loop_ctx": "恢复循环上下文"
+        },
+        "outputs": {
+            "loop_ctx": "循环上下文",
+            "index": "索引",
+            "count": "计数",
+            "is_last": "是否最后一个"
+        },
+        "description": ""
+    },
+    "MieLoopResume|Mie": {
+        "title": "🐑 Mie循环恢复",
+        "inputs": {},
+        "widgets": {
+            "loop_ctx_json": "循环上下文JSON"
+        },
+        "outputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "description": ""
+    },
+    "MieLoopBodyIn|Mie": {
+        "title": "🐑 Mie循环体输入",
+        "inputs": {
+            "loop_ctx": "循环上下文",
+            "anchor": "锚点"
+        },
+        "widgets": {},
+        "outputs": {
+            "loop_ctx": "循环上下文",
+            "anchor": "锚点"
+        },
+        "description": ""
+    },
+    "MieLoopBodyOut|Mie": {
+        "title": "🐑 Mie循环体输出",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {
+            "state_json": "状态JSON"
+        },
+        "outputs": {
+            "loop_ctx": "循环上下文",
+            "state_json": "状态JSON"
+        },
+        "description": ""
+    },
+    "MieLoopEnd|Mie": {
+        "title": "🐑 Mie循环结束",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {
+            "state_json": "状态JSON",
+            "debug": "调试"
+        },
+        "outputs": {
+            "loop_ctx": "循环上下文",
+            "done": "完成"
+        },
+        "description": ""
+    },
+    "MieLoopGetIndex|Mie": {
+        "title": "🐑 Mie循环获取索引",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {},
+        "outputs": {
+            "index": "索引"
+        },
+        "description": ""
+    },
+    "MieLoopIfCurrentIdx|Mie": {
+        "title": "🐑 Mie循环当前索引条件",
+        "inputs": {
+            "loop_ctx": "循环上下文",
+            "operator": "运算符",
+            "then_value": "满足条件值",
+            "else_value": "不满足条件值"
+        },
+        "widgets": {
+            "compare_value": "比较值"
+        },
+        "outputs": {
+            "loop_ctx": "循环上下文",
+            "value": "值"
+        },
+        "description": "根据当前循环索引选择两个值中的一个进行路由。使用所选运算符将ctx['索引']与compare_值比较，返回调用方连接的满足条件值或不满足条件值中的一个。输出仅为选中的分支——布尔判断本身不暴露（可通过传递True/False作为两个分支，利用路由值推断判断结果）。then_值和else_值声明为任意信号_typ，因此任何数据类型（图像、字符串、字典、循环上下文等）都可流通；未连接的分支会回退到None。"
+    },
+    "MieLoopIfIsFirst|Mie": {
+        "title": "🐑 Mie循环是否首次条件",
+        "inputs": {
+            "loop_ctx": "循环上下文",
+            "then_value": "首次值",
+            "else_value": "非首次值"
+        },
+        "widgets": {},
+        "outputs": {
+            "loop_ctx": "循环上下文",
+            "value": "值"
+        },
+        "description": "根据是否为第一轮选择两个值中的一个进行路由。当ctx['索引'] == 0时返回首次值，否则返回非首次值。输出仅为选中的分支——布尔判断本身不暴露（路由值隐含该判断）。then_值/else_值为任意类型，因此任何数据类型都可流通；未连接的分支会回退到None。"
+    },
+    "MieLoopIfIsLast|Mie": {
+        "title": "🐑 Mie循环是否最后一轮条件",
+        "inputs": {
+            "loop_ctx": "循环上下文",
+            "then_value": "最后一轮值",
+            "else_value": "非最后一轮值"
+        },
+        "widgets": {},
+        "outputs": {
+            "loop_ctx": "循环上下文",
+            "value": "值"
+        },
+        "description": "根据是否为最后一轮选择两个值中的一个进行路由。当ctx['is_last']为True时返回最后一轮值，否则返回非最后一轮值。输出仅为选中的分支——布尔判断本身不暴露。then_值/else_值为任意类型，因此任何数据类型都可流通；未连接的分支会回退到None。"
+    },
+    "MieLoopParamGetInt|Mie": {
+        "title": "🐑 Mie循环获取整数参数",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {
+            "key": "键",
+            "default_value": "默认值"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "MieLoopParamGetFloat|Mie": {
+        "title": "🐑 Mie循环获取浮点数参数",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {
+            "key": "键",
+            "default_value": "默认值"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "MieLoopParamGetString|Mie": {
+        "title": "🐑 Mie循环获取字符串参数",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {
+            "key": "键",
+            "default_value": "默认值"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "MieLoopParamGetBool|Mie": {
+        "title": "🐑 Mie循环获取布尔参数",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {
+            "key": "键",
+            "default_value": "默认值"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "MieLoopStateGetInt|Mie": {
+        "title": "🐑 Mie循环获取整数状态",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {
+            "key": "键",
+            "default_value": "默认值"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "MieLoopStateGetFloat|Mie": {
+        "title": "🐑 Mie循环状态获取浮点值",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {
+            "key": "键",
+            "default_value": "默认值"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "MieLoopStateGetString|Mie": {
+        "title": "🐑 Mie循环状态获取字符串值",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {
+            "key": "键",
+            "default_value": "默认值"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "MieLoopStateGetBool|Mie": {
+        "title": "🐑 Mie循环状态获取布尔值",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {
+            "key": "键",
+            "default_value": "默认值"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "MieLoopStateSet|Mie": {
+        "title": "🐑 Mie循环状态设置",
+        "inputs": {},
+        "widgets": {
+            "base_state_json": "基础状态JSON",
+            "key1": "键1",
+            "value1_json": "值1 JSON",
+            "key2": "键2",
+            "value2_json": "值2 JSON",
+            "key3": "键3",
+            "value3_json": "值3 JSON"
+        },
+        "outputs": {
+            "state_json": "状态JSON"
+        },
+        "description": ""
+    },
+    "MieImageSelectFrame|Mie": {
+        "title": "🐑 Mie图像选择帧",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "index": "索引"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": ""
+    },
+    "MieLoopStateSetImage|Mie": {
+        "title": "🐑 Mie循环状态设置图像",
+        "inputs": {
+            "loop_ctx": "循环上下文",
+            "image": "图像"
+        },
+        "widgets": {
+            "key": "键"
+        },
+        "outputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "description": ""
+    },
+    "MieLoopStateSetImageBatch|Mie": {
+        "title": "🐑 Mie循环状态设置图像批次",
+        "inputs": {
+            "loop_ctx": "循环上下文",
+            "image": "图像"
+        },
+        "widgets": {
+            "key": "键"
+        },
+        "outputs": {
+            "loop_ctx": "循环上下文",
+            "count": "数量"
+        },
+        "description": "将图像批次存储到循环状态中，并报告其帧数。该节点与 :class:`MieLoopStateSetImage` 功能类似，但适用于批次维度（``形状[0]``）大于1的IMAGE张量。整个张量会存储在单个键下，以便下游的 :class:`MieLoopStateGetImage`（或其他图像使用节点）可一次性读取完整批次。默认键（``feedback_图像_批次``）特意与单图像设置器的默认键（``feedback_图像``）区分开，这样两个节点可在同一工作流中共存，不会互相覆盖。``计数`` 输出会直接呈现批次维度，因此调用者无需获取张量即可得知存储的帧数。"
+    },
+    "MieLoopStateSetInt|Mie": {
+        "title": "🐑 Mie循环状态设置整数值",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {
+            "key": "键",
+            "value": "值"
+        },
+        "outputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "description": ""
+    },
+    "MieLoopStateSetFloat|Mie": {
+        "title": "🐑 Mie循环状态设置浮点值",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {
+            "key": "键",
+            "value": "值"
+        },
+        "outputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "description": ""
+    },
+    "MieLoopStateSetString|Mie": {
+        "title": "🐑 Mie循环状态设置字符串值",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {
+            "key": "键",
+            "value": "值"
+        },
+        "outputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "description": ""
+    },
+    "MieLoopStateSetBool|Mie": {
+        "title": "🐑 Mie循环状态设置布尔值",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {
+            "key": "键",
+            "value": "值"
+        },
+        "outputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "description": ""
+    },
+    "MieLoopStateGetImage|Mie": {
+        "title": "🐑 Mie循环状态获取图像",
+        "inputs": {
+            "loop_ctx": "循环上下文",
+            "fallback_image": "备用图像"
+        },
+        "widgets": {
+            "key": "键"
+        },
+        "outputs": {
+            "image": "图像",
+            "found": "是否找到"
+        },
+        "description": ""
+    },
+    "MieLoopStateCleanupImage|Mie": {
+        "title": "🐑 Mie循环状态清理图像",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {
+            "key": "键"
+        },
+        "outputs": {
+            "loop_ctx": "循环上下文",
+            "cleaned": "已清理"
+        },
+        "description": ""
+    },
+    "MieLoopCollectImage|Mie": {
+        "title": "🐑 Mie循环收集图像",
+        "inputs": {
+            "loop_ctx": "循环上下文",
+            "image": "图像"
+        },
+        "widgets": {
+            "offload_to_disk": "卸载到磁盘",
+            "offload_dir": "卸载目录"
+        },
+        "outputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "description": ""
+    },
+    "MieLoopFinalizeImages|Mie": {
+        "title": "🐑 Mie循环完成图像处理",
+        "inputs": {
+            "loop_ctx": "循环上下文",
+            "done": "已完成"
+        },
+        "widgets": {
+            "avoid_oom": "避免OOM"
+        },
+        "outputs": {
+            "images": "图像",
+            "merged_path": "合并路径"
+        },
+        "description": "完成图像收集器的处理，并将结果流式合并到磁盘。专为长时间运行的SCAIL风格循环设计，若合并步骤出现OOM（内存不足），会导致整个运行结果丢失。该节点始终以分块方式将合并结果流式写入 ``<offload_dir>/merged.pt``，第二阶段使用numpy.memmap支持，因此进程内峰值内存仅受限于约1个分块（SCAIL-2 30批次场景下约3.5 GB），而非最终结果加分块的总大小（约24.5 GB）。若发生任何失败，每个批次的 ``图像_*.pt`` 文件都会保留（遵循失败时保留的约定），用户可通过 ``scripts/manual_merge_offloaded_图像s.py`` 恢复数据。输入项被刻意精简——分块大小和输出路径为内部参数，用户无法错误配置导致循环中途出现OOM。唯一可调整的选项是 ``avoid_oom``，默认开启，提示信息警告：在长时间循环中关闭该选项可能导致运行结果丢失。"
+    },
+    "MieLoopCleanupImages|Mie": {
+        "title": "🐑 Mie循环清理图像",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {},
+        "outputs": {
+            "loop_ctx": "循环上下文",
+            "cleaned": "已清理"
+        },
+        "description": ""
+    },
+    "MieImageGrid|Mie": {
+        "title": "🐑 Mie图像网格",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "cols": "列数",
+            "pad": "间距"
+        },
+        "outputs": {
+            "grid": "网格"
+        },
+        "description": ""
+    },
+    "MieLoopCollectText|Mie": {
+        "title": "🐑 Mie循环收集文本",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {
+            "text": "文本"
+        },
+        "outputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "description": ""
+    },
+    "MieLoopFinalizeTextList|Mie": {
+        "title": "🐑 Mie循环完成文本列表",
+        "inputs": {
+            "loop_ctx": "循环上下文",
+            "done": "已完成"
+        },
+        "widgets": {},
+        "outputs": {
+            "text_list_json": "文本列表JSON"
+        },
+        "description": ""
+    },
+    "MieLoopCleanupText|Mie": {
+        "title": "🐑 Mie循环清理文本",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {},
+        "outputs": {
+            "loop_ctx": "循环上下文",
+            "cleaned": "已清理"
+        },
+        "description": ""
+    },
+    "MieLoopCollectJSON|Mie": {
+        "title": "🐑 Mie循环收集JSON",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {
+            "item_json": "项目JSON"
+        },
+        "outputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "description": ""
+    },
+    "MieLoopCollectAudio|Mie": {
+        "title": "🐑 Mie循环收集音频",
+        "inputs": {
+            "loop_ctx": "循环上下文",
+            "audio": "音频"
+        },
+        "widgets": {
+            "offload_to_disk": "卸载到磁盘",
+            "offload_dir": "卸载目录"
+        },
+        "outputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "description": ""
+    },
+    "MieLoopFinalizeAudio|Mie": {
+        "title": "🐑 Mie循环完成音频",
+        "inputs": {
+            "loop_ctx": "循环上下文",
+            "done": "完成"
+        },
+        "widgets": {},
+        "outputs": {
+            "audio": "音频"
+        },
+        "description": ""
+    },
+    "MieLoopCleanupAudio|Mie": {
+        "title": "🐑 Mie循环清理音频",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {},
+        "outputs": {
+            "loop_ctx": "循环上下文",
+            "cleaned": "已清理"
+        },
+        "description": ""
+    },
+    "MieLoopFinalizeJSONList|Mie": {
+        "title": "🐑 Mie循环完成JSON列表",
+        "inputs": {
+            "loop_ctx": "循环上下文",
+            "done": "完成"
+        },
+        "widgets": {},
+        "outputs": {
+            "json_list": "JSON列表"
+        },
+        "description": ""
+    },
+    "MieLoopCleanupJSON|Mie": {
+        "title": "🐑 Mie循环清理JSON",
+        "inputs": {
+            "loop_ctx": "循环上下文"
+        },
+        "widgets": {},
+        "outputs": {
+            "loop_ctx": "循环上下文",
+            "cleaned": "已清理"
+        },
+        "description": ""
+    },
+    "WavConcat|Mie": {
+        "title": "🐑 Wav音频拼接",
+        "inputs": {
+            "audio1": "音频1",
+            "audio2": "音频2"
+        },
+        "widgets": {
+            "mute_audio1": "静音音频1",
+            "mute_audio2": "静音音频2",
+            "start_spacer": "起始间隔",
+            "middle_spacer": "中间间隔",
+            "end_spacer": "结束间隔"
+        },
+        "outputs": {
+            "concatenated_audio": "拼接后的音频"
+        },
+        "description": ""
+    },
+    "SingleImageToVideo|Mie": {
+        "title": "🐑 单图像转视频",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "save_output": "保存输出",
+            "fps": "帧率",
+            "duration": "时长",
+            "translation_x": "X轴平移",
+            "translation_y": "Y轴平移",
+            "scale": "缩放比例"
+        },
+        "outputs": {
+            "video_path": "视频路径"
+        },
+        "description": ""
+    },
+    "AddNumberWatermarkForImage|Mie": {
+        "title": "🐑 为图像添加数字水印",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "start_number": "起始数字",
+            "position_x": "X轴位置",
+            "position_y": "Y轴位置",
+            "font_scale": "字体缩放",
+            "color_r": "红色分量",
+            "color_g": "绿色分量",
+            "color_b": "蓝色分量",
+            "thickness": "线条粗细",
+            "outline": "轮廓",
+            "outline_thickness": "轮廓粗细"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "AddTextWatermarkForImage|Mie": {
+        "title": "🐑 为图像添加文本水印",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "text": "文本",
+            "font_size": "字体大小",
+            "position_x": "X轴位置",
+            "position_y": "Y轴位置",
+            "color_r": "红色分量",
+            "color_g": "绿色分量",
+            "color_b": "蓝色分量",
+            "outline": "轮廓",
+            "outline_width": "轮廓宽度",
+            "align": "对齐方式"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "QwenTTSNode|Mie": {
+        "title": "🐑 Qwen文本转语音节点",
+        "inputs": {
+            "tts_connector": "TTS连接器"
+        },
+        "widgets": {
+            "text": "文本",
+            "voice": "语音音色",
+            "model": "模型",
+            "language_type": "语言类型",
+            "api_key": "API密钥"
+        },
+        "outputs": {
+            "audio": "音频"
+        },
+        "description": ""
+    },
+    "SetGeneralLLMServiceConnector|Mie": {
+        "title": "🐑 设置通用LLM服务连接器",
+        "inputs": {},
+        "widgets": {
+            "api_url": "API地址",
+            "api_token": "API令牌",
+            "model_select": "模型选择",
+            "config_file": "配置文件",
+            "config_key": "配置键",
+            "prefer_local_config": "优先本地配置"
+        },
+        "outputs": {
+            "llm_service_connector": "LLM服务连接器"
+        },
+        "description": ""
+    },
+    "SetGithubModelsLLMServiceConnector|Mie": {
+        "title": "🐑 设置Github模型LLM服务连接器",
+        "inputs": {},
+        "widgets": {
+            "api_token": "API令牌",
+            "model_select": "模型选择",
+            "custom_model": "自定义模型",
+            "config_file": "配置文件",
+            "config_key": "配置键",
+            "prefer_local_config": "优先本地配置"
+        },
+        "outputs": {
+            "llm_service_connector": "LLM服务连接器"
+        },
+        "description": ""
+    },
+    "SetSiliconFlowLLMServiceConnector|Mie": {
+        "title": "🐑 设置SiliconF下限 LLM服务连接器",
+        "inputs": {},
+        "widgets": {
+            "api_token": "API令牌",
+            "model_select": "模型选择",
+            "custom_model": "自定义模型",
+            "config_file": "配置文件",
+            "config_key": "配置键",
+            "prefer_local_config": "优先本地配置"
+        },
+        "outputs": {
+            "llm_service_connector": "LLM服务连接器"
+        },
+        "description": ""
+    },
+    "SetZhiPuLLMServiceConnector|Mie": {
+        "title": "🐑 设置智谱LLM服务连接器",
+        "inputs": {},
+        "widgets": {
+            "api_token": "API令牌",
+            "model_select": "模型选择",
+            "custom_model": "自定义模型",
+            "config_file": "配置文件",
+            "config_key": "配置键",
+            "prefer_local_config": "优先本地配置"
+        },
+        "outputs": {
+            "llm_service_connector": "LLM服务连接器"
+        },
+        "description": ""
+    },
+    "SetZhiPuCodeLLMServiceConnector|Mie": {
+        "title": "🐑 设置智谱代码LLM服务连接器",
+        "inputs": {},
+        "widgets": {
+            "api_token": "API令牌",
+            "model_select": "模型选择",
+            "custom_model": "自定义模型",
+            "config_file": "配置文件",
+            "config_key": "配置键",
+            "prefer_local_config": "优先本地配置"
+        },
+        "outputs": {
+            "llm_service_connector": "LLM服务连接器"
+        },
+        "description": ""
+    },
+    "SetKimiLLMServiceConnector|Mie": {
+        "title": "🐑 设置Kimi LLM服务连接器",
+        "inputs": {},
+        "widgets": {
+            "api_token": "API令牌",
+            "model_select": "模型选择",
+            "custom_model": "自定义模型",
+            "config_file": "配置文件",
+            "config_key": "配置键",
+            "prefer_local_config": "优先本地配置"
+        },
+        "outputs": {
+            "llm_service_connector": "LLM服务连接器"
+        },
+        "description": ""
+    },
+    "SetDeepSeekLLMServiceConnector|Mie": {
+        "title": "🐑 设置深度求索LLM服务连接器",
+        "inputs": {},
+        "widgets": {
+            "api_token": "API令牌",
+            "model_select": "模型选择",
+            "custom_model": "自定义模型",
+            "config_file": "配置文件",
+            "config_key": "配置键",
+            "prefer_local_config": "优先本地配置"
+        },
+        "outputs": {
+            "llm_service_connector": "LLM服务连接器"
+        },
+        "description": ""
+    },
+    "SetMiniMaxLLMServiceConnector|Mie": {
+        "title": "🐑 设置MiniMax LLM服务连接器",
+        "inputs": {},
+        "widgets": {
+            "api_token": "API令牌",
+            "model_select": "模型选择",
+            "custom_model": "自定义模型",
+            "config_file": "配置文件",
+            "config_key": "配置键",
+            "prefer_local_config": "优先本地配置"
+        },
+        "outputs": {
+            "llm_service_connector": "LLM服务连接器"
+        },
+        "description": "标准MiniMax开放平台连接器。\n\n当您拥有从MiniMax开发者控制台颁发的标准MiniMax开放平台API密钥（`eyJ...` JWT格式）时，请使用此节点。对于Token计划/编码计划（以`sk-cp-...`为前缀）的密钥，请改用`SetMiniMaxTokenPlanLLMServiceConnector`节点。"
+    },
+    "SetMiniMaxTokenPlanLLMServiceConnector|Mie": {
+        "title": "🐑 设置MiniMax Token计划LLM服务连接器",
+        "inputs": {},
+        "widgets": {
+            "api_token": "API令牌",
+            "model_select": "模型选择",
+            "custom_model": "自定义模型",
+            "config_file": "配置文件",
+            "config_key": "配置键",
+            "prefer_local_config": "优先本地配置"
+        },
+        "outputs": {
+            "llm_service_connector": "LLM服务连接器"
+        },
+        "description": "MiniMax Token计划/编码计划连接器。\n\n当您拥有Token计划/编码计划API密钥（以`sk-cp-...`为前缀）时，请使用此节点。M3是该层级的主打模型；旧版M2.7/M2.5系列保留用于向后兼容。"
+    },
+    "SetMiMoLLMServiceConnector|Mie": {
+        "title": "🐑 设置小米MiMo大语言模型服务连接器",
+        "inputs": {},
+        "widgets": {
+            "api_token": "API密钥",
+            "model_select": "模型选择",
+            "custom_model": "自定义模型",
+            "config_file": "配置文件",
+            "config_key": "配置密钥",
+            "prefer_local_config": "优先使用本地配置"
+        },
+        "outputs": {
+            "llm_service_connector": "LLM服务连接器"
+        },
+        "description": "标准小米MiMo开放平台连接器。\n\n当你拥有从MiMo开发者控制台颁发的标准MiMo API密钥（格式为`sk-xxxxx`）时使用此节点。对于Token计划/编码计划（前缀为`tp-xxxxx`）的密钥，请改用`SetMiMoTokenPlanLLMServiceConnector`。"
+    },
+    "SetMiMoTokenPlanLLMServiceConnector|Mie": {
+        "title": "🐑 设置小米MiMo Token计划大语言模型服务连接器",
+        "inputs": {},
+        "widgets": {
+            "api_token": "API密钥",
+            "model_select": "模型选择",
+            "custom_model": "自定义模型",
+            "config_file": "配置文件",
+            "config_key": "配置密钥",
+            "prefer_local_config": "优先使用本地配置"
+        },
+        "outputs": {
+            "llm_service_connector": "LLM服务连接器"
+        },
+        "description": "小米MiMo Token计划/编码计划连接器。\n\n当你拥有前缀为`tp-xxxxx`的Token计划/编码计划API密钥时使用此节点。Token计划是固定费用订阅，拥有自己的基础URL和计费方式；模型阵容与标准层级共享。"
+    },
+    "SetGeminiLLMServiceConnector|Mie": {
+        "title": "🐑 设置Ge最小值i大语言模型服务连接器",
+        "inputs": {},
+        "widgets": {
+            "api_token": "API密钥",
+            "model_select": "模型选择",
+            "custom_model": "自定义模型",
+            "config_file": "配置文件",
+            "config_key": "配置密钥",
+            "prefer_local_config": "优先使用本地配置"
+        },
+        "outputs": {
+            "llm_service_connector": "LLM服务连接器"
+        },
+        "description": ""
+    },
+    "SetBailianLLMServiceConnector|Mie": {
+        "title": "🐑 设置百炼大语言模型服务连接器",
+        "inputs": {},
+        "widgets": {
+            "api_token": "API密钥",
+            "model_select": "模型选择",
+            "custom_model": "自定义模型",
+            "config_file": "配置文件",
+            "config_key": "配置密钥",
+            "prefer_local_config": "优先使用本地配置"
+        },
+        "outputs": {
+            "llm_service_connector": "LLM服务连接器"
+        },
+        "description": ""
+    },
+    "CheckLLMServiceConnectivity|Mie": {
+        "title": "🐑 检查大语言模型服务连通性",
+        "inputs": {
+            "llm_service_connector": "LLM服务连接器"
+        },
+        "widgets": {},
+        "outputs": {
+            "log": "日志"
+        },
+        "description": ""
+    },
+    "CallLLMService|Mie": {
+        "title": "🐑 调用大语言模型服务",
+        "inputs": {
+            "llm_service_connector": "LLM服务连接器",
+            "image": "图像"
+        },
+        "widgets": {
+            "input_text": "输入文本",
+            "temperature": "温度",
+            "top_p": "核采样概率",
+            "max_tokens": "最大令牌数",
+            "seed": "随机种子",
+            "image_detail": "图像细节"
+        },
+        "outputs": {
+            "response": "响应"
+        },
+        "description": ""
+    },
+    "Translator|Mie": {
+        "title": "🐑 翻译器",
+        "inputs": {
+            "llm_service_connector": "LLM服务连接器"
+        },
+        "widgets": {
+            "target_language": "目标语言"
+        },
+        "outputs": {
+            "translated_text": "翻译文本"
+        },
+        "description": ""
+    },
+    "SimpleTextNode|Mie": {
+        "title": "🐑 简单文本节点",
+        "inputs": {
+        },
+        "widgets": {
+        },
+        "outputs": {
+        },
+        "description": ""
+    },
+    "RichTextNode|Mie": {
+        "title": "🐑 富文本节点",
+        "inputs": {
+        },
+        "widgets": {
+        },
+        "outputs": {
+        },
+        "description": ""
+    },
+    "AboutAuthorNode|Mie": {
+        "title": "🐑 关于作者节点",
+        "inputs": {
+        },
+        "widgets": {
+        },
+        "outputs": {
+        },
+        "description": ""
+    },
+    "SetBailianTTSConnector|Mie": {
+        "title": "🐑 设置百炼语音合成连接器",
+        "inputs": {},
+        "widgets": {
+            "api_token": "API密钥",
+            "config_file": "配置文件",
+            "config_key": "配置密钥",
+            "prefer_local_config": "优先使用本地配置"
+        },
+        "outputs": {
+            "tts_connector": "语音合成连接器"
+        },
+        "description": ""
+    }
+}

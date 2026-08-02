@@ -1,0 +1,152 @@
+{
+    "TensorLoopOpen": {
+        "title": "张量循环开始",
+        "inputs": {
+            "initial_value": "初始值"
+        },
+        "widgets": {
+            "mode": "模式",
+            "iterations": "迭代次数"
+        },
+        "outputs": {
+            "flow_control": "流控制",
+            "accumulated_count": "累计数量",
+            "previous_value": "上一个值",
+            "current_iteration": "当前迭代次数"
+        },
+        "description": "开启一个用于收集输出的循环。支持两种模式：\n- 迭代次数：运行固定次数的迭代\n- 总帧数：运行直到累计达到目标帧数\n将flow_control连接到TensorLoopClose，使用`previous_值`作为生成的输入，并将生成的输出连接到TensorLoopClose.processed。\n支持图像、遮罩和Latent类型。"
+    },
+    "TensorLoopClose": {
+        "title": "张量循环结束",
+        "inputs": {},
+        "widgets": {
+            "flow_control": "流控制",
+            "processed": "已处理",
+            "accumulate": "累计",
+            "overlap": "重叠",
+            "stop": "停止"
+        },
+        "outputs": {
+            "output": "输出"
+        },
+        "description": "关闭由TensorLoopOpen开启的循环。\n连接：\n  - 来自TensorLoopOpen的flow_control\n  - processed：本次迭代生成的输出\n支持图像、遮罩和Latent类型。"
+    },
+    "_AccumulateNode": {
+        "title": "累计节点",
+        "inputs": {},
+        "widgets": {
+            "to_add": "待添加",
+            "accumulation": "累计值"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "_WhileLoopOpen": {
+        "title": "条件循环开始",
+        "inputs": {},
+        "widgets": {
+            "condition": "条件"
+        },
+        "outputs": {
+            "flow_control": "流控制"
+        },
+        "description": ""
+    },
+    "_WhileLoopClose": {
+        "title": "条件循环结束",
+        "inputs": {},
+        "widgets": {
+            "flow_control": "流控制",
+            "condition": "条件"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "_IntOperations": {
+        "title": "整数运算",
+        "inputs": {},
+        "widgets": {
+            "a": "a",
+            "b": "b",
+            "operation": "运算"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "_AccumulationToImageBatch": {
+        "title": "累计转图像批次",
+        "inputs": {},
+        "widgets": {
+            "accumulation": "累计值",
+            "overlap_frames": "重叠帧数",
+            "overlap_mode": "重叠模式"
+        },
+        "outputs": {
+            "result": "结果"
+        },
+        "description": "将图像/遮罩张量或Latent字典的累计值拼接为单个批次。"
+    },
+    "_ConditionalSelect": {
+        "title": "条件选择",
+        "inputs": {},
+        "widgets": {
+            "condition": "条件",
+            "value_if_true": "条件为真时的值",
+            "value_if_false": "条件为假时的值"
+        },
+        "outputs": {
+            "result": "结果"
+        },
+        "description": "当条件为True时返回值_if_true，否则返回值_if_false。\n使用惰性求值，仅解析选中的分支。"
+    },
+    "_ImageAccumStatePack": {
+        "title": "图像累计状态打包",
+        "inputs": {},
+        "widgets": {
+            "remaining": "剩余数量",
+            "accum": "累计值",
+            "previous_value": "前一个值",
+            "count": "计数",
+            "open_node_id": "开始节点ID",
+            "total_frames": "总帧数",
+            "prev_accumulated_count": "之前累计数量",
+            "blend_overlap": "混合重叠"
+        },
+        "outputs": {
+            "loop_state": "循环状态",
+            "should_continue": "是否继续"
+        },
+        "description": "将循环状态打包为单个字典，供TensorLoopOpen的initial_值0使用。"
+    },
+    "_ImageAccumStateUnpack": {
+        "title": "图像累计状态解包",
+        "inputs": {},
+        "widgets": {
+            "loop_state": "循环状态"
+        },
+        "outputs": {
+            "remaining": "剩余数量",
+            "accumulation": "累计值",
+            "previous_value": "前一个值",
+            "accumulated_count": "累计数量",
+            "count": "计数",
+            "open_node_id": "开始节点ID",
+            "total_frames": "总帧数"
+        },
+        "description": "从TensorLoopOpen中解包循环状态。"
+    },
+    "_BatchOps": {
+        "title": "批次运算",
+        "inputs": {},
+        "widgets": {
+            "batch": "批次",
+            "operation": "运算",
+            "amount": "数量",
+            "batch_b": "批次B"
+        },
+        "outputs": {
+            "output": "输出"
+        },
+        "description": "批次切片、修剪和拼接运算。"
+    }
+}

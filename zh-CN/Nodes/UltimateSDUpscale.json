@@ -93,6 +93,36 @@
             "IMAGE": "图像"
         }
     },
+    "UltimateSDUpscaleGuider": {
+        "title": "终极 SD 放大 (引导器)",
+        "inputs": {
+            "image": "图像",
+            "guider": "引导器",
+            "samplers": "采样器",
+            "sigmas": "西格玛值",
+            "vae": "VAE",
+            "upscale_model": "放大模型"
+        },
+        "widgets": {
+            "upscale_by": "放大倍数",
+            "seed": "随机种子",
+            "mode_type": "模式类型",
+            "tile_width": "分块宽度",
+            "tile_height": "分块高度",
+            "mask_blur": "遮罩模糊",
+            "tile_padding": "分块填充",
+            "seam_fix_mode": "接缝修复模式",
+            "seam_fix_denoise": "接缝修复去噪",
+            "seam_fix_width": "接缝修复宽度",
+            "seam_fix_mask_blur": "接缝修复遮罩模糊",
+            "seam_fix_padding": "接缝修复填充",
+            "force_uniform_tiles": "强制统一分块",
+            "tiled_decode": "分块解码",
+            "batch_size": "批次大小"
+        },
+        "outputs": {},
+        "description": "用于图像放大辨率放大的节点，支持引导器（Guider）和分块处理模式。"
+    },
     "UltimateSDUpscaleNoUpscale": {
         "title": "SD降噪(不放大)",
         "inputs": {

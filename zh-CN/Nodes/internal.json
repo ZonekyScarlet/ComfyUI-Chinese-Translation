@@ -5719,7 +5719,8 @@
         "outputs": {
             "image": "图像",
             "audio": "音频",
-            "fps": "帧率"
+            "fps": "帧率",
+            "bit_depth": "位 深度"
         }
     },
     "USOStyleReference": {
@@ -7899,6 +7900,119 @@
             "keyframes": "关键帧"
         },
         "description": "用于在图像上设置关键帧的节点"
+    },
+    "SeedVR2Conditioning": {
+        "title": "应用 SeedVR2 条件",
+        "inputs": {
+            "model": "模型",
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "positive": "正面提示词",
+            "negative": "负面提示词"
+        },
+        "description": "从VAE Latent构建SeedVR2正/负条件。"
+    },
+    "SeedVR2TemporalChunk": {
+        "title": "分割 SeedVR2 Latent",
+        "inputs": {
+            "model": "模型",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "temporal_overlap": "时间重叠",
+            "chunking_mode": "分块模式"
+        },
+        "outputs": {
+            "latents": "Latents",
+            "temporal_overlap": "时间重叠"
+        },
+        "description": "将SeedVR2视频Latent分割成重叠的时域块，这些块的大小要足够小，以便能够在VRAM内逐一进行采样，同时将Latents的输出连接至“应用SeedVFR2条件化”和“采样器Latents”两个组件，然后再与“MergeSeedVR2Latents”进行合并。"
+    },
+    "SeedVR2TemporalMerge": {
+        "title": "合并 SeedVR2 Latent",
+        "inputs": {
+            "temporal_overlap": "时间重叠",
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "latent": "Latent"
+        },
+        "description": "将采样的SeedVR2Latent时间块重新组合成一个Latent，通过Hann窗口进行交叉淡入淡出，窗口大小由SplitSeedVR2Latent中设置的时间重叠参数决定。"
+    },
+    "TextEncodeMageFlowEdit": {
+        "title": "文本编码MageFlow魔法流编辑",
+        "inputs": {
+            "clip": "CLIP",
+            "vae": "VAE",
+            "image_1": "图像_1"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "batch_size": "批次数量"
+        },
+        "outputs": {
+            "positive": "正面提示词",
+            "negative": "负面提示词",
+            "latent": "Latent"
+        },
+        "description": "Mage-Flow-Edit魔法流编辑,编写一份编辑指令，并附上至少一幅参考图像。参考隐式图像将被调整为输出分辨率（宽度/高度或第一幅图像的尺寸，若其为0）。使用隐式图像的输出结果进行采样，以确保尺寸始终保持一致。"
+    },
+    "SeedVR2Preprocess": {
+        "title": "预处理 SeedVR2 输入",
+        "inputs": {
+            "resized_images": "重新调整大小的图片"
+        },
+        "widgets": {},
+        "outputs": {
+            "images": "图像组"
+        },
+        "description": "为SeedVR2模型填充调整后的图像。Alpha通道被移除，然后Post-ProcessSeedVR2Output节点会从原始的调整后图像重新应用该通道。"
+    },
+    "SeedVR2PostProcessing": {
+        "title": "后处理 SeedVR2 输出",
+        "inputs": {
+            "images": "图像",
+            "original_resized_images": "原始调整后的图像"
+        },
+        "widgets": {
+            "color_correction_method": "颜色校正方法"
+        },
+        "outputs": {
+            "images": "图像"
+        },
+        "description": "对 SeedVR2 生成的图像进行后处理，支持颜色校正方法选择。"
+    },
+    "SaveText": {
+        "title": "保存文本",
+        "inputs": {
+            "text": "文本内容"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "format": "格式",
+            "preview_mode": "预览模式"
+        },
+        "outputs": {
+            "text": "文本"
+        },
+        "description": "用于将文本保存到文件"
+    },
+    "TextEncodeJoyImageEdit": {
+        "title": "文本编码Joy快乐图像编辑",
+        "inputs": {
+            "clip": "CLIP",
+            "vae": "VAE",
+            "image_0": "图像_0"
+        },
+        "widgets": {},
+        "outputs": {
+            "conditioning": "条件"
+        },
+        "description": ""
     },
     "SaveImageWebsocket": {
         "title": "保存图像到网络接口",
