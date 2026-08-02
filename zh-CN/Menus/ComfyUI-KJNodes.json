@@ -94,7 +94,6 @@
     "Show Set/Get in connection menu": "在连接菜单中显示 设置/获取",
     "Show Set/Get": "显示 设置/获取",
     "Convert ALL Set/Get to links": "将所有“设置/获取”节点转换为链接",
-    "Convert ALL Set/Get to links": "将所有“设置/获取”节点转换为链接",
     "Filter Get node options by type": "按类型筛选“获取”节点选项",
     "Default SetNode widget value": "默认“设置节点”控件值",
 
@@ -121,6 +120,13 @@
     "up": "上",
     "down": "下",
     "mask bounds": "遮罩边界",
+    "Node Insert": "节点插入",
+    "Node insert activation ": "节点插入激活",
+    "hotkey": "快捷键",
+    "Shake to Disconnect": "摇动即断开",
+    "Reversals required": "需要反转",
+    "Enable shake to disconnect": "启用震动以断开连接",
+    "Shake a selected node back and forth quickly to remove its links. Pass-through bypass is applied (same as deleting the node); when multiple nodes are selected, links between them are preserved and bypass propagates through the chain.": "快速来回摇动选定的节点以移除其连接。通过传递绕过方式处理（相当于删除该节点）；当选择多个节点时，它们之间的连接将被保留，绕过效果会沿着链式结构传播。",
 
     "🔗💥⛓️ Make Set/Get -nodes defaults (turn off and reload to disable)": "设定设置/获取节点为默认（关闭并重启以禁用）",
     "Getters": "前往获取节点",

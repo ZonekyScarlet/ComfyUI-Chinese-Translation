@@ -12,10 +12,8 @@
     "🪛 Show GPU [${index}] ${name}": "🪛 显示GPU [${index}] ${name}",
     "🪛 Show GPU [0] NVIDIA GeForce RTX 4070 Ti SUPER": "🪛显示GPU [0] NVIDIA GeForce RTX 4070 Ti SUPER",
     "Usage": "显示GPU",
-    "CPU": "处理器",
-    "RAM": "内存条",
-    "GPU": "显卡使用率",
-    "VRAM": "显卡内存",
+    "RAM": "内存",
+    "VRAM": "显存",
     "Temperature": "温度",
 
     "🪛 Show Hard Disk": "🪛显示硬盘",
