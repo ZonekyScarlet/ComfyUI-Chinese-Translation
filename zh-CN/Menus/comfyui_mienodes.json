@@ -1,0 +1,17 @@
+{
+    "🐑 MieNodes": "🐑 MieNodes咩节点",
+    "🐑 Caption Tools": "🐑 标注工具",
+    "🐑 Common": "🐑 通用",
+    "🐑 Downloader": "🐑 下载器",
+    "🐑 LLM Service Config": "🐑 大语言模型服务配置",
+    "🐑 Translator": "🐑 翻译器",
+    "🐑 Prompt Generator": "🐑 提示词生成器",
+    "🐑 File Operations": "🐑 文件操作",
+    "🐑 String Operator": "🐑 字符串操作",
+    "🐑 Audio Operator": "🐑 音频操作",
+    "🐑 TTS Service": "🐑 语音合成服务",
+    "🐑 TTS Service Config": "🐑 语音合成服务配置",
+    "🐑 Image Operator": "🐑 图像操作",
+    "🐑 Extra": "🐑 扩展",
+    "🐑 Loop": "🐑 循环"
+}
