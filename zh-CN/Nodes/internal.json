@@ -8174,6 +8174,103 @@
         },
         "description": "随机打乱列表中视频-文本对的顺序。"
     },
+    "MiniMaxH3ReferenceToVideo": {
+        "title": "MiniMax H3 视频参考",
+        "inputs": {
+            "clip": "CLIP",
+            "vae": "VAE 编码器",
+            "audio_vae": "音频 VAE 编码器",
+            "ref_image_0": "参考图像 0",
+            "ref_image_1": "参考图像 1",
+            "ref_image_2": "参考图像 2",
+            "ref_image_3": "参考图像 3",
+            "ref_image_4": "参考图像 4",
+            "ref_image_5": "参考图像 5",
+            "ref_image_6": "参考图像 6",
+            "ref_image_7": "参考图像 7",
+            "ref_image_8": "参考图像 8",
+            "ref_video_0": "参考视频 0",
+            "ref_video_1": "参考视频 1",
+            "ref_video_2": "参考视频 2",
+            "ref_video_audio_0": "参考视频音频 0",
+            "ref_video_audio_1": "参考视频音频 1",
+            "ref_video_audio_2": "参考视频音频 2",
+            "ref_audio_0": "参考音频 0",
+            "ref_audio_1": "参考音频 1",
+            "ref_audio_2": "参考音频 2"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "ref_image_size": "参考图像尺寸"
+        },
+        "outputs": {
+            "positive": "条件"
+        },
+        "description": "用于从视频中提取参考信息的节点"
+    },
+    "MiniMaxH3ImageToVideo": {
+        "title": "MiniMax H3 图像转视频",
+        "inputs": {
+            "clip": "CLIP",
+            "vae": "VAE",
+            "first_frame": "首帧",
+            "last_frame": "尾帧"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "width": "宽度",
+            "height": "高度",
+            "length": "时长"
+        },
+        "outputs": {
+            "positive": "条件"
+        },
+        "description": "将图像转换为视频的节点"
+    },
+    "EmptyMiniMaxH3LatentAV": {
+        "title": "空 Latent MiniMax H3 音视频",
+        "inputs": {},
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "时长"
+        },
+        "outputs": {
+            "positive": "条件"
+        },
+        "description": "MiniMaxH3的联合视频+音频Latent。时长以模型的17k+5帧网格为基准，帧率24fps。"
+    },
+    "MiniMaxH3SigmaShift": {
+        "title": "MiniMax H3 Sigma偏移",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "shift_video": "视频偏移量",
+            "shift_audio": "音频偏移量"
+        },
+        "outputs": {},
+        "description": "设置视频/音频流偏移。"
+    },
+    "WanUni3CControlnetApply": {
+        "title": "应用 WanUni3C ControlNet",
+        "inputs": {
+            "model": "模型",
+            "model_patch": "模型补丁",
+            "vae": "VAE",
+            "render_video": "渲染视频"
+        },
+        "widgets": {
+            "strength": "强度",
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {},
+        "description": "应用 WanUni3C ControlNet 节点"
+    },
     "SaveImageWebsocket": {
         "title": "保存图像到网络接口",
         "inputs": {
