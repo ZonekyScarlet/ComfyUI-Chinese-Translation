@@ -7712,6 +7712,69 @@
         },
         "description": "预览3D溅射效果"
     },
+    "Save3DAdvanced": {
+        "title": "保存3D（高级）",
+        "inputs": {
+            "model_3d": "3D模型",
+            "model_3d_info": "3D模型信息",
+            "camera_info": "相机信息"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "outputs": {
+            "model_3d": "3D模型",
+            "model_3d_info": "3D模型信息",
+            "camera_info": "相机信息",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "description": ""
+    },
+    "SaveGaussianSplat": {
+        "title": "保存高斯泼溅",
+        "inputs": {
+            "model_3d": "3D模型",
+            "model_3d_info": "3D模型信息",
+            "camera_info": "相机信息"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "outputs": {
+            "model_3d": "3D模型",
+            "model_3d_info": "3D模型信息",
+            "camera_info": "相机信息",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "description": ""
+    },
+    "SavePointCloud": {
+        "title": "保存点云",
+        "inputs": {
+            "model_3d": "3D模型",
+            "model_3d_info": "3D模型信息",
+            "camera_info": "相机信息"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "outputs": {
+            "model_3d": "3D模型",
+            "model_3d_info": "3D模型信息",
+            "camera_info": "相机信息",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "description": ""
+    },
     "PreviewPointCloud": {
         "title": "预览点云",
         "inputs": {
@@ -8013,6 +8076,103 @@
             "conditioning": "条件"
         },
         "description": ""
+    },
+    "LoadVideoDataSetFromFolder": {
+        "title": "加载视频（从文件夹）",
+        "inputs": {},
+        "widgets": {
+            "folder": "文件夹"
+        },
+        "outputs": {
+            "videos": "视频"
+        },
+        "description": "从指定文件夹加载视频数据集并返回视频列表。支持的格式：MP4、AVI、MOV、WEBM、MKV、FLV。"
+    },
+    "LoadVideoTextDataSetFromFolder": {
+        "title": "加载视频（从文件夹）",
+        "inputs": {},
+        "widgets": {
+            "folder": "文件夹"
+        },
+        "outputs": {
+            "videos": "视频",
+            "texts": "文本"
+        },
+        "description": "从指定文件夹加载视频与文本字幕对的数据集，并将其返回为列表。支持的格式：MP4、AVI、MOV、WEBM、MKV、FLV。"
+    },
+    "VideoRandomTemporalCrop": {
+        "title": "裁剪视频（时间随机）",
+        "inputs": {
+            "video": "视频"
+        },
+        "widgets": {
+            "length": "长度",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "video": "视频"
+        },
+        "description": "从视频中随机裁剪连续的一系列帧。"
+    },
+    "VideoTemporalCrop": {
+        "title": "裁剪视频（时间）",
+        "inputs": {
+            "video": "视频"
+        },
+        "widgets": {
+            "length": "长度",
+            "start_frame": "开始帧"
+        },
+        "outputs": {
+            "video": "视频"
+        },
+        "description": "从视频中裁剪连续的一系列帧。"
+    },
+    "ShuffleVideoDataset": {
+        "title": "打乱视频列表",
+        "inputs": {
+            "videos": "视频组"
+        },
+        "widgets": {
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "videos": "视频组"
+        },
+        "description": "随机打乱列表中视频的顺序。"
+    },
+    "AnimaLLLiteApply": {
+        "title": "应用 大语言模型 轻量版",
+        "inputs": {
+            "model": "模型",
+            "model_patch": "模型补丁",
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "strength": "强度",
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": ""
+    },
+    "ShuffleVideoTextDataset": {
+        "title": "打乱视频与文本的配对",
+        "inputs": {
+            "videos": "视频组"
+        },
+        "widgets": {
+            "texts": "文本",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "texts": "文本",
+            "videos": "视频组"
+        },
+        "description": "随机打乱列表中视频-文本对的顺序。"
     },
     "SaveImageWebsocket": {
         "title": "保存图像到网络接口",

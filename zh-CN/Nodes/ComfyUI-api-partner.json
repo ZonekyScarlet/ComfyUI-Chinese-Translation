@@ -4257,8 +4257,234 @@
         },
         "description": "向前扩展之前的Ray3.2生成（在之后继续）或向后扩展（在之前引入）。连接先前LumaRay3.2节点的源生成ID输出。扩展始终为5秒。"
     },
+    "HeyGenTalkingPhotoNode": {
+        "title": "HeyGen 照片说话",
+        "inputs": {
+            "image": "图像",
+            "speech_source": "语音来源",
+            "speech_text": "语音文本"
+        },
+        "widgets": {
+            "speech_source": "语音来源",
+            "voice": "语音",
+            "custom_voice_id": "自定义语音ID",
+            "voice_speed": "语音速度",
+            "resolution": "分辨率",
+            "aspect_ratio": "宽高比",
+            "expressiveness": "表现力",
+            "seed": "种子",
+            "speech_text": "语音文本"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        },
+        "description": "任意人物图像动画化为唇形同步的对话视频（HeyGenAvatarIV）。可通过文本脚本或自定义音频驱动。"
+    },
+    "HeyGenAvatarVideoNode": {
+        "title": "HeyGen 动态头像视频",
+        "inputs": {
+
+        },
+        "widgets": {
+            "engine": "引擎",
+            "avatar": "头像",
+            "speech source": "语音来源",
+            "voice": "语音",
+            "custom_voice_id": "自定义语音ID",
+            "voice_speed": "语音速度",
+            "custom_avatar_id": "自定义头像ID",
+            "resolution": "分辨率",
+            "aspect_ratio": "宽高比",
+            "background_color": "背景颜色",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        },
+        "description": "从HeyGen虚拟形象生成一个会说话的演示者视频。包含HeyGen最受欢迎的公共虚拟形象；任何外观ID都可以作为覆盖设置提供。"
+    },
+    "HeyGenCreateAvatarNode": {
+        "title": "HeyGen 创建头像",
+        "inputs": {
+            "ref_image_1": "参考图像1"
+        },
+        "widgets": {
+            "source": "源文件"
+        },
+        "outputs": {
+            "avatar_id": "头像ID",
+            "preview": "预览图"
+        },
+        "description": "用于根据源图像和提示词创建头像"
+    },
+    "HeyGenVideoTranslateNode": {
+        "title": "HeyGen 视频翻译",
+        "inputs": {
+            "video": "视频"
+        },
+        "widgets": {
+            "output_language": "输出语言",
+            "mode": "模式",
+            "translate_audio_only": "仅翻译音频",
+            "speaker_count": "说话人数量",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        },
+        "description": "HeyGen 视频翻译节点"
+    },
+    "MinimaxHailuo03TextToVideoNode": {
+        "title": "MiniMax海螺 H3 文生视频",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "model_prompt": "模型提示词",
+            "resolution": "分辨率",
+            "ratio": "比例",
+            "seed": "种子",
+            "watermark": "水印"
+        },
+        "outputs": {},
+        "description": "使用MiniMaxH3模型从文本提示词生成视频。"
+    },
+    "MinimaxHailuo03FirstLastFrameNode": {
+        "title": "MiniMax海螺 H3 首尾帧转视频",
+        "inputs": {
+            "first_frame": "首帧",
+            "last_frame": "尾帧"
+        },
+        "widgets": {
+            "model": "模型",
+            "model_prompt": "模型提示词",
+            "resolution": "分辨率",
+            "duration": "持续时间",
+            "seed": "随机种子",
+            "generate_control": "生成控制",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        },
+        "description": "将首帧和尾帧生成视频"
+    },
+    "MinimaxHailuo03ReferenceNode": {
+        "title": "MiniMax海螺 H3 参考生视频",
+        "inputs": {
+            "image_1": "图像1",
+            "video_1": "视频1",
+            "audio_1": "音频1"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示词",
+            "resolution": "分辨率",
+            "ratio": "比例",
+            "seed": "随机种子",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        },
+        "description": "使用 MiniMax H3 模型将图像、视频和音频作为参考生成新视频。"
+    },
+    "SyncLipSyncNode": {
+        "title": "sync.so 嘴型同步",
+        "inputs": {
+            "video": "视频",
+            "audio": "音频"
+        },
+        "widgets": {
+            "seed": "随机种子",
+            "generate_after_control": "生成后控制",
+            "model": "模型",
+            "sync_mode": "同步模式",
+            "speaker_selection": "说话人选择",
+            "speaker_frame": "说话人帧",
+            "speaker_x": "说话人X坐标",
+            "speaker_y": "说话人Y坐标"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        },
+        "description": "同步音频与视频中的嘴型动作"
+    },
+    "SyncTalkingImageNode": {
+        "title": "sync.so 谈话图像",
+        "inputs": {
+            "image": "图像",
+            "audio": "音频"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "seed": "种子",
+            "generate_after_control": "生成后控制",
+            "model": "模型",
+            "speaker_selection": "说话人选择",
+            "speaker_x": "说话人X坐标",
+            "speaker_y": "说话人Y坐标",
+            "auto_downscale": "自动降采样"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        },
+        "description": "将图像和音频结合生成说话图像"
+    },
+    "IdeogramPImage": {
+        "title": "象形文字 P 图像",
+        "inputs": {
+            "prompt": "提示词"
+        },
+        "widgets": {
+            "quality": "质量",
+            "resolution": "分辨率",
+            "aspect_ratio": "宽高比",
+            "prompt_upsampling": "提示词上采样",
+            "seed": "种子",
+            "generate_after_control": "生成后控制"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "final_prompt": "最终提示词"
+        },
+        "description": "生成图像的节点"
+    },
+    "ByteDanceSeedAudio": {
+        "title": "字节跳动 种子音频 1.0",
+        "inputs": {},
+        "widgets": {
+            "text_prompt": "文本提示",
+            "reference_mode": "参考模式",
+            "sample_rate": "采样率",
+            "speech_rate": "语速",
+            "loudness_rate": "响度",
+            "pitch_rate": "音高",
+            "seed": "种子",
+            "model": "模型",
+            "generate_after_control": "生成后控制"
+        },
+        "outputs": {
+            "AUDIO": "视频"
+        },
+        "description": "字节跳动种子音频 1.0 节点"
+    },
+    "HeyGenTextToSpeechNode": {
+        "title": "HeyGen 文本转语音",
+        "inputs": {},
+        "widgets": {
+            "text": "文本",
+            "voice": "语音",
+            "custom_voice_id": "自定义语音ID",
+            "speed": "语速",
+            "ssml": "SSML控制标签",
+            "seed": "种子",
+            "generate_after_control": "生成后控制"
+        },
+        "outputs": {},
+        "description": "将文本转换为语音的节点"
+    },
     "TripoConversionNode": {
-        "title": "Tripo：转换模型",
+        "title": "Tripo转换模型",
         "inputs": {
             "original model task id": "原始模型任务ID",
             "original_model_task_id": "原始模型任务ID"

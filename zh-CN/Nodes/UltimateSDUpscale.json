@@ -98,7 +98,7 @@
         "inputs": {
             "image": "图像",
             "guider": "引导器",
-            "samplers": "采样器",
+            "sampler": "采样器",
             "sigmas": "西格玛值",
             "vae": "VAE",
             "upscale_model": "放大模型"
