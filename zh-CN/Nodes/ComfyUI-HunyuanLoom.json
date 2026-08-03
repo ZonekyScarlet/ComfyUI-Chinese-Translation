@@ -1,0 +1,212 @@
+{
+    "HYFlowEditGuider": {
+        "title": "HY流编辑引导器",
+        "inputs": {
+            "model": "模型",
+            "source_cond": "来源_条件",
+            "target_cond": "目标_条件"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": ""
+    },
+    "HYFlowEditGuiderAdv": {
+        "title": "HY流编辑引导器进阶",
+        "inputs": {
+            "model": "模型",
+            "source_cond": "来源_条件",
+            "target_cond": "目标_条件"
+        },
+        "widgets": {
+            "num_repeats": "重复次数"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "HYFlowEditGuiderCFG": {
+        "title": "HY流编辑引导器CFG",
+        "inputs": {
+            "model": "模型",
+            "source_cond": "来源_条件",
+            "source_uncond": "来源_无条件",
+            "target_cond": "目标_条件",
+            "target_uncond": "目标_无条件"
+        },
+        "widgets": {
+            "source_cfg": "源CFG",
+            "target_cfg": "目标CFG"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "HYFlowEditGuiderCFGAdv": {
+        "title": "HY流编辑引导器CFG进阶",
+        "inputs": {
+            "model": "模型",
+            "source_cond": "来源_条件",
+            "source_uncond": "来源_无条件",
+            "target_cond": "目标_条件",
+            "target_uncond": "目标_无条件"
+        },
+        "widgets": {
+            "source_cfg": "源CFG",
+            "target_cfg": "目标CFG",
+            "num_repeats": "重复次数"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "HYFlowEditSampler": {
+        "title": "HY流采样器",
+        "inputs": {},
+        "widgets": {
+            "skip_steps": "跳过步",
+            "drift_steps": "漂移步",
+            "seed": "随机种子"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "HyVideoFlowEditSamplerWrapper": {
+        "title": "HY视频流编辑采样器包装器",
+        "inputs": {
+            "model": "模型",
+            "source_embeds": "源嵌入",
+            "target_embeds": "目标嵌入",
+            "samples": "采样"
+        },
+        "widgets": {
+            "steps": "步数",
+            "skip_steps": "跳过步",
+            "drift_steps": "漂移步",
+            "source_guidance_scale": "源引导尺度",
+            "target_guidance_scale": "目标引导尺度",
+            "drift_guidance_scale": "偏移引导强度",
+            "drift_flow_shift": "偏移流移位",
+            "flow_shift": "流偏移",
+            "seed": "随机种子",
+            "force_offload": "强制卸载"
+        },
+        "outputs": {
+            "samples": "采样"
+        },
+        "description": ""
+    },
+    "HYAttnOverride": {
+        "title": "HY注意力覆盖",
+        "inputs": {},
+        "widgets": {
+            "double_blocks": "双块",
+            "single_blocks": "单块"
+        },
+        "outputs": {
+            "ATTN_OVERRIDE": "注意力覆盖"
+        },
+        "description": ""
+    },
+    "HYFetaEnhance": {
+        "title": "HYFeta增强",
+        "inputs": {
+            "model": "模型",
+            "attn_override": "注意力_覆盖"
+        },
+        "widgets": {
+            "feta_weight": "Feta权重"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "HYInverseModelSamplingPred": {
+        "title": "HY逆模型采样预测",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "shift": "偏移"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "HYReverseModelSamplingPred": {
+        "title": "HY反向模型采样预测",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "shift": "偏移"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "HYCreateRegionalCond": {
+        "title": "HY创建区域条件",
+        "inputs": {
+            "cond": "条件",
+            "mask": "遮罩",
+            "prev_regions": "先前区域"
+        },
+        "widgets": {
+            "cond_strength": "条件强度",
+            "mask_consolidation": "遮罩合并"
+        },
+        "outputs": {
+            "REGION_COND": "区域 条件"
+        },
+        "description": ""
+    },
+    "HYApplyRegionalConds": {
+        "title": "HY应用区域条件",
+        "inputs": {
+            "model": "模型",
+            "cond": "条件",
+            "region_conds": "区域条件",
+            "latent": "Latent",
+            "attn_override": "注意力覆盖"
+        },
+        "widgets": {
+            "start_percent": "起始百分比",
+            "end_percent": "结束百分比",
+            "main_cond_strength": "主条件强度",
+            "always_included": "始终包含"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "ConfigureModifiedHY": {
+        "title": "配置修改后的HY",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": ""
+    },
+    "HYForwardODESampler": {
+        "title": "HY正向ODE采样器",
+        "inputs": {},
+        "widgets": {
+            "gamma": "伽马",
+            "start_步": "开始步",
+            "end_step": "结束步",
+            "gamma_trend": "伽马趋势",
+            "seed": "随机种子"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "HYReverseODESampler": {
+        "title": "HY反向ODE采样器",
+        "inputs": {
+            "model": "模型",
+            "latent_image": "Latent图像"
+        },
+        "widgets": {
+            "eta": "eta",
+            "start_step": "开始步",
+            "end_step": "结束步",
+            "eta_trend": "eta趋势"
+        },
+        "outputs": {},
+        "description": ""
+    }
+}
