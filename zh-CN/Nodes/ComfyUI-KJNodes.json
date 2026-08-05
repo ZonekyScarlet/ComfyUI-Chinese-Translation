@@ -1,6 +1,300 @@
 {
+    "ContextWindowsVisualizerKJ": {
+        "title": "上下文窗口可视化工具 (KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "frame_units": "帧单位",
+            "dim": "维度",
+            "temporal_downscale": "时间下采样率",
+            "num_frames": "帧数",
+            "context_length": "上下文长度",
+            "context_overlap": "上下文重叠",
+            "context_schedule": "上下文调度",
+            "context_stride": "上下文步长",
+            "closed_loop": "闭环",
+            "fuse_method": "融合方法",
+            "causal_window_fix": "因果窗口修复",
+            "freenoise": "自由噪声",
+            "cond_retain_index_list": "条件保留索引列表"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "ComfyUI上下文窗口的交互式可视化：窗口位置、重叠度、融合权重及逐帧混合，实时更新。可选择将设置应用于核心上下文窗口（手动）节点等模型。"
+    },
+    "Ideogram4PromptBuilderKJ": {
+        "title": "Ideogram4提示词构建器 (KJ)",
+        "inputs": {
+            "image": "图像",
+            "import_json": "导入JSON",
+            "bboxes": "边界框"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "high_level_description": "高级描述",
+            "background": "背景",
+            "style": "风格",
+            "aesthetics": "美学",
+            "lighting": "光照",
+            "medium": "媒介",
+            "style_palette_data": "风格调色板数据",
+            "elements_data": "元素数据",
+            "bg_brightness": "背景亮度",
+            "import_mode": "导入模式",
+            "output_format": "输出格式",
+            "coord_mode": "坐标模式",
+            "bbox_order": "边界框顺序"
+        },
+        "outputs": {
+            "prompt": "提示词",
+            "preview": "预览",
+            "bboxes": "边界框",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "description": "\n用于Ideogram 4结构化JSON字幕格式的可视化提示词构建器。\n\n在画布上拖动以绘制区域；选择区域可设置其类型（对象/文本）、描述、文本和调色板。将背景和可选风格字段设为小部件。输出组装后的字幕JSON字符串。\n\nbboX轴偏移标准化为0-1000网格，格式为[Y轴偏移最小值, X轴偏移最小值, Y轴偏移最大值, X轴偏移最大值]；宽度/高度设置画布的宽高比。\n\n画布控制：\n- 拖动：绘制新区域\n- Ctrl/Cmd+拖动：即使在现有区域上方也强制绘制新区域\n- 点击：选择区域 · Alt+点击：循环重叠区域\n- 双击：内联编辑描述\n- 右键点击：区域列表（选择/删除/复制/重新排序，顶部为最前）\n- Del/Backspace：删除选中区域\n- Ctrl/Cmd + C/V/D：复制/粘贴/复制选中区域\n- obj/文本旁的bboX轴偏移字段（像素/输出）可编辑\n\n颜色样本：\n- 点击：编辑 · 拖动：重新排序 · 右键点击：删除\n- 悬停+Ctrl/Cmd + C/V：复制/粘贴十六进制颜色值\n- \"+\"：添加颜色（若剪贴板为颜色则使用该颜色）\n\n工具栏：\n- 实时：使用实时采样预览作为背景（并抓取最终结果）\n- 抓取背景/清除背景：使用最后生成的图像作为背景\n- 亮度滑块、令牌估算，以及复制/粘贴/全部清除"
+    },
+    "RandomImageFromBatch": {
+        "title": "从批次随机选图像 (KJ)",
+        "inputs": {
+            "input": "输入"
+        },
+        "widgets": {
+            "start_index": "起始索引",
+            "end_index": "结束索引",
+            "num_frames": "帧数",
+            "randomness": "随机性",
+            "min_distance": "最小间距",
+            "max_distance": "最大间距",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "output": "输出"
+        },
+        "description": "从图像或遮罩批次的选定索引范围内选取一系列帧。当随机性=0时，选取的帧在范围内均匀分布；当随机性=1时，它们是无重复的均匀随机；中间值则线性混合。输出始终按批次索引排序。负索引从末尾开始计数（-1 = 最后一个）。"
+    },
+    "FastPreviewBatch": {
+        "title": "快速预览批次 (KJ)",
+        "inputs": {
+            "input": "输入"
+        },
+        "widgets": {
+            "max_thumb_size": "最大缩略图尺寸",
+            "crf": "限制画面质量",
+            "max_grid_frames": "最大网格帧数"
+        },
+        "outputs": {},
+        "description": "将图像批次编码为全I帧的H.264 MP4缩略图条，并显示为交互式网格。点击图块可放大并前后浏览。避免生成N个PNG文件。"
+    },
+    "BBOXToBoundingBoxKJ": {
+        "title": "BBOX转边界框 (KJ)",
+        "inputs": {
+            "bbox": "边界框"
+        },
+        "widgets": {
+            "bbox_format": "边界框格式",
+            "index": "索引"
+        },
+        "outputs": {
+            "bounding_box": "边界框"
+        },
+        "description": "将KJNodes的BBOX转换为核心节点（如裁剪图像）使用的原生BOUNDING_BOX字典。"
+    },
+    "WanVideoMemoryEfficientSageAttentionPatch": {
+        "title": "Wan视频 内存高效Sage注意力补丁 (KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "实验性功能！在WanVideo自注意力上启用自定义sageattention以降低峰值VRAM占用，覆盖注意力模式。需要最新版本的sageattention。"
+    },
+    "MiniMaxH3MemoryEfficientSageAttentionPatch": {
+        "title": "MiniMaX H3内存高效Sage注意力补丁 (KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "实验性功能！在MiniMaX坐标坐标 H3自注意力上启用自定义sageattention以降低峰值VRAM占用，覆盖注意力模式。需要最新版本的sageattention。"
+    },
+    "PatchFlashAttentionKJ": {
+        "title": "修补Flash注意力 (KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "allow_compile": "允许编译"
+        },
+        "outputs": {},
+        "description": "用于修补注意力以使用Flash注意力的实验节点，不使用ComfY坐标坐标UI默认的静默SDPA回退。修补通过该节点的模型的注意力；若要禁用，需旁路或断开此节点。需安装flash_attn库。"
+    },
+    "TorchCompileModelAdvanced": {
+        "title": "Torch编译模型高级版 (KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "backend": "后端",
+            "fullgraph": "全图模式",
+            "mode": "模式",
+            "dynamic": "动态",
+            "compile_transformer_blocks_only": "仅编译Transformer块",
+            "dynamo_cache_size_limit": "D垂直偏移namo缓存大小限制",
+            "debug_compile_keys": "调试编译键",
+            "disable_dynamic_vram": "禁用动态VRAM"
+        },
+        "outputs": {},
+        "description": "针对扩散模型的高级 torch.compile 修补。"
+    },
+    "Krea2PromptWeight": {
+        "title": "Krea2提示词权重 (KJ)",
+        "inputs": {
+            "clip": "CLIP",
+            "model": "模型"
+        },
+        "widgets": {
+            "text": "文本",
+            "strength": "强度"
+        },
+        "outputs": {
+            "model": "模型",
+            "conditioning": "条件"
+        },
+        "description": "通过注意力值缩放为Krea2（K2）实现按 token 的提示词权重。使用 (词:-1) 可移除某个概念，(词:1.5) 可强调该概念——此功能适用于Qwen3-VL编码器，普通权重设置无法实现。输出修补后的模型和条件；将采样器CFG设置为1.0。"
+    },
+    "Ideogram4OptimizationsKJ": {
+        "title": "Ideogram4优化 (KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "chunk_ffn": "分块前馈",
+            "ffn_chunks": "前馈分块数",
+            "ffn_seq_threshold": "前馈序列阈值",
+            "bf16_rope": "bf16_位置编码"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "实验性功能，可能会改变模型输出！！降低Ideogram4前向传播的峰值VRAM。chunk_ffn将SwiGLU激活按token维度拆分；bf16_rope以模型数据类型应用RoPE，而非上转换为fp32。两者均针对块中两个最大的瞬态张量。"
+    },
+    "PiDColorBiasCorrection": {
+        "title": "PiD颜色偏差校正 (KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "strength": "强度",
+            "backbone": "骨干网络"
+        },
+        "outputs": {},
+        "description": "PiD四步解码器颜色/亮度漂移校正器。在第一个采样步骤中，使用针对模型系统性漂移校准的小型线性模型，从水平偏移0_p红色中减去逐通道偏差（模型倾向于提亮暗场景并添加蓝色色调）"
+    },
+    "LeapfusionHunyuanI2V": {
+        "title": "Leapfusion混元图生视频 (KJ)",
+        "inputs": {
+            "model": "模型",
+            "latent": "隐变量"
+        },
+        "widgets": {
+            "index": "索引",
+            "start_percent": "起始百分比",
+            "end_percent": "结束百分比",
+            "strength": "强度"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VAEMergeKJ": {
+        "title": "VAE合并 (KJ)",
+        "inputs": {
+            "vae_1": "VAE1",
+            "vae_2": "VAE2"
+        },
+        "widgets": {
+            "ratio": "比例"
+        },
+        "outputs": {
+            "vae": "VAE"
+        },
+        "description": "通过加权平均合并两个VAE的权重。比例是偏向VAE_2的权重（0.0 = 纯VAE_1，1.0 = 纯VAE_2）。两个VAE必须共享相同的架构（匹配的状态字典键和形状）"
+    },
+    "LatentInpaintTTM": {
+        "title": "Latent遮罩修复TTM (KJ)",
+        "inputs": {
+            "model": "模型",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "steps": "步数"
+        },
+        "outputs": {},
+        "description": "https://github.com/time-to-move/TTM"
+    },
+    "DeprecatedCompileNodeKJ": {
+        "title": "已弃用编译节点 (KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "此节点已被TorchCompileModelAdvanced节点取代，请使用该节点"
+    },
+    "ModelPreviewOverrideKJ": {
+        "title": "模型预览覆盖 (KJ)",
+        "inputs": {
+            "model": "模型",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "max_resolution": "最大分辨率",
+            "jpeg_quality": "JPEG质量",
+            "suppress_default_preview": "禁用默认预览",
+            "preview_frames": "预览帧",
+            "preview_fps": "预览帧率",
+            "tiny_vae": "微型VAE"
+        },
+        "outputs": {},
+        "description": "在此节点上添加专用的实时预览帧，可覆盖最大分辨率。Comf垂直偏移UI默认预览上限为512p水平偏移；此节点将自身预览直接发送到节点上的DOM组件，因此像素空间模型（Chroma Radiance、ZImage、HiDream-O1等）可在完整采样器分辨率下预览。"
+    },
+    "GetPreviewOverrideFramesKJ": {
+        "title": "获取预览覆盖帧 (KJ)",
+        "inputs": {
+            "model": "模型",
+            "after_sample": "采样后"
+        },
+        "widgets": {},
+        "outputs": {
+            "frames": "视频帧"
+        },
+        "description": "返回最近一次采样期间由模型预览覆盖捕获的帧。连接来自模型预览覆盖的'模型'（与供给采样器的模型相同）和来自采样器之后的'after_sample'（Latent/IMAGE）以确保正确的执行顺序。"
+    },
+    "PatchTritonVAE": {
+        "title": "修补Triton VAE (KJ)",
+        "inputs": {
+            "vae": "VAE"
+        },
+        "widgets": {
+            "fuse_norm_silu": "融合标准化 SiLU激活函数",
+            "channels_last": "通道优先",
+            "int8_conv": "INT8卷积",
+            "autotune": "自动调优"
+        },
+        "outputs": {
+            "vae": "VAE"
+        },
+        "description": "通过融合Triton norm+SiLU内核和通道优先卷积布局，加快VAE的解码/编码速度。支持的VAE（自动检测）：Wan 2.1/2.2视频VAE（含Qwen-Image，RMSNorm，约1.4水平偏移/1.15水平偏移）、Flu水平偏移/Flu水平偏移2、SDXL和SD1.5等KL图像VAE（GroupNorm，2048p水平偏移时约1.6-1.8水平偏移），以及LTXV/LTX2视频VAE（Pi水平偏移elNorm；时间步长条件的解码器块仅进行标准化融合）。其他架构不支持。作为对象补丁应用于克隆的修补器，因此仅在该VAE加载时存在。"
+    },
     "ImageTransformKJ": {
-        "title": "图像变换 KJ",
+        "title": "图像变换 (KJ)",
         "inputs": {
             "image": "图像",
             "mask": "遮罩"
@@ -24,7 +318,7 @@
         "description": "这是一个用于图像变换的节点，支持调整图像尺寸、放大方法、保持比例等参数，并支持对遮罩进行同步变换。"
     },
     "ScreencapStream": {
-        "title": "屏幕捕获流 KJ",
+        "title": "屏幕捕获流 (KJ)",
         "inputs": {},
         "widgets": {
             "crop_width": "裁剪宽度",
@@ -38,7 +332,7 @@
         "description": "该节点用于实时捕获屏幕画面。它允许用户自定义捕获区域的宽度和高度，并提供开始和停止捕获的控制按钮。捕获到的实时画面会显示在预览窗口中，方便用户监控屏幕录制情况。"
     },
     "DecodeAndSaveVideo": {
-        "title": "解码并保存视频 KJ",
+        "title": "解码并保存视频 (KJ)",
         "inputs": {
             "video_latent": "视频Latent",
             "video_vae": "视频 VAE 模型",
@@ -59,7 +353,7 @@
         "description": "该节点用于将视频潜在空间（Video Latent）解码为实际视频文件并保存。它支持同时解码音频。用户可以在这里配置帧率（FPS）、文件名前缀、输出格式（如 MP4, MOV 等）、视频编解码器（如 H.264, H.265）以及是否启用分块处理（Tiling）以处理大视频。"
     },
     "EncodeVideoComponents": {
-        "title": "编码视频组件 KJ",
+        "title": "编码视频组件 (KJ)",
         "inputs": {
             "video": "视频",
             "vae": "VAE 模型"
@@ -80,7 +374,7 @@
         "description": "该节点用于将视频帧编码为潜在空间（Latent）表示，通常用于视频生成或处理流程中。它接受视频流和 VAE 模型作为输入，并输出编码后的潜在空间数据、音频流、帧率信息以及总帧数。用户还可以在此设置输出的分辨率（宽度和高度）、限制最大帧数、选择图像放大方法（如 Lanczos）以及是否保持原始宽高比。"
     },
     "ColorMatchV2": {
-        "title": "颜色匹配 V2 KJ",
+        "title": "颜色匹配 V2 (KJ)",
         "inputs": {
             "image_target": "目标图像",
             "image_ref": "参考图像"
@@ -96,7 +390,7 @@
         "description": "用于将参考图像的颜色风格应用到目标图像上的节点。支持多种匹配算法（如 mkl），可调节匹配强度，并支持多线程处理以提高效率。"
     },
     "PreviewImageOrMask": {
-        "title": "预览图像或遮罩 KJ",
+        "title": "预览图像或遮罩 (KJ)",
         "inputs": {
             "input": "输入图像或遮罩"
         },
@@ -105,7 +399,7 @@
         "description": "该节点用于在 ComfyUI 界面中直接显示输入的图像或遮罩，主要用于调试和查看处理过程中的中间结果。它通常不输出数据流，仅作为可视化预览使用。"
     },
     "ImageSharpenKJ": {
-        "title": "图像锐化 KJ",
+        "title": "图像锐化 (KJ)",
         "inputs": {
             "image": "图像"
         },
@@ -822,20 +1116,6 @@
         },
         "description": "将 9 个输入图像合并为 3x3 表格。"
     },
-    "Image Grid To Batch": {
-        "title": "图像网格到批处理",
-        "inputs": {
-            "image": "图像"
-        },
-        "widgets": {
-            "columns": "列",
-            "rows": "行",
-            "delay": "延迟"
-        },
-        "outputs": {
-            "IMAGE": "图像"
-        }
-    },
     "ImageBatchTestPattern": {
         "title": "图像批次图案",
         "widgets": {
@@ -1447,22 +1727,6 @@
             "image_path": "图像路径"
         },
         "description": "将图像从文件夹加载到批处理中，图像被调整大小并加载到批处理中。"
-    },
-    "ImageGridToBatch": {
-        "title": "图像表格到批次",
-        "inputs": {
-            "image": "图像"
-        },
-        "widgets": {
-            "columns": "列数",
-            "The number of columns in the grid.": "表格的列数。",
-            "rows": "行数",
-            "The number of rows in the grid. Set to 0 for automatic calculation.": "表格的行数，0为自动。"
-        },
-        "outputs": {
-            "IMAGE": "图像"
-        },
-        "description": "将图表转换为单个图像批次。"
     },
     "ImageGridtoBatch": {
         "title": "图像表格到批次",
@@ -2689,15 +2953,6 @@
             "STRING": "字符串"
         }
     },
-    "Dummy Out": {
-        "title": "虚拟Latent输出",
-        "inputs": {
-            "any_input": "任何输入"
-        },
-        "outputs": {
-            "*": "输出"
-        }
-    },
     "DummyOut": {
         "title": "虚拟Latent输出",
         "inputs": {
@@ -3060,22 +3315,6 @@
             "AUDIO": "音频"
         },
         "description": "按指定方向将音频1连接到音频2。"
-    },
-    "Leapfusion Hunyuan I2V Patcher ": {
-        "title": "Leapfusion混元图像到视频",
-        "inputs": {
-            "model": "模型",
-            "latent": "latent"
-        },
-        "widgets": {
-            "index": "索引",
-            "start_percent": "起始百分比",
-            "end_percent": "结束百分比",
-            "strength": "强度"
-        },
-        "outputs": {
-            "MODEL": "模型"
-        }
     },
     "ImageNoiseAugmentation": {
         "title": "图像噪声增强",
