@@ -786,6 +786,10 @@
     "Buy": "购买",
     "password": "密码",
     "Continue": "继续",
+    "Node Usage Analyzer": "分析节点使用",
+    "Used in": "用于",
+    "installed packages": "已安装的插件",
+    "workflows": "工作流",
 
     "📥 Import Workflow into Group": "📥 导入工作流到组",
     "📐 Arrange Ungrouped Nodes": "📐 排列未分组节点",
