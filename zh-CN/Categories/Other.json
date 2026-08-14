@@ -500,6 +500,9 @@
     "tagger": "标签器",
     "safety": "安全检测",
     "GaussianPack": "GaussianPack高斯包",
+    "pytorch360convert": "🔍PyTorch360Convert全景查看器",
+    "Lora Manager": "Lora 管理器",
+
 
     "effects": "🎞️LTX视频",
     "lightricks": "🎞️LTX视频", 
