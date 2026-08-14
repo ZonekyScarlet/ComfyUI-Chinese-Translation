@@ -1,0 +1,406 @@
+{
+    "DaSiWa_EnhancedVideoCombine": {
+        "title": "DaSiWa_增强视频合并",
+        "inputs": {
+            "images": "图像",
+            "audio": "音频"
+        },
+        "widgets": {
+            "frame_rate": "帧率",
+            "codec": "编码格式",
+            "container": "容器格式",
+            "bit_depth": "位深度",
+            "quality": "质量",
+            "log_level": "日志级别",
+            "pingpong": "乒乓模式",
+            "save_metadata": "保存元数据",
+            "filename_prefix": "文件名前缀",
+            "save_output": "保存输出",
+            "pass_frames": "传递帧",
+            "crop_to_audio": "裁剪至音频",
+            "audio_codec": "音频编码",
+            "audio_bitrate": "音频比特率",
+            "save_first_frame": "保存首帧",
+            "save_last_frame": "保存末帧"
+        },
+        "outputs": {
+            "frames": "帧",
+            "filename": "文件名"
+        },
+        "description": "将图像批次合并为高质量视频，自动选择NVENC/GPU，支持可选的乒乓播放、ComfyUI工作流元数据及MP4备用方案。"
+    },
+    "DaSiWa_InpaintCropPrep": {
+        "title": "DaSiWa_修复裁剪准备",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "target_width": "目标宽度",
+            "target_height": "目标高度",
+            "mask_blur": "遮罩模糊",
+            "mask_min": "遮罩最小值",
+            "mask_max": "遮罩最大值",
+            "grow_px": "扩展像素",
+            "can_shrink": "可缩小"
+        },
+        "outputs": {
+            "cropped_image": "裁剪后图像",
+            "cropped_mask": "裁剪后遮罩",
+            "bbox_x": "边界框X坐标",
+            "bbox_y": "边界框Y坐标",
+            "bbox_w": "边界框宽度",
+            "bbox_h": "边界框高度"
+        },
+        "description": "为修复准备图像和遮罩：提取边界、裁剪、缩放。"
+    },
+    "DaSiWa_InpaintComposite": {
+        "title": "DaSiWa_修复合成",
+        "inputs": {
+            "destination": "目标",
+            "source": "源",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "x": "X坐标",
+            "y": "Y坐标",
+            "w": "宽度",
+            "h": "高度",
+            "correction_method": "校正方法"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "将修复后的补丁合成回原始图像，支持颜色校正。"
+    },
+    "DaSiWa_LLMModelSelector": {
+        "title": "DaSiWa_LLM模型选择器",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "custom_path": "自定义路径",
+            "hf_repo_id": "HF仓库ID",
+            "hf_revision": "HF修订版本",
+            "download_if_missing": "缺失时下载",
+            "backend": "后端",
+            "task": "任务",
+            "device": "设备",
+            "dtype": "数据类型",
+            "quantization": "量化",
+            "cache_mode": "缓存模式",
+            "trust_remote_code": "信任远程代码",
+            "attention_implementation": "注意力实现",
+            "kv_cache_implementation": "KV缓存实现",
+            "kv_cache_quant_backend": "KV缓存量化后端",
+            "kv_cache_nbits": "KV缓存位数",
+            "kv_cache_residual_length": "KV缓存残差长度",
+            "llama_n_ctx": "Llama上下文窗口",
+            "llama_n_gpu_layers": "Llama GPU层数",
+            "llama_n_threads": "Llama线程数",
+            "llama_chat_format": "Llama聊天格式",
+            "ollama_model": "Ollama模型",
+            "ollama_url": "Ollama地址",
+            "ollama_timeout": "Ollama超时时间"
+        },
+        "outputs": {
+            "llm_config": "LLM配置"
+        },
+        "description": "DaSiWa LLM模型选择器：从ComfyUI/models/llm中选择本地transformers LLM/VLM文件夹，并配置缓存、数据类型、设备及卸载行为。"
+    },
+    "DaSiWa_LLMAnalyze": {
+        "title": "DaSiWa_LLM分析",
+        "inputs": {
+            "llm_config": "LLM配置",
+            "images": "图像",
+            "text_input": "文本输入"
+        },
+        "widgets": {
+            "system_prompt_preset": "系统提示预设",
+            "system_prompt": "系统提示",
+            "prompt": "提示词",
+            "max_new_tokens": "最大新令牌数",
+            "max_input_tokens": "最大输入令牌数",
+            "temperature": "温度",
+            "top_p": "Top_p",
+            "repetition_penalty": "重复惩罚",
+            "use_kv_cache": "使用KV缓存",
+            "seed": "随机种子",
+            "max_frames": "最大帧数",
+            "frame_stride": "帧步长",
+            "frame_strategy": "帧策略",
+            "resize_max_px": "最大调整像素",
+            "resize_algorithm": "调整算法",
+            "memory_cleanup": "内存清理"
+        },
+        "outputs": {
+            "response": "响应",
+            "info": "信息"
+        },
+        "description": "DaSiWa LLM分析：对连接的文本、图像或VHS/视频帧批次运行本地文本或视觉语言模型，并返回字符串响应。"
+    },
+    "DaSiWa_LTX2LoraLoader": {
+        "title": "DaSiWa_LTX2 LoRA加载器",
+        "inputs": {
+            "model": "模型",
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "stack_data": "堆叠数据",
+            "model_type": "模型类型"
+        },
+        "outputs": {},
+        "description": "DaSiWa高级LoRA加载器：堆叠普通图像/视频LoRA或LTX-2.3视频/音频LoRA。音频分离仅适用于LTX-2.3。"
+    },
+    "DaSiWa_MetadataConfig": {
+        "title": "DaSiWa_元数据配置",
+        "inputs": {
+            "node_positive": "正向节点",
+            "node_negative": "负向节点",
+            "node_model": "模型节点",
+            "node_latent": "Latent节点",
+            "node_noise": "噪声节点",
+            "node_sigmas": "西格玛节点",
+            "node_sampler": "采样器节点",
+            "extra_metadata": "额外元数据",
+            "text_positive": "正向文本",
+            "text_negative": "负向文本",
+            "text_steps": "步数文本",
+            "text_cfg": "CFG文本",
+            "text_sampler": "采样器文本",
+            "text_scheduler": "调度器文本",
+            "text_seed": "随机种子文本",
+            "text_model": "模型文本",
+            "save_output": "保存输出"
+        },
+        "widgets": {
+            "save_workflow": "保存工作流",
+            "model_hash": "模型哈希"
+        },
+        "outputs": {
+            "config": "配置"
+        },
+        "description": "DaSiWa元数据配置：将工作流元数据设置及可选的自动检测链接收集为紧凑的配置输出，供图像保存器使用。"
+    },
+    "DaSiWa_MetadataImageSaver": {
+        "title": "DaSiWa_元数据图像保存器",
+        "inputs": {
+            "images": "图像",
+            "metadata_config": "元数据配置",
+            "extra_metadata": "额外元数据"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "file_format": "文件格式",
+            "compression": "压缩",
+            "save_output": "保存输出"
+        },
+        "outputs": {
+            "filename": "文件名",
+            "metadata": "元数据"
+        },
+        "description": "DaSiWa元数据图像保存器：保存带有ComfyUI工作流数据及A1111/Civitai兼容生成元数据的PNG或WebP图像。"
+    },
+    "DaSiWa_MetadataImageSaverFull": {
+        "title": "DaSiWa_元数据图像保存器完整版",
+        "inputs": {
+            "images": "图像组",
+            "metadata_config": "元数据配置",
+            "extra_metadata": "额外元数据",
+            "node_positive": "正向节点",
+            "node_negative": "负向节点",
+            "node_model": "模型节点",
+            "node_latent": "Latent节点",
+            "node_noise": "噪声节点",
+            "node_sigmas": "西格玛节点",
+            "node_sampler": "采样器节点",
+            "text_positive": "正向提示词",
+            "text_negative": "负向提示词",
+            "text_steps": "步数",
+            "text_cfg": "CFG 值",
+            "text_sampler": "采样器",
+            "text_scheduler": "调度器",
+            "text_seed": "随机种子",
+            "text_model": "文本模型"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "file_format": "文件格式",
+            "compression": "压缩级别",
+            "save_output": "保存输出",
+            "save_workflow": "保存工作流",
+            "model_hash": "模型哈希"
+        },
+        "outputs": {
+            "filename": "文件名",
+            "metadata": "元数据"
+        },
+        "description": "DaSiWa元数据图像保存器完整版：高级保存器变体，所有元数据检测及手动覆盖端口均直接暴露在节点上。"
+    },
+    "DaSiWa_CreateExtraMetadata": {
+        "title": "DaSiWa_创建额外元数据",
+        "inputs": {
+            "extra_metadata": "额外元数据"
+        },
+        "widgets": {
+            "key": "键",
+            "value": "值"
+        },
+        "outputs": {
+            "EXTRA_METADATA": "额外元数据"
+        },
+        "description": "DaSiWa创建额外元数据：为图像保存器创建或扩展自定义元数据键值对。"
+    },
+    "DaSiWa_RandomStringPicker": {
+        "title": "DaSiWa_随机字符串选择器",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {},
+        "outputs": {
+            "text": "文本"
+        },
+        "description": "DaSiWa随机字符串选择器：传递文本，同时将每个{A|B|C}组替换为随机选中的选项"
+    },
+    "DaSiWa_RTX_UpscalerRefiner": {
+        "title": "DaSiWa_RTX_放大精修",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "denoise": "降噪",
+            "deblur": "去模糊",
+            "scale": "缩放",
+            "megapixels": "百万像素",
+            "width": "宽度",
+            "height": "高度",
+            "device_id": "设备ID",
+            "empty_cache": "清空缓存",
+            "denoise_quality": "降噪质量",
+            "deblur_quality": "去模糊质量",
+            "upscale": "放大",
+            "upscale_quality": "放大质量",
+            "resize_type": "调整大小类型",
+            "divisible_by": "可整除值",
+            "ratio_preset": "比例预设",
+            "resize_method": "调整大小方法"
+        },
+        "outputs": {
+            "images": "图像"
+        },
+        "description": "DaSiWa RTX放大与优化器：高性能3次处理节点。1. 优化阶段：以源分辨率运行，使用NVIDIA RTX视觉效果清理噪点或模糊。2. 放大阶段：使用VSR或高比特率模式将图像放大4倍。逐帧处理，以在视频批次中保持低VRAM占用"
+    },
+    "DaSiWa_ResolutionScaleCalculator": {
+        "title": "DaSiWa_分辨率缩放计算器",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "resolution_preset": "分辨率预设",
+            "aspect_preset_when_not_image": "非图像时的比例预设",
+            "no_scale": "不缩放",
+            "scale_from_image": "从图像缩放",
+            "swap_aspect_when_not_image": "非图像时交换比例",
+            "custom_aspect_width": "自定义比例宽度",
+            "custom_aspect_height": "自定义比例高度",
+            "mode": "模式",
+            "custom_divisor": "自定义除数"
+        },
+        "outputs": {
+            "width_int": "整数宽度",
+            "height_int": "整数高度",
+            "width_float": "浮点宽度",
+            "height_float": "浮点高度"
+        },
+        "description": "DaSiWa分辨率缩放计算器：基于目标百万像素区域计算数学精确的分辨率。- 标准模式：纯数学缩放。- WAN/LTX模式：对齐到32像素边界（WAN/LTX VAE必需）。- 不缩放：覆盖所有计算，直接输出源图像尺寸"
+    },
+    "DaSiWa_TorchResize": {
+        "title": "DaSiWa_Torch调整大小",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "size_mode": "尺寸模式",
+            "aspect_mode": "比例模式",
+            "target_width": "目标宽度",
+            "target_height": "目标高度",
+            "scale_multiplier": "缩放倍数",
+            "interpolation": "插值",
+            "gamma_correct": "伽马校正",
+            "divisible_by": "可整除值",
+            "pad_color": "填充颜色",
+            "crop_position": "裁剪位置",
+            "batch_size": "批次大小",
+            "max_batch_megapixels": "最大批次百万像素",
+            "cache_size": "缓存大小"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "适用于ComfyUI图像的无依赖PyTorch批量调整大小工具。支持像素级精确的最近邻、双线性、双三次、区域及缓存可分离Lanczos重采样"
+    },
+    "DaSiWa_NodeStatusSwitch": {
+        "title": "DaSiWa_节点状态切换",
+        "inputs": {
+            "target_01": "目标_01 ",
+            "target_02": "目标_02 ",
+            "target_03": "目标_03 ",
+            "target_04": "目标_04 ",
+            "target_05": "目标_05 ",
+            "target_06": "目标_06 "
+        },
+        "widgets": {
+            "enabled": "启用",
+            "trigger_on": "触发条件",
+            "action": "操作"
+        },
+        "outputs": {
+            "enabled_out": "启用输出"
+        },
+        "description": "DaSiWa节点状态开关：根据布尔状态静音或绕过连接的目标节点，带有启用输出用于开关链式连接"
+    },
+    "DaSiWa_Watermark": {
+        "title": "DaSiWa_水印",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "watermark_path": "水印路径",
+            "position": "位置",
+            "scale": "缩放",
+            "resampling": "重采样",
+            "transparency": "透明度",
+            "rotation": "旋转",
+            "padding_x": "X轴填充",
+            "padding_y": "Y轴填充",
+            "optical_padding": "光学填充",
+            "optical_strength": "光学强度",
+            "random_switches": "随机开关",
+            "fade": "淡入淡出",
+            "fade_margin": "淡入淡出边距",
+            "randomize_position": "随机位置",
+            "random_seed": "随机种子"
+        },
+        "outputs": {},
+        "description": "DaSiWa水印：专业级水印叠加节点，具备稳定的CPU合成能力。将输出批次存储在RAM中，从初始化的源帧开始混合以避免闪烁，支持双三次/Lanczos缩放、旋转及“光学填充”以实现完美视觉对齐"
+    },
+    "DaSiWa_WildcardPresetPromptBuilder": {
+        "title": "DaSiWa_提示词预设提示构建器",
+        "inputs": {
+            "positive_input": "正向输入",
+            "negative_input": "负向输入"
+        },
+        "widgets": {
+            "style": "风格",
+            "seed": "随机种子",
+            "token_budget": "令牌预算",
+            "selection_state": "选择状态",
+            "reroll": "重新随机",
+            "auto_reroll": "自动重新随机"
+        },
+        "outputs": {
+            "positive_prompt": "正向提示词",
+            "negative_prompt": "负向提示词"
+        },
+        "description": "从内置的双风格提示词库构建正向和负向提示词。选择项及权重存储在工作流中"
+    }
+}

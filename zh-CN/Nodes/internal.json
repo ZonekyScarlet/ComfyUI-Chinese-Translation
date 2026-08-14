@@ -4293,7 +4293,7 @@
         "outputs": {
             "positive": "正向条件",
             "negative": "负面条件",
-            "trim_latent": "修剪Latent",
+            "trim_latent": "调整Latent",
             "latent": "Latent"
         }
     },
@@ -4383,7 +4383,7 @@
         "outputs": {
             "positive": "正向条件",
             "negative": "负面条件",
-            "trim_latent": "修剪Latent",
+            "trim_latent": "调整Latent",
             "latent": "Latent"
         }
     },
@@ -4409,7 +4409,7 @@
         "outputs": {
             "positive": "正向条件",
             "negative": "负面条件",
-            "trim_latent": "修剪Latent",
+            "trim_latent": "调整Latent",
             "latent": "Latent"
         }
     },
@@ -4520,8 +4520,8 @@
             "negative": "负面条件",
             "video_frame_offset": "视频帧偏移量",
             "latent": "Latent",
-            "trim_latent": "修剪Latent",
-            "trim_image": "修剪图像"
+            "trim_latent": "调整Latent",
+            "trim_image": "调整图像"
         }
     },
     "WanInfiniteTalkToVideo": {
@@ -4553,7 +4553,7 @@
             "model": "模型",
             "positive": "正向条件",
             "negative": "负面条件",
-            "trim_image": "裁剪图像",
+            "trim_image": "调整图像",
             "latent": "Latent"
         }
     },
@@ -5223,7 +5223,7 @@
         }
     },
     "StringTrim": {
-        "title": "字符串修剪",
+        "title": "字符串调整",
         "inputs": {},
         "widgets": {
             "mode": "模式",
@@ -5416,12 +5416,12 @@
         "outputs": {}
     },
     "TrimVideoLatent": {
-        "title": "修剪视频Latent",
+        "title": "调整视频Latent",
         "inputs": {
             "samples": "采样"
         },
         "widgets": {
-            "trim_amount": "修剪量"
+            "trim_amount": "调整量"
         },
         "outputs": {
             "LATENT": "Latent"
@@ -5603,7 +5603,11 @@
             "closed_loop": "闭环",
             "fuse_method": "融合方法",
             "dim": "维度",
-            "freenoise": "自由噪声"
+            "freenoise": "自由噪声",
+            "cond_retain_index_list": "条件保留索引列表",
+            "split_conds_to_windows": "将条件分割为上下文窗口",
+            "latent_retain_index_list": "Latent保留索引列表",
+            "causal_window_fix": "因果上下文窗口修复"
         },
         "outputs": {
             "model": "模型",
@@ -6600,7 +6604,10 @@
             "top_p": "Top P采样",
             "min_p": "最小P采样",
             "repetition_penalty": "重复惩罚",
-            "seed": "随机种子"
+            "seed": "随机种子",
+            "presence_penalty": "惩罚存在",
+            "thinking": "思考",
+            "use_default_template": "使用默认模板"
         },
         "outputs": {
             "generated_text": "生成的文字"
@@ -7614,7 +7621,8 @@
         },
         "widgets": {
             "filename_prefix": "文件名前缀",
-            "format": "格式"
+            "format": "格式",
+            "quality": "质量"
         },
         "outputs": {
             "audio": "音频"
@@ -8254,6 +8262,157 @@
         },
         "outputs": {},
         "description": "设置视频/音频流偏移。"
+    },
+    "MiniMaxMusic3TextEncode": {
+        "title": "MiniMa水平偏移 Music3 文本编码",
+        "inputs": {
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "caption": "描述",
+            "lyrics": "歌词",
+            "seed": "种子",
+            "max_duration": "最大持续时间",
+            "cfg_scale": "CFG 缩放",
+            "top_k": "Top K"
+        },
+        "outputs": {
+            "positive": "条件",
+            "seconds": "秒数"
+        },
+        "description": "使用MiniMaxMusic3 CLIP模型生成声学条件序列。"
+    },
+    "EmptyMiniMaxMusic3LatentAudio": {
+        "title": "空 音频 Latent MiniMax Music3",
+        "inputs": {},
+        "widgets": {
+            "seconds": "秒数",
+            "batch_size": "批大小"
+        },
+        "outputs": {
+            "latent": "Latent"
+        },
+        "description": "生成空的潜在音频，用于 MiniMa水平偏移 Music3 模型"
+    },
+    "LTXVDualCFGGuider": {
+        "title": "LTXV 双 CFG 引导器",
+        "inputs": {
+            "model": "模型",
+            "positive": "正面提示词",
+            "negative": "负面提示词"
+        },
+        "widgets": {
+            "video_cfg": "视频CFG",
+            "audio_cfg": "音频CFG"
+        },
+        "outputs": {
+            "Guider": "引导器"
+        },
+        "description": "为打包的LTXV-AV Latent的视频和音频模态分别设置CFG缩放参数。"
+    },
+    "ImageCompositor": {
+        "title": "创建分层图像",
+        "inputs": {
+            "layers": "图层"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "图像",
+            "MASK": "遮罩"
+        },
+        "description": ""
+    },
+    "AddLayer": {
+        "title": "添加图层",
+        "inputs": {
+            "image": "图像",
+            "layers": "图层列表",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "name": "名称",
+            "x": "X 坐标",
+            "y": "Y 坐标",
+            "opacity": "不透明度",
+            "blend_mode": "混合模式",
+            "rotation": "旋转",
+            "width": "宽度",
+            "height": "高度",
+            "z_index": "Z 轴索引",
+            "flip_h": "水平翻转",
+            "flip_v": "垂直翻转"
+        },
+        "outputs": {
+            "LAYERS": "图层列表"
+        },
+        "description": "在图像上添加一个新的图层，允许调整其位置、大小、透明度、混合模式、旋转角度以及翻转状态。"
+    },
+    "LayersFromBoundingBoxes": {
+        "title": "从边界框创建图层",
+        "inputs": {
+            "image": "图像",
+            "bboxes": "边界框",
+            "mask": "遮罩",
+            "layers": "图层"
+        },
+        "widgets": {
+            "crop_to_content": "裁剪至内容",
+            "canvas_width": "画布宽度",
+            "canvas_height": "画布高度"
+        },
+        "outputs": {
+            "LAYERS": "图层"
+        },
+        "description": "根据提供的边界框、图像和遮罩信息生成新的图层。"
+    },
+    "WanAnimate2Cache": {
+        "title": "Wan动画2缓存",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "device": "设备",
+            "dtype": "数据类型"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "缓存每个区块的姿态视频激活信息，使其仅运行一次，而非在每次采样步骤时都执行。可将生成时间大约减半。权衡点是：在480x832/81帧的bf16分辨率下，约需12.5GB系统内存（实际占用随分辨率和长度而变化）。由于上下文窗口会单独缓存，因此内存消耗与窗口数量成正比；建议使用静态标准调度方案，因为均匀调度会在每一步移动窗口，且不会重复命中缓存。"
+    },
+    "WanAnimate2ToVideo": {
+        "title": "Wan动画2 生成视频",
+        "inputs": {
+            "positive": "正向提示",
+            "negative": "负向提示",
+            "vae": "VAE",
+            "reference_image": "参考图像",
+            "pose_video": "姿态视频",
+            "clip_vision_output": "CLIP视觉输出",
+            "positive_pose": "正向姿势",
+            "clip_vision_output_pose": "CLIP视觉输出姿态",
+            "continue_motion": "持续运动"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "batch_size": "批次大小",
+            "video_frame_offset": "视频帧偏移",
+            "pose_strength": "姿态_强度",
+            "pose_start_percent": "姿态开始百分比",
+            "pose_end_percent": "姿态结束百分比",
+            "reference_image_strength": "参考图像强度"
+        },
+        "outputs": {
+            "positive": "正向提示",
+            "negative": "负向提示",
+            "vae": "VAE",
+            "latent": "Latent",
+            "trim_latent": "调整Latent",
+            "trim_image": "调整_图像",
+            "video_frame_offset": "视频帧偏移"
+        },
+        "description": "使用视频在参考图像中为角色添加动画，有效复制视频中的面部表情、身体动作和手势。"
     },
     "WanUni3CControlnetApply": {
         "title": "应用 WanUni3C ControlNet",

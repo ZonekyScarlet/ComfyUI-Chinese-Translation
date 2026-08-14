@@ -1,0 +1,58 @@
+{
+    "TomSaveImage": {
+        "title": "Tom保存图像",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "file_format": "文件格式",
+            "lossless_webp": "无损WebP",
+            "quality": "质量",
+            "embed_workflow": "嵌入工作流",
+            "save_json_sidecar": "保存JSON附属文件",
+            "add_counter_to_filename": "在文件名中添加计数器"
+        },
+        "outputs": {
+            "images": "图像"
+        },
+        "description": "保存最终图像，附带生成元数据，可选包含工作流或JSON附属数据。"
+    },
+    "TMN_TxtLoaderConcat7_WithToggle": {
+        "title": "TMN文本加载器拼接7（带切换）",
+        "inputs": {
+            "text1_in": "文本1输入",
+            "text2_in": "文本2输入",
+            "text3_in": "文本3输入",
+            "text4_in": "文本4输入",
+            "text5_in": "文本5输入",
+            "text6_in": "文本6输入",
+            "text7_in": "文本7输入"
+        },
+        "widgets": {
+            "text0": "文本0",
+            "use_master_text": "使用主文本",
+            "text1": "文本1",
+            "text2": "文本2",
+            "text3": "文本3",
+            "text4": "文本4",
+            "text5": "文本5",
+            "text6": "文本6",
+            "text7": "文本7",
+            "delimiter": "分隔符",
+            "merge_joiner": "合并连接符"
+        },
+        "outputs": {
+            "text0": "文本0",
+            "text1": "文本1",
+            "text2": "文本2",
+            "text3": "文本3",
+            "text4": "文本4",
+            "text5": "文本5",
+            "text6": "文本6",
+            "text7": "文本7",
+            "concat": "拼接结果"
+        },
+        "description": "1个主多行文本（text0）+ 切换开关 +7个多行文本框 + 分隔符，顶部显示7个可选传入字符串引脚（text1_in至text7_in）。\n\n逐行合并：\n  行N = 使用合并连接符合并（textN，textN_in），跳过空白内容。\n\n若use_master_text为True：\n  拼接结果 = text0（已修剪）\n否则：\n  拼接结果 = 用分隔符连接合并后的行（已修剪，跳过空白内容）\n\n分隔符/合并连接符支持：\n  - \"BREAK\"（不区分大小写）=> 换行\n  - 转义序列如\"\\n\\n\"、\"\\t\"\n  - 字面文本如\", \""
+    }
+}
