@@ -1,0 +1,295 @@
+{
+    "Qwen3VL_ModelConfig": {
+        "title": "Qwen3VL 模型配置",
+        "inputs": {
+            "config_override": "配置覆盖"
+        },
+        "widgets": {
+            "model_path": "模型路径",
+            "mmproj_path": "mmproj路径",
+            "n_ctx": "上下文长度",
+            "n_batch": "批处理大小",
+            "n_ubatch": "微批大小",
+            "n_gpu_layers": "GPU层数",
+            "n_cpu_moe": "CPU MoE数量",
+            "n_threads": "线程数",
+            "use_mmap": "使用内存映射",
+            "use_mlock": "锁定内存",
+            "offload_kqv": "卸载KQV层",
+            "chat_handler": "聊天处理器",
+            "chat_format": "聊天格式",
+            "force_mmproj": "强制mmproj",
+            "enable_thinking": "启用思考",
+            "verbose": "详细输出",
+            "debug": "调试",
+            "type_k": "K类型",
+            "type_v": "V类型"
+        },
+        "outputs": {
+            "config": "配置"
+        },
+        "description": ""
+    },
+    "Qwen3VL_SamplingConfig": {
+        "title": "Qwen3VL 采样配置",
+        "inputs": {
+            "config_override": "配置覆盖"
+        },
+        "widgets": {
+            "max_tokens": "最大token数",
+            "temperature": "温度",
+            "top_p": "Top_p",
+            "min_p": "Min_p",
+            "top_k": "Top_k",
+            "repeat_penalty": "重复惩罚",
+            "presence_penalty": "存在惩罚",
+            "frequency_penalty": "频率惩罚",
+            "image_min_tokens": "图像最小token数",
+            "image_max_tokens": "图像最大token数"
+        },
+        "outputs": {
+            "config": "配置"
+        },
+        "description": ""
+    },
+    "SimpleQwenVLgguf": {
+        "title": "Qwen-VL 视觉语言模型",
+        "inputs": {
+            "image": "图像",
+            "image2": "图像2",
+            "image3": "图像3",
+            "script": "脚本"
+        },
+        "widgets": {
+            "system_prompt": "系统提示词",
+            "user_prompt": "用户提示词",
+            "model_path": "模型路径",
+            "mmproj_path": "mmproj路径",
+            "output_max_tokens": "输出最大token数",
+            "image_max_tokens": "图像最大token数",
+            "ctx": "上下文",
+            "n_batch": "批处理大小",
+            "gpu_layers": "GPU层数",
+            "temperature": "温度",
+            "seed": "随机种子",
+            "unload_all_models": "卸载所有模型",
+            "top_p": "Top_p",
+            "repeat_penalty": "重复惩罚",
+            "top_k": "Top_k",
+            "pool_size": "池大小"
+        },
+        "outputs": {
+            "text": "文本",
+            "conditioning": "条件"
+        },
+        "description": "此节点已不再支持！请使用「Simple Qwen-VL 视觉语言模型」"
+    },
+    "Ideogram4JsonPreviewOnImage": {
+        "title": "Ideogram4Json 图像JSON预览",
+        "inputs": {
+            "image": "图像",
+            "json_string": "JSON字符串"
+        },
+        "widgets": {},
+        "outputs": {
+            "image": "图像"
+        },
+        "description": ""
+    },
+    "Ideogram4JsonSwapCoordinates": {
+        "title": "Ideogram4Json 坐标交换",
+        "inputs": {
+            "json_string": "JSON字符串"
+        },
+        "widgets": {},
+        "outputs": {
+            "string": "字符串"
+        },
+        "description": ""
+    },
+    "SimpleQwenVLggufV2": {
+        "title": "Qwen-VL 视觉语言模型(简易)",
+        "inputs": {
+            "image": "图像",
+            "image2": "图像2",
+            "image3": "图像3",
+            "audio": "音频",
+            "system_prompt_override": "系统提示词覆盖",
+            "config_override": "配置覆盖",
+            "variables": "变量"
+        },
+        "widgets": {
+            "model_preset": "模型预设",
+            "system_preset": "系统预设",
+            "user_prompt": "用户提示词",
+            "seed": "随机种子",
+            "unload_all_models": "卸载所有模型",
+            "mode": "模式",
+            "video": "视频"
+        },
+        "outputs": {
+            "text": "文本",
+            "conditioning": "条件",
+            "system_prompt": "系统提示词",
+            "user_prompt": "用户提示词"
+        },
+        "description": ""
+    },
+    "SimpleMasterPromptLoader": {
+        "title": "主提示词加载器",
+        "inputs": {
+            "system_prompt_opt": "系统提示词选项"
+        },
+        "widgets": {
+            "system_preset": "系统预设"
+        },
+        "outputs": {
+            "system_prompt": "系统提示词"
+        },
+        "description": ""
+    },
+    "SimpleStyleSelector": {
+        "title": "简易风格选择器",
+        "inputs": {
+            "user_prompt": "用户提示词"
+        },
+        "widgets": {
+            "style_preset": "风格预设"
+        },
+        "outputs": {
+            "user_prompt": "用户提示词",
+            "style_name": "风格名称"
+        },
+        "description": ""
+    },
+    "SimpleCameraSelector": {
+        "title": "简易相机选择器",
+        "inputs": {
+            "user_prompt": "用户提示词"
+        },
+        "widgets": {
+            "camera_preset": "相机预设"
+        },
+        "outputs": {
+            "user_prompt": "用户提示词",
+            "camera_name": "相机名称"
+        },
+        "description": ""
+    },
+    "SimpleQwenUnload": {
+        "title": "卸载Qwen模型",
+        "inputs": {
+            "input": "输入"
+        },
+        "widgets": {
+            "target": "目标"
+        },
+        "outputs": {
+            "output": "输出"
+        },
+        "description": ""
+    },
+    "SimpleTriggerNode": {
+        "title": "简易触发节点",
+        "inputs": {
+            "input": "输入",
+            "trigger": "触发信号"
+        },
+        "widgets": {},
+        "outputs": {
+            "output": "输出"
+        },
+        "description": "一种替代方法，用于延迟一组节点的执行，直到接收到触发信号，而非使用无法正常工作的On_Trigger模式"
+    },
+    "SimpleRemoveThinkNode": {
+        "title": "简易移除思考节点",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {},
+        "outputs": {
+            "cleaned_text": "清理后的文本"
+        },
+        "description": "移除文本中的<think>...</think>或<|channel>...<channel|>部分"
+    },
+    "SimpleTextToBatchNode": {
+        "title": "文本到批次(简易)",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {
+            "separator": "分隔符",
+            "max_count": "最大数量"
+        },
+        "outputs": {},
+        "description": "使用指定分隔符将文本拆分为批次，元素数量不超过最大数量"
+    },
+    "SimpleJoinStringsNode": {
+        "title": "简易字符串拼接节点",
+        "inputs": {},
+        "widgets": {
+            "delimiter": "分隔符"
+        },
+        "outputs": {},
+        "description": "最多将10个字符串合并为一个"
+    },
+    "SimpleTextReplaceNode": {
+        "title": "简易文本替换节点",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {
+            "rules": "规则"
+        },
+        "outputs": {
+            "text": "文本"
+        },
+        "description": "将输入文本中的子文本A替换为B。规则格式：A1=B1 \n A2=B2 ..."
+    },
+    "SimpleTextInsertNode": {
+        "title": "简易文本插入节点",
+        "inputs": {
+            "text": "文本",
+            "insert": "插入内容"
+        },
+        "widgets": {
+            "placeholder": "占位符"
+        },
+        "outputs": {
+            "text": "文本"
+        },
+        "description": "替换文本中的占位符"
+    },
+    "SimpleLoadVideoFragment": {
+        "title": "简易加载视频片段节点",
+        "inputs": {},
+        "widgets": {
+            "video_path": "视频路径",
+            "timestamp": "时间戳",
+            "duration_sec": "持续时间（秒）",
+            "target_fps": "目标帧率",
+            "enable_resize": "启用调整大小",
+            "longer_size": "长边尺寸",
+            "megapixels": "百万像素",
+            "size_multiple": "尺寸倍数",
+            "enable_crop": "启用裁剪",
+            "crop_x1": "裁剪X1",
+            "crop_y1": "裁剪Y1",
+            "crop_x2": "裁剪X2",
+            "crop_y2": "裁剪Y2",
+            "enable_audio": "启用音频",
+            "Browse...": "浏览..."
+        },
+        "outputs": {
+            "frames": "帧",
+            "count": "数量",
+            "duration": "持续时间",
+            "fps": "帧率",
+            "width": "宽度",
+            "height": "高度",
+            "audio": "音频",
+            "sample_rate": "采样率"
+        },
+        "description": ""
+    }
+}
