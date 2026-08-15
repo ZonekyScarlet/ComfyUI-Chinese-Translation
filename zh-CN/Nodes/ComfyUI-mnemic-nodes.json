@@ -1,14 +1,15 @@
 {
-    "🔀 Batch Wildcard Sampler": {
+    "🔀 Batch Wildcard Upscale Sampler": {
         "title": "🔀批量提示词采样器",
         "inputs": {
             "model": "模型",
-            "clip": "CLIP 模型",
-            "vae": "VAE 模型",
-            "positive": "正提示词",
-            "negative": "负提示词"
+            "clip": "CLIP",
+            "vae": "VAE",
+            "upscale_model": "放大模型"
         },
         "widgets": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
             "seed": "随机种子",
             "batch_size": "批次大小",
             "width": "宽度",
@@ -18,10 +19,27 @@
             "sampler_name": "采样器名称",
             "scheduler": "调度器",
             "denoise": "去噪强度",
-            "recache_wildcards": "重新缓存通配符",
+            "upscale": "放大倍数",
+            "upscale_rate": "放大倍率",
+            "upscale_denoise": "放大降噪",
+            "upscale_steps": "放大步数",
+            "upscale_cfg": "放大CFG",
+            "upscale_sampler_name": "放大采样器名称",
+            "upscale_scheduler": "放大调度器",
+            "upscale_noise_inject_strength": "放大噪声注入强度",
+            "strip_prompt_weights": "移除提示词权重",
+            "recache_wildcards": "重新缓存提示词",
             "console_log": "控制台日志"
         },
-        "outputs": {},
+        "outputs": {
+            "model": "模型",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "positive": "正向",
+            "negative": "负向",
+            "latent": "Latent",
+            "prompt": "提示词"
+        },
         "description": "针对批量中的每一张图像独立解决提示词问题，因此单次运行会为每个批次索引生成不同的提示一一以及不同的图像。LoRAs可通过提示中的<lora:name:strength>标签按图像逐一加载。可将模型和剪辑与样本连接起来，或将其省略以仅预览已解决的提示。"
     },
     "💾 Save Image With Metadata": {
