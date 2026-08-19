@@ -152,6 +152,10 @@ async def get_translation(request: web.Request):
 
 @server.PromptServer.instance.routes.get("/translation_node/get_config")
 async def get_config(request: web.Request):
+    # 每次从磁盘重新读取，确保前端始终拿到最后一次保存的配置
+    # （避免启动时读取失败回退默认值后，内存与磁盘长期分歧）
+    global GLOBAL_CONFIG
+    GLOBAL_CONFIG = load_config()
     return web.Response(status=200, body=json.dumps(GLOBAL_CONFIG), headers={"Content-Type": "application/json"})
 
 
