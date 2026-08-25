@@ -1,14 +1,15 @@
 {
-    "🔀 Batch Wildcard Sampler": {
+    "🔀 Batch Wildcard Upscale Sampler": {
         "title": "🔀批量提示词采样器",
         "inputs": {
             "model": "模型",
-            "clip": "CLIP 模型",
-            "vae": "VAE 模型",
-            "positive": "正提示词",
-            "negative": "负提示词"
+            "clip": "CLIP",
+            "vae": "VAE",
+            "upscale_model": "放大模型"
         },
         "widgets": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
             "seed": "随机种子",
             "batch_size": "批次大小",
             "width": "宽度",
@@ -18,10 +19,27 @@
             "sampler_name": "采样器名称",
             "scheduler": "调度器",
             "denoise": "去噪强度",
-            "recache_wildcards": "重新缓存通配符",
+            "upscale": "放大倍数",
+            "upscale_rate": "放大倍率",
+            "upscale_denoise": "放大降噪",
+            "upscale_steps": "放大步数",
+            "upscale_cfg": "放大CFG",
+            "upscale_sampler_name": "放大采样器名称",
+            "upscale_scheduler": "放大调度器",
+            "upscale_noise_inject_strength": "放大噪声注入强度",
+            "strip_prompt_weights": "移除提示词权重",
+            "recache_wildcards": "重新缓存提示词",
             "console_log": "控制台日志"
         },
-        "outputs": {},
+        "outputs": {
+            "model": "模型",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "positive": "正向",
+            "negative": "负向",
+            "latent": "Latent",
+            "prompt": "提示词"
+        },
         "description": "针对批量中的每一张图像独立解决提示词问题，因此单次运行会为每个批次索引生成不同的提示一一以及不同的图像。LoRAs可通过提示中的<lora:name:strength>标签按图像逐一加载。可将模型和剪辑与样本连接起来，或将其省略以仅预览已解决的提示。"
     },
     "💾 Save Image With Metadata": {
@@ -838,6 +856,76 @@
             "value": "值"
         },
         "description": "类别：⚡ MNeMiC 节点"
+    },
+    "🎲 Ideogram 4 Random Prompter": {
+        "title": "🎲 Ideogram 4 随机提示词生成器",
+        "inputs": {},
+        "widgets": {
+            "seed": "随机种子",
+            "width": "宽度",
+            "height": "高度",
+            "region_count_min": "区域最小数量",
+            "region_count_max": "区域最大数量",
+            "background_weight": "背景权重",
+            "large_weight": "大区域权重",
+            "medium_weight": "中区域权重",
+            "small_weight": "小区域权重",
+            "word_length_bias": "词长偏差",
+            "word_length_randomness": "词长随机性",
+            "scene_framing": "场景构图",
+            "region_word_min": "区域最小词数",
+            "region_word_max": "区域最大词数",
+            "freeform_chance": "自由形式概率",
+            "text_region_min": "文本区域最小数量",
+            "text_region_max": "文本区域最大数量",
+            "element_palette_chance": "元素调色板概率",
+            "description_length": "描述长度",
+            "description_override": "描述覆盖",
+            "description_prefix": "描述前缀",
+            "medium": "媒介",
+            "color_palette": "调色板",
+            "color_harmony": "色彩和谐",
+            "positioning_bias": "定位偏差",
+            "arrangement": "布局",
+            "description_background_prefix": "背景描述前缀"
+        },
+        "outputs": {
+            "prompt": "提示词",
+            "preview": "预览",
+            "bboxes": "边界框",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "description": "Ideogram 4 结构化 JSON 字幕格式的实验性随机提示词生成器。每个单词都直接来自 wonderwords 词典（无硬编码）。分散带权重的背景/大/中/小区域，并随机化风格、光照、媒介、调色板和布局。输出提示词/预览/边界框/宽度/高度。需要安装 'wonderwords' 包"
+    },
+    "🧩 Ideogram 4 Prompt Builder w. String Inputs": {
+        "title": "🧩Ideogram 4 提示词构建器",
+        "inputs": {
+            "image": "图像",
+            "import_json": "导入 JSON"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "high_level_description": "高级描述",
+            "background": "背景",
+            "style": "风格",
+            "photo": "照片",
+            "art_style": "艺术风格",
+            "aesthetics": "美学",
+            "lighting": "光照",
+            "medium": "媒介",
+            "style_palette_data": "风格调色板数据",
+            "elements_data": "元素数据"
+        },
+        "outputs": {
+            "prompt": "提示词",
+            "preview": "预览",
+            "bboxes": "边界框",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "description": "Ideogram 4 结构化 JSON 字幕格式的可视化提示词构建器。在画布上拖动或按'+ 区域'添加区域；每个区域会有对应的 region_N 字符串输入引脚，连接后会覆盖其描述。边界框标准化为 0-1000 网格，格式为 [ymin, xmin, ymax, xmax]；宽度/高度设置画布的宽高比"
     },
     "📝 Wildcard Processor": {
         "title": "📝提示词处理器",

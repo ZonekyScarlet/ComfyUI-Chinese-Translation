@@ -1,0 +1,190 @@
+{
+    "MiniMaxH3DirectorConditioning": {
+        "title": "MiniMax H3 导演条件",
+        "inputs": {
+            "clip": "剪辑",
+            "vae": "VAE",
+            "audio_vae": "音频VAE",
+            "first_frame": "首帧图",
+            "last_frame": "尾帧图"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "ref_image_size": "参考图像尺寸"
+        },
+        "outputs": {
+            "positive": "正向条件",
+            "latent": "Latent"
+        },
+        "description": "官方MiniMax H3条件（正向+Latent）的轻量封装。"
+    },
+    "MiniMaxH3DirectorPlannerConditioning": {
+        "title": "MiniMax H3 导演规划器条件",
+        "inputs": {
+            "clip": "剪辑",
+            "vae": "VAE",
+            "audio_vae": "音频VAE",
+            "first_frame": "首帧图",
+            "last_frame": "尾帧图"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "ref_image_size": "参考图像尺寸"
+        },
+        "outputs": {
+            "positive": "正向条件",
+            "latent": "Latent",
+            "task_mode": "任务模式"
+        },
+        "description": "官方MiniMax H3条件，以及用于规划UI的任务模式字符串。"
+    },
+    "ComfyMiniMaxH3Director": {
+        "title": "Comfy MiniMax H3 导演",
+        "inputs": {
+            "model": "模型",
+            "video_vae": "视频VAE",
+            "audio_vae": "音频VAE",
+            "clip": "CLIP",
+            "i2v_groups": "图生视频组",
+            "r2v_groups": "参考生视频组",
+            "refine": "优化"
+        },
+        "widgets": {
+            "bd_grp_advanced": "高级分组",
+            "steps": "步数",
+            "sampler": "采样器",
+            "scheduler": "调度器",
+            "shift_video": "视频偏移",
+            "shift_audio": "音频偏移"
+        },
+        "outputs": {
+            "images": "图像",
+            "audio": "音频",
+            "fps": "帧率",
+            "frame_count": "帧数",
+            "source_images": "源图像",
+            "report": "报告",
+            "images_pre_refine": "优化前图像"
+        },
+        "description": "MiniMax H3 导演：MiniMaxH3图生视频/参考生视频条件，单阶段KSampler + MiniMaxH3SigmaShift，LTXVSeparateAVLatent解码。支持t2v/i2v/fl2v/r2v/v2v/rv2v。可选的i2v_groups/r2v_groups可接受来自导演分组节点的多组包（外部优先级高于UI卡片）。可选的优化接受MiniMax H3导演优化（第二次采样/放大）。images_pre_refine是优化前的首轮视频。默认设置：0.4MP 16:9（864×480），5秒/124帧 @24帧率。"
+    },
+    "MiniMaxH3Director": {
+        "title": "MiniMax H3 导演",
+        "inputs": {
+            "model": "模型",
+            "video_vae": "视频VAE",
+            "audio_vae": "音频VAE",
+            "clip": "CLIP",
+            "i2v_groups": "图生视频组",
+            "r2v_groups": "参考生视频组",
+            "refine": "优化"
+        },
+        "widgets": {
+            "bd_grp_advanced": "高级分组",
+            "steps": "步数",
+            "sampler": "采样器",
+            "scheduler": "调度器",
+            "shift_video": "视频偏移",
+            "shift_audio": "音频偏移"
+        },
+        "outputs": {
+            "images": "图像",
+            "audio": "音频",
+            "fps": "帧率",
+            "frame_count": "帧数",
+            "source_images": "源图像",
+            "report": "报告",
+            "images_pre_refine": "优化前图像"
+        },
+        "description": "MiniMax H3 导演：MiniMaxH3图生视频/参考生视频条件，单阶段KSampler + MiniMaxH3SigmaShift，LTXVSeparateAVLatent解码。支持t2v/i2v/fl2v/r2v/v2v/rv2v。可选的i2v_groups/r2v_groups可接受来自导演分组节点的多组包（外部优先级高于UI卡片）。可选的优化接受MiniMax H3导演优化（第二次采样/放大）。images_pre_refine是优化前的首轮视频。默认设置：0.4MP 16:9（864×480），5秒/124帧 @24帧率。"
+    },
+    "MiniMaxH3DirectorGuide": {
+        "title": "MiniMax H3 导演引导",
+        "inputs": {
+            "model": "模型",
+            "vae": "VAE",
+            "audio_vae": "音频VAE",
+            "clip": "CLIP"
+        },
+        "widgets": {},
+        "outputs": {
+            "positive": "正向条件",
+            "latent": "Latent"
+        }
+    },
+    "MiniMaxH3DirectorGroupImageToVideo": {
+        "title": "MiniMax H3 导演分组图生视频",
+        "inputs": {
+            "first_frame": "首帧图",
+            "last_frame": "尾帧图"
+        },
+        "widgets": {
+            "duration_sec": "持续时间（秒）"
+        },
+        "outputs": {
+            "group": "分组"
+        },
+        "description": "为Director.i2v_groups打包一个MiniMax H3图生视频分组。无帧则为t2v；仅第一帧为i2v；仅最后一帧/首尾帧为fl2v。输出尺寸由导演节点控制（而非此打包器）。将`group`连接到导演（单个）或分组合并（批量）。"
+    },
+    "MiniMaxH3DirectorGroupReferenceToVideo": {
+        "title": "MiniMax H3 导演分组参考生视频",
+        "inputs": {
+            "ref_images": "参考图像",
+            "ref_videos": "参考视频",
+            "ref_video_audios": "参考视频音频",
+            "ref_audios": "参考音频"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "duration_sec": "时长（秒）"
+        },
+        "outputs": {
+            "group": "分组"
+        },
+        "description": "为Director.r2v_groups打包一个MiniMax H3参考生视频分组。自动扩展图像（≤9）、视频（≤3）、视频音频（≤3）、音频（≤3）的槽位——与官方MiniMax H3参考生视频一致。输出尺寸由导演节点控制。将`group`连接到导演（单个）或分组合并（批量）。"
+    },
+    "MiniMaxH3DirectorGroupsCombine": {
+        "title": "MiniMax H3 导演分组合并",
+        "inputs": {
+            "groups": "分组",
+            "groups_0": "分组0",
+            "groups_1": "分组1",
+            "groups_2": "分组2"
+        },
+        "widgets": {},
+        "outputs": {
+            "groups": "分组"
+        },
+        "description": "将多个导演分组输出合并为一个列表供导演使用。连接一个分组可扩展另一个空槽位（自动扩展，与官方MiniMax H3参考生视频一致）。空槽位会被跳过；顺序遵循连接索引（group_0、group_1……）。"
+    },
+    "MiniMaxH3DirectorRefine": {
+        "title": "MiniMax H3 导演优化",
+        "inputs": {
+            "upscale_model": "放大模型"
+        },
+        "widgets": {
+            "mode": "模式",
+            "upscale_method": "放大方法",
+            "seed_mode": "随机种子模式",
+            "aspect_ratio": "宽高比",
+            "denoise": "降噪",
+            "steps": "步数",
+            "megapixels": "百万像素",
+            "width": "宽度",
+            "height": "高度",
+            "skip_fl2v": "跳过首尾帧生视频"
+        },
+        "outputs": {
+            "refine": "优化",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "description": "MiniMax H3 导演优化：连接到Director.优化。Director.图像是优化/放大后的结果；Director.images_pre_refine是首轮视频（第二次采样前）。放大画布使用与导演相同的宽高比+百万像素/自定义宽×高。宽度/高度是解析后的目标画布（×32）。自身不进行采样——无图像输出。"
+    }
+}

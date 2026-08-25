@@ -1,0 +1,15 @@
+{
+  "Groq ALM API - Transcribe": "Groq ALM API - 转录",
+  "Request timeout (seconds)": "请求超时（秒）",
+  "Console logging": "控制台日志记录",
+  "Groq ALM API - Translate": "Groq ALM API - 翻译",
+  "Groq Completion API": "Groq 补全 API",
+  "Groq LLM API": "Groq LLM API",
+  "Load Random Checkpoint": "加载随机Checkpoint模型",
+  "LoRA Loading": "Lora 加载",
+  "Max logged candidates": "最大记录候选数",
+  "Fuzzy search": "模糊搜索",
+  "Prompt Property Extractor": "提示词属性提取器",
+  "Wildcard Processing": "提示词处理",
+  "Max nested passes": "最大嵌套遍数"
+}

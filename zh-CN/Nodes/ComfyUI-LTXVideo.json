@@ -1259,13 +1259,15 @@
             "modality": "模态",
             "cfg": "CFG",
             "stg": "STG",
-            "perturb_atttn": "扰动注意力",
+            "perturb_attn": "扰动注意力",
             "rescale": "重缩放",
             "modality_scale": "模态缩放",
             "skip_step": "跳过步数",
-            "cross_atttn": "交叉注意力"
+            "cross_attn": "交叉注意力"
         },
-        "outputs": {},
+        "outputs": {
+            "GUIDER_PARAMETERS": "引导参数"
+        },
         "description": "LTXVideo 指导参数节点"
     },
     "MultimodalGuider": {
@@ -1366,11 +1368,14 @@
     "LTXQ8Patch": {
         "title": "🅛🅣🅧 LTXFP8模型优化",
         "inputs": {
-            "model": "模型",
-            "use_fp8_attention": "启用FP8注意力"
+            "model": "模型"
         },
         "widgets": {
-            "use_fp8_attention": "优化开关"
+            "use_fp8_attention": "启用FP8注意力",
+            "quantization_preset": "量化预设",
+            "quantize_self_attn": "量化自注意力",
+            "quantize_cross_attn": "量化交叉注意力",
+            "quantize_ffn": "量化前馈网络"
         },
         "outputs": {
             "model": "模型"
@@ -1524,6 +1529,25 @@
             "per_frame": "每帧"
         },
         "outputs": {}
+    },
+    "LTXVAudioOnlyModel": {
+        "title": "🅛🅣🅧 仅音频模型",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "以仅音频模式运行LTX-2音视频模型，用于文本生成音频。跳过视频流并禁用音频与视频的交叉注意力，因此生成的音频不依赖于视频隐变量。采样器仍需要一个最小的虚拟视频隐变量（64x64尺寸、长度为1的EmptyLTXVLatentVideo，通过LTXVConcatAVLatent拼接）；该隐变量不会被关注。移除或跳过此节点可恢复正常的音视频联合生成。"
+    },
+    "LTXVAudioOnlyEmptyVideoLatent": {
+        "title": "🅛🅣🅧 空视频Latent 仅音频",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "latent": "Latent"
+        }
     },
     "LTXRFForwardODESampler": {
         "title": "🅛🅣🅧 Rf-Inv 前向采样器",

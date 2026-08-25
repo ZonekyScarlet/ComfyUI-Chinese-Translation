@@ -1,0 +1,23 @@
+{
+    "GPTImage2": {
+        "title": "GPT图像2",
+        "inputs": {
+            "input_image": "输入图像",
+            "mask_image": "遮罩图像"
+        },
+        "widgets": {
+            "api_key": "API密钥",
+            "prompt": "提示词",
+            "size": "尺寸",
+            "quality": "质量",
+            "output_format": "输出格式",
+            "output_compression": "输出压缩率",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "image": "图像",
+            "info": "信息"
+        },
+        "description": "GPT图像2 图像生成节点 - OpenAI旗舰图像生成模型"
+    }
+}

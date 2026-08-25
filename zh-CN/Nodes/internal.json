@@ -4293,7 +4293,7 @@
         "outputs": {
             "positive": "正向条件",
             "negative": "负面条件",
-            "trim_latent": "修剪Latent",
+            "trim_latent": "调整Latent",
             "latent": "Latent"
         }
     },
@@ -4383,7 +4383,7 @@
         "outputs": {
             "positive": "正向条件",
             "negative": "负面条件",
-            "trim_latent": "修剪Latent",
+            "trim_latent": "调整Latent",
             "latent": "Latent"
         }
     },
@@ -4409,7 +4409,7 @@
         "outputs": {
             "positive": "正向条件",
             "negative": "负面条件",
-            "trim_latent": "修剪Latent",
+            "trim_latent": "调整Latent",
             "latent": "Latent"
         }
     },
@@ -4520,8 +4520,8 @@
             "negative": "负面条件",
             "video_frame_offset": "视频帧偏移量",
             "latent": "Latent",
-            "trim_latent": "修剪Latent",
-            "trim_image": "修剪图像"
+            "trim_latent": "调整Latent",
+            "trim_image": "调整图像"
         }
     },
     "WanInfiniteTalkToVideo": {
@@ -4553,7 +4553,7 @@
             "model": "模型",
             "positive": "正向条件",
             "negative": "负面条件",
-            "trim_image": "裁剪图像",
+            "trim_image": "调整图像",
             "latent": "Latent"
         }
     },
@@ -5223,7 +5223,7 @@
         }
     },
     "StringTrim": {
-        "title": "字符串修剪",
+        "title": "字符串调整",
         "inputs": {},
         "widgets": {
             "mode": "模式",
@@ -5416,12 +5416,12 @@
         "outputs": {}
     },
     "TrimVideoLatent": {
-        "title": "修剪视频Latent",
+        "title": "调整视频Latent",
         "inputs": {
             "samples": "采样"
         },
         "widgets": {
-            "trim_amount": "修剪量"
+            "trim_amount": "调整量"
         },
         "outputs": {
             "LATENT": "Latent"
@@ -5603,7 +5603,11 @@
             "closed_loop": "闭环",
             "fuse_method": "融合方法",
             "dim": "维度",
-            "freenoise": "自由噪声"
+            "freenoise": "自由噪声",
+            "cond_retain_index_list": "条件保留索引列表",
+            "split_conds_to_windows": "将条件分割为上下文窗口",
+            "latent_retain_index_list": "Latent保留索引列表",
+            "causal_window_fix": "因果上下文窗口修复"
         },
         "outputs": {
             "model": "模型",
@@ -5719,7 +5723,8 @@
         "outputs": {
             "image": "图像",
             "audio": "音频",
-            "fps": "帧率"
+            "fps": "帧率",
+            "bit_depth": "位 深度"
         }
     },
     "USOStyleReference": {
@@ -6599,7 +6604,10 @@
             "top_p": "Top P采样",
             "min_p": "最小P采样",
             "repetition_penalty": "重复惩罚",
-            "seed": "随机种子"
+            "seed": "随机种子",
+            "presence_penalty": "惩罚存在",
+            "thinking": "思考",
+            "use_default_template": "使用默认模板"
         },
         "outputs": {
             "generated_text": "生成的文字"
@@ -7613,7 +7621,8 @@
         },
         "widgets": {
             "filename_prefix": "文件名前缀",
-            "format": "格式"
+            "format": "格式",
+            "quality": "质量"
         },
         "outputs": {
             "audio": "音频"
@@ -7710,6 +7719,69 @@
             "height": "高度"
         },
         "description": "预览3D溅射效果"
+    },
+    "Save3DAdvanced": {
+        "title": "保存3D（高级）",
+        "inputs": {
+            "model_3d": "3D模型",
+            "model_3d_info": "3D模型信息",
+            "camera_info": "相机信息"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "outputs": {
+            "model_3d": "3D模型",
+            "model_3d_info": "3D模型信息",
+            "camera_info": "相机信息",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "description": ""
+    },
+    "SaveGaussianSplat": {
+        "title": "保存高斯泼溅",
+        "inputs": {
+            "model_3d": "3D模型",
+            "model_3d_info": "3D模型信息",
+            "camera_info": "相机信息"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "outputs": {
+            "model_3d": "3D模型",
+            "model_3d_info": "3D模型信息",
+            "camera_info": "相机信息",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "description": ""
+    },
+    "SavePointCloud": {
+        "title": "保存点云",
+        "inputs": {
+            "model_3d": "3D模型",
+            "model_3d_info": "3D模型信息",
+            "camera_info": "相机信息"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "outputs": {
+            "model_3d": "3D模型",
+            "model_3d_info": "3D模型信息",
+            "camera_info": "相机信息",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "description": ""
     },
     "PreviewPointCloud": {
         "title": "预览点云",
@@ -7899,6 +7971,464 @@
             "keyframes": "关键帧"
         },
         "description": "用于在图像上设置关键帧的节点"
+    },
+    "SeedVR2Conditioning": {
+        "title": "应用 SeedVR2 条件",
+        "inputs": {
+            "model": "模型",
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "positive": "正面提示词",
+            "negative": "负面提示词"
+        },
+        "description": "从VAE Latent构建SeedVR2正/负条件。"
+    },
+    "SeedVR2TemporalChunk": {
+        "title": "分割 SeedVR2 Latent",
+        "inputs": {
+            "model": "模型",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "temporal_overlap": "时间重叠",
+            "chunking_mode": "分块模式"
+        },
+        "outputs": {
+            "latents": "Latents",
+            "temporal_overlap": "时间重叠"
+        },
+        "description": "将SeedVR2视频Latent分割成重叠的时域块，这些块的大小要足够小，以便能够在VRAM内逐一进行采样，同时将Latents的输出连接至“应用SeedVFR2条件化”和“采样器Latents”两个组件，然后再与“MergeSeedVR2Latents”进行合并。"
+    },
+    "SeedVR2TemporalMerge": {
+        "title": "合并 SeedVR2 Latent",
+        "inputs": {
+            "temporal_overlap": "时间重叠",
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "latent": "Latent"
+        },
+        "description": "将采样的SeedVR2Latent时间块重新组合成一个Latent，通过Hann窗口进行交叉淡入淡出，窗口大小由SplitSeedVR2Latent中设置的时间重叠参数决定。"
+    },
+    "TextEncodeMageFlowEdit": {
+        "title": "文本编码MageFlow魔法流编辑",
+        "inputs": {
+            "clip": "CLIP",
+            "vae": "VAE",
+            "image_1": "图像_1"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "batch_size": "批次数量"
+        },
+        "outputs": {
+            "positive": "正面提示词",
+            "negative": "负面提示词",
+            "latent": "Latent"
+        },
+        "description": "Mage-Flow-Edit魔法流编辑,编写一份编辑指令，并附上至少一幅参考图像。参考隐式图像将被调整为输出分辨率（宽度/高度或第一幅图像的尺寸，若其为0）。使用隐式图像的输出结果进行采样，以确保尺寸始终保持一致。"
+    },
+    "SeedVR2Preprocess": {
+        "title": "预处理 SeedVR2 输入",
+        "inputs": {
+            "resized_images": "重新调整大小的图片"
+        },
+        "widgets": {},
+        "outputs": {
+            "images": "图像组"
+        },
+        "description": "为SeedVR2模型填充调整后的图像。Alpha通道被移除，然后Post-ProcessSeedVR2Output节点会从原始的调整后图像重新应用该通道。"
+    },
+    "SeedVR2PostProcessing": {
+        "title": "后处理 SeedVR2 输出",
+        "inputs": {
+            "images": "图像",
+            "original_resized_images": "原始调整后的图像"
+        },
+        "widgets": {
+            "color_correction_method": "颜色校正方法"
+        },
+        "outputs": {
+            "images": "图像"
+        },
+        "description": "对 SeedVR2 生成的图像进行后处理，支持颜色校正方法选择。"
+    },
+    "SaveText": {
+        "title": "保存文本",
+        "inputs": {
+            "text": "文本内容"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "format": "格式",
+            "preview_mode": "预览模式"
+        },
+        "outputs": {
+            "text": "文本"
+        },
+        "description": "用于将文本保存到文件"
+    },
+    "TextEncodeJoyImageEdit": {
+        "title": "文本编码Joy快乐图像编辑",
+        "inputs": {
+            "clip": "CLIP",
+            "vae": "VAE",
+            "image_0": "图像_0"
+        },
+        "widgets": {},
+        "outputs": {
+            "conditioning": "条件"
+        },
+        "description": ""
+    },
+    "LoadVideoDataSetFromFolder": {
+        "title": "加载视频（从文件夹）",
+        "inputs": {},
+        "widgets": {
+            "folder": "文件夹"
+        },
+        "outputs": {
+            "videos": "视频"
+        },
+        "description": "从指定文件夹加载视频数据集并返回视频列表。支持的格式：MP4、AVI、MOV、WEBM、MKV、FLV。"
+    },
+    "LoadVideoTextDataSetFromFolder": {
+        "title": "加载视频（从文件夹）",
+        "inputs": {},
+        "widgets": {
+            "folder": "文件夹"
+        },
+        "outputs": {
+            "videos": "视频",
+            "texts": "文本"
+        },
+        "description": "从指定文件夹加载视频与文本字幕对的数据集，并将其返回为列表。支持的格式：MP4、AVI、MOV、WEBM、MKV、FLV。"
+    },
+    "VideoRandomTemporalCrop": {
+        "title": "裁剪视频（时间随机）",
+        "inputs": {
+            "video": "视频"
+        },
+        "widgets": {
+            "length": "长度",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "video": "视频"
+        },
+        "description": "从视频中随机裁剪连续的一系列帧。"
+    },
+    "VideoTemporalCrop": {
+        "title": "裁剪视频（时间）",
+        "inputs": {
+            "video": "视频"
+        },
+        "widgets": {
+            "length": "长度",
+            "start_frame": "开始帧"
+        },
+        "outputs": {
+            "video": "视频"
+        },
+        "description": "从视频中裁剪连续的一系列帧。"
+    },
+    "ShuffleVideoDataset": {
+        "title": "打乱视频列表",
+        "inputs": {
+            "videos": "视频组"
+        },
+        "widgets": {
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "videos": "视频组"
+        },
+        "description": "随机打乱列表中视频的顺序。"
+    },
+    "AnimaLLLiteApply": {
+        "title": "应用 大语言模型 轻量版",
+        "inputs": {
+            "model": "模型",
+            "model_patch": "模型补丁",
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "strength": "强度",
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": ""
+    },
+    "ShuffleVideoTextDataset": {
+        "title": "打乱视频与文本的配对",
+        "inputs": {
+            "videos": "视频组"
+        },
+        "widgets": {
+            "texts": "文本",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "texts": "文本",
+            "videos": "视频组"
+        },
+        "description": "随机打乱列表中视频-文本对的顺序。"
+    },
+    "MiniMaxH3ReferenceToVideo": {
+        "title": "MiniMax H3 视频参考",
+        "inputs": {
+            "clip": "CLIP",
+            "vae": "VAE 编码器",
+            "audio_vae": "音频 VAE 编码器",
+            "ref_image_0": "参考图像 0",
+            "ref_image_1": "参考图像 1",
+            "ref_image_2": "参考图像 2",
+            "ref_image_3": "参考图像 3",
+            "ref_image_4": "参考图像 4",
+            "ref_image_5": "参考图像 5",
+            "ref_image_6": "参考图像 6",
+            "ref_image_7": "参考图像 7",
+            "ref_image_8": "参考图像 8",
+            "ref_video_0": "参考视频 0",
+            "ref_video_1": "参考视频 1",
+            "ref_video_2": "参考视频 2",
+            "ref_video_audio_0": "参考视频音频 0",
+            "ref_video_audio_1": "参考视频音频 1",
+            "ref_video_audio_2": "参考视频音频 2",
+            "ref_audio_0": "参考音频 0",
+            "ref_audio_1": "参考音频 1",
+            "ref_audio_2": "参考音频 2"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "ref_image_size": "参考图像尺寸"
+        },
+        "outputs": {
+            "positive": "条件"
+        },
+        "description": "用于从视频中提取参考信息的节点"
+    },
+    "MiniMaxH3ImageToVideo": {
+        "title": "MiniMax H3 图像转视频",
+        "inputs": {
+            "clip": "CLIP",
+            "vae": "VAE",
+            "first_frame": "首帧",
+            "last_frame": "尾帧"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "width": "宽度",
+            "height": "高度",
+            "length": "时长"
+        },
+        "outputs": {
+            "positive": "条件"
+        },
+        "description": "将图像转换为视频的节点"
+    },
+    "EmptyMiniMaxH3LatentAV": {
+        "title": "空 Latent MiniMax H3 音视频",
+        "inputs": {},
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "时长"
+        },
+        "outputs": {
+            "positive": "条件"
+        },
+        "description": "MiniMaxH3的联合视频+音频Latent。时长以模型的17k+5帧网格为基准，帧率24fps。"
+    },
+    "MiniMaxH3SigmaShift": {
+        "title": "MiniMax H3 Sigma偏移",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "shift_video": "视频偏移量",
+            "shift_audio": "音频偏移量"
+        },
+        "outputs": {},
+        "description": "设置视频/音频流偏移。"
+    },
+    "MiniMaxMusic3TextEncode": {
+        "title": "MiniMa水平偏移 Music3 文本编码",
+        "inputs": {
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "caption": "描述",
+            "lyrics": "歌词",
+            "seed": "种子",
+            "max_duration": "最大持续时间",
+            "cfg_scale": "CFG 缩放",
+            "top_k": "Top K"
+        },
+        "outputs": {
+            "positive": "条件",
+            "seconds": "秒数"
+        },
+        "description": "使用MiniMaxMusic3 CLIP模型生成声学条件序列。"
+    },
+    "EmptyMiniMaxMusic3LatentAudio": {
+        "title": "空 音频 Latent MiniMax Music3",
+        "inputs": {},
+        "widgets": {
+            "seconds": "秒数",
+            "batch_size": "批大小"
+        },
+        "outputs": {
+            "latent": "Latent"
+        },
+        "description": "生成空的潜在音频，用于 MiniMa水平偏移 Music3 模型"
+    },
+    "LTXVDualCFGGuider": {
+        "title": "LTXV 双 CFG 引导器",
+        "inputs": {
+            "model": "模型",
+            "positive": "正面提示词",
+            "negative": "负面提示词"
+        },
+        "widgets": {
+            "video_cfg": "视频CFG",
+            "audio_cfg": "音频CFG"
+        },
+        "outputs": {
+            "Guider": "引导器"
+        },
+        "description": "为打包的LTXV-AV Latent的视频和音频模态分别设置CFG缩放参数。"
+    },
+    "ImageCompositor": {
+        "title": "创建分层图像",
+        "inputs": {
+            "layers": "图层"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "图像",
+            "MASK": "遮罩"
+        },
+        "description": ""
+    },
+    "AddLayer": {
+        "title": "添加图层",
+        "inputs": {
+            "image": "图像",
+            "layers": "图层列表",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "name": "名称",
+            "x": "X 坐标",
+            "y": "Y 坐标",
+            "opacity": "不透明度",
+            "blend_mode": "混合模式",
+            "rotation": "旋转",
+            "width": "宽度",
+            "height": "高度",
+            "z_index": "Z 轴索引",
+            "flip_h": "水平翻转",
+            "flip_v": "垂直翻转"
+        },
+        "outputs": {
+            "LAYERS": "图层列表"
+        },
+        "description": "在图像上添加一个新的图层，允许调整其位置、大小、透明度、混合模式、旋转角度以及翻转状态。"
+    },
+    "LayersFromBoundingBoxes": {
+        "title": "从边界框创建图层",
+        "inputs": {
+            "image": "图像",
+            "bboxes": "边界框",
+            "mask": "遮罩",
+            "layers": "图层"
+        },
+        "widgets": {
+            "crop_to_content": "裁剪至内容",
+            "canvas_width": "画布宽度",
+            "canvas_height": "画布高度"
+        },
+        "outputs": {
+            "LAYERS": "图层"
+        },
+        "description": "根据提供的边界框、图像和遮罩信息生成新的图层。"
+    },
+    "WanAnimate2Cache": {
+        "title": "Wan动画2缓存",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "device": "设备",
+            "dtype": "数据类型"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "缓存每个区块的姿态视频激活信息，使其仅运行一次，而非在每次采样步骤时都执行。可将生成时间大约减半。权衡点是：在480x832/81帧的bf16分辨率下，约需12.5GB系统内存（实际占用随分辨率和长度而变化）。由于上下文窗口会单独缓存，因此内存消耗与窗口数量成正比；建议使用静态标准调度方案，因为均匀调度会在每一步移动窗口，且不会重复命中缓存。"
+    },
+    "WanAnimate2ToVideo": {
+        "title": "Wan动画2 生成视频",
+        "inputs": {
+            "positive": "正向提示",
+            "negative": "负向提示",
+            "vae": "VAE",
+            "reference_image": "参考图像",
+            "pose_video": "姿态视频",
+            "clip_vision_output": "CLIP视觉输出",
+            "positive_pose": "正向姿势",
+            "clip_vision_output_pose": "CLIP视觉输出姿态",
+            "continue_motion": "持续运动"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "batch_size": "批次大小",
+            "video_frame_offset": "视频帧偏移",
+            "pose_strength": "姿态_强度",
+            "pose_start_percent": "姿态开始百分比",
+            "pose_end_percent": "姿态结束百分比",
+            "reference_image_strength": "参考图像强度"
+        },
+        "outputs": {
+            "positive": "正向提示",
+            "negative": "负向提示",
+            "vae": "VAE",
+            "latent": "Latent",
+            "trim_latent": "调整Latent",
+            "trim_image": "调整_图像",
+            "video_frame_offset": "视频帧偏移"
+        },
+        "description": "使用视频在参考图像中为角色添加动画，有效复制视频中的面部表情、身体动作和手势。"
+    },
+    "WanUni3CControlnetApply": {
+        "title": "应用 WanUni3C ControlNet",
+        "inputs": {
+            "model": "模型",
+            "model_patch": "模型补丁",
+            "vae": "VAE",
+            "render_video": "渲染视频"
+        },
+        "widgets": {
+            "strength": "强度",
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {},
+        "description": "应用 WanUni3C ControlNet 节点"
     },
     "SaveImageWebsocket": {
         "title": "保存图像到网络接口",

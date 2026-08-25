@@ -1,4 +1,54 @@
 {
+    "RSAnySwitch": {
+        "title": "🦊RS任意切换器",
+        "inputs": {},
+        "widgets": {
+            "active_input": "激活输入"
+        },
+        "outputs": {
+            "output": "输出"
+        },
+        "description": "动态切换节点，支持在任意数据类型的多个输入之间切换"
+    },
+    "RSComparer": {
+        "title": "🦊RS对比器",
+        "inputs": {
+            "image_1": "图像1",
+            "image_2": "图像2"
+        },
+        "widgets": {
+            "zoom": "缩放",
+            "pan_x": "水平平移",
+            "pan_y": "垂直平移"
+        },
+        "outputs": {},
+        "description": "提供交互式图像对比界面的节点，支持缩放和平移控制"
+    },
+    "RS_ImageToLatent_Simplified": {
+        "title": "🦊RS图像转Latent（简化版）",
+        "inputs": {
+            "image": "图像",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "batch_size": "批次大小"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "width_px": "像素宽度",
+            "height_px": "像素高度"
+        },
+        "description": "简化版：将图像转换为Latent并自动优化尺寸"
+    },
+    "RS_OverlayPro": {
+        "title": "🦊RS高级叠加",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "用于在图像上叠加文本的交互式节点，支持实时定位、缩放、旋转和文本编辑"
+    },
     "RSCollage": {
         "title": "🦊RS拼贴",
         "inputs": {

@@ -477,7 +477,7 @@
     "DNode": "D节点",
     "resolution": "分辨率",
     "geompack": "🌁geompack几何包",
-    "geometrypack": "🌁geometrypack几何套装",
+    "geometrypack": "🌁geometrypack几何包",
     "🔵BB ImagePreview": "🔵BB 图像预览",
     "shader": "着色器",
     "GLIGEN": "GLIGEN文本框模型",
@@ -493,7 +493,15 @@
     "SeeThrough": "🖼️SeeThrough透明图层分割",
     "face_detailer": "😊face_detailer面部细节处理",
     "WhatDreamsCost": "🌠WhatDreamsCost梦想的代价",
-
+    "looping": "🔄looping循环",
+    "accumulation": "累积叠加",
+    "viewer": "查看器",
+    "Logic Gates": "逻辑门",
+    "tagger": "标签器",
+    "safety": "安全检测",
+    "GaussianPack": "GaussianPack高斯包",
+    "pytorch360convert": "🔍PyTorch360Convert全景查看器",
+    "Lora Manager": "Lora 管理器",
 
 
     "effects": "🎞️LTX视频",

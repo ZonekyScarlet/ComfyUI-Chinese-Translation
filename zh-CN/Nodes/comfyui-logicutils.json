@@ -1,0 +1,1686 @@
+{
+    "GetRatingNode": {
+        "title": "获取评分节点",
+        "inputs": {
+            "image": "图像",
+            "model_name": "模型名称"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": ""
+    },
+    "GetRatingFromTextNode": {
+        "title": "从文本获取评分节点",
+        "inputs": {
+            "model_name": "模型名称"
+        },
+        "widgets": {
+            "image": "图像"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "CensorImageByRating": {
+        "title": "按评分审查图像",
+        "inputs": {
+            "image": "图像",
+            "model_name": "模型名称"
+        },
+        "widgets": {
+            "rating_threshold": "评分阈值",
+            "censor_method": "审查方式"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "FilterTagsNode": {
+        "title": "过滤标签节点",
+        "inputs": {},
+        "widgets": {
+            "tags": "标签",
+            "filter_tags": "过滤标签",
+            "separator": "分隔符"
+        },
+        "outputs": {},
+        "description": "过滤标签，给定以逗号分隔的标签列表。假设输入文本可按逗号（或分隔符）拆分。若有标签包含过滤关键词，则移除匹配的标签。"
+    },
+    "GetTagsAboveThresholdNode": {
+        "title": "获取阈值以上标签节点",
+        "inputs": {
+            "image": "图像",
+            "model_name": "模型名称"
+        },
+        "widgets": {
+            "threshold": "阈值",
+            "replace": "替换"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "GetTagsAboveThresholdFromTextNode": {
+        "title": "从文本获取阈值以上标签节点",
+        "inputs": {
+            "image": "图像",
+            "model_name": "模型名称"
+        },
+        "widgets": {
+            "threshold": "阈值",
+            "replace": "替换"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "GetCharactersAboveThresholdNode": {
+        "title": "获取阈值以上角色节点",
+        "inputs": {
+            "image": "图像",
+            "model_name": "模型名称"
+        },
+        "widgets": {
+            "threshold": "阈值",
+            "replace": "替换"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "GetCharactersAboveThresholdFromTextNode": {
+        "title": "从文本获取阈值以上角色节点",
+        "inputs": {
+            "image": "图像",
+            "model_name": "模型名称"
+        },
+        "widgets": {
+            "threshold": "阈值",
+            "replace": "替换"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "GetAllTagsAboveThresholdNode": {
+        "title": "获取阈值以上所有标签节点",
+        "inputs": {
+            "image": "图像",
+            "model_name": "模型名称"
+        },
+        "widgets": {
+            "threshold": "阈值",
+            "replace": "替换"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "GetAllTagsExceptCharacterAboveThresholdNode": {
+        "title": "获取除角色外阈值以上所有标签节点",
+        "inputs": {
+            "image": "图像",
+            "model_name": "模型名称"
+        },
+        "widgets": {
+            "threshold": "阈值",
+            "replace": "替换"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "CustomClass": {
+        "title": "自定义类",
+        "inputs": {
+            "input1": "输入1"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": ""
+    },
+    "StringListToCombo": {
+        "title": "字符串列表转组合框",
+        "inputs": {},
+        "widgets": {
+            "string": "字符串",
+            "separator": "分隔符",
+            "index": "索引"
+        },
+        "outputs": {},
+        "description": "将原始字符串按分隔符拆分，然后选择第一个元素或指定索引处的元素"
+    },
+    "ConvertComboToString": {
+        "title": "组合框转字符串",
+        "inputs": {
+            "combo": "组合框"
+        },
+        "widgets": {
+            "separator": "分隔符"
+        },
+        "outputs": {},
+        "description": "将原始列表转换为字符串，用分隔符分隔"
+    },
+    "SecureBase64Encrypt": {
+        "title": "安全Base64加密",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "public_key_pem": "PEM格式公钥"
+        },
+        "outputs": {
+            "encrypted_base64": "加密后的Base64"
+        },
+        "description": "使用RSA公钥+AES将图像加密为Base64字符串。\n- 图像s: 仅使用第一张图像。\n- public_密钥_pem: RSA公钥（PEM格式字符串）。\n输出：可被SecureWebPDecrypt解密的'encrypted_base64'字符串。"
+    },
+    "SecureWebPDecrypt": {
+        "title": "安全WebP解密",
+        "inputs": {},
+        "widgets": {
+            "encrypted_base64": "加密后的Base64",
+            "private_key_pem": "PEM格式私钥"
+        },
+        "outputs": {
+            "Decrypted_Image": "解密后的图像"
+        },
+        "description": "解密由SecureBase64Encrypt生成的加密WebP图像（或图像列表）。返回单个图像（第一张）。"
+    },
+    "SDWebuiAPINode": {
+        "title": "SD Webui API节点",
+        "inputs": {},
+        "widgets": {
+            "prompt": "提示词",
+            "api_endpoint": "API端点",
+            "auth": "认证",
+            "seed": "随机随机种子",
+            "negative_prompt": "负面提示词",
+            "steps": "步骤",
+            "width": "宽度",
+            "height": "高度",
+            "hr_scale": "高分辨率缩放",
+            "hr_upscale": "高分辨率放大",
+            "enable_hr": "启用高分辨率",
+            "cfg_scale": "CFG缩放"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "SDWebuiAPIFallbackNode": {
+        "title": "SD Webui API备用节点",
+        "inputs": {},
+        "widgets": {
+            "prompt": "提示词",
+            "api_endpoint": "API端点",
+            "auth": "认证",
+            "seed": "随机随机种子",
+            "negative_prompt": "负面提示词",
+            "steps": "步骤",
+            "width": "宽度",
+            "height": "高度",
+            "hr_scale": "高分辨率缩放",
+            "hr_upscale": "高分辨率放大",
+            "enable_hr": "启用高分辨率",
+            "cfg_scale": "CFG缩放"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "SleepNodeAny": {
+        "title": "通用休眠节点",
+        "inputs": {
+            "inputs": "输入"
+        },
+        "widgets": {
+            "interval": "间隔时间"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "SleepNodeImage": {
+        "title": "图像休眠节点",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "interval": "间隔时间"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "ErrorNode": {
+        "title": "错误节点",
+        "inputs": {},
+        "widgets": {
+            "error_msg": "错误信息"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "CurrentTimestamp": {
+        "title": "当前时间戳",
+        "inputs": {},
+        "widgets": {
+            "format_string": "格式字符串"
+        },
+        "outputs": {},
+        "description": "返回当前Unix时间戳或格式化后的时间字符串。"
+    },
+    "DebugComboInputNode": {
+        "title": "调试组合输入节点",
+        "inputs": {},
+        "widgets": {
+            "input1": "输入1"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "TextPreviewNode": {
+        "title": "文本预览节点",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "无法显示文本，但会始终处于变更状态"
+    },
+    "ParseExifNode": {
+        "title": "解析EXIF节点",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "从图像中解析EXIF数据"
+    },
+    "SaveImageCustomNode": {
+        "title": "自定义图像保存节点",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "subfolder_dir": "子文件夹目录"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "SaveTextCustomNode": {
+        "title": "自定义文本保存节点",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "subfolder_dir": "子文件夹目录",
+            "filename": "文件名"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "DumpTextJsonlNode": {
+        "title": "导出文本JSONL节点",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "subfolder_dir": "子文件夹目录",
+            "filename": "文件名",
+            "keyname": "键名"
+        },
+        "outputs": {},
+        "description": "将文本追加到JSONL文件中（每行一个JSON对象）。\n每行结构为：{ \"<密钥名称>\": \"<文本_项>\" }\n\n为保证并发安全，此节点使用文件锁阻止\n对同一文件的并发写入。"
+    },
+    "ConcatGridNode": {
+        "title": "网格拼接节点",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "direction": "方向",
+            "match_method": "匹配方式"
+        },
+        "outputs": {},
+        "description": "将多个图像按行、列或类正方形网格拼接，使用缩放或填充来匹配尺寸。\n方向：\n    - \"horizontal\"：并排排列\n    - \"vertical\"：从上到下堆叠\n    - \"square-like\"：将图像排列为N×N网格（N=图像数量平方根的向上取整）\n\n匹配方式：\n    - \"re尺寸\"：缩放图像使其匹配维度相同\n                （水平对应高度，垂直对应宽度，类正方形对应单元格大小）\n    - \"pad\"：保留原始尺寸，但添加透明填充使匹配维度相同"
+    },
+    "ConcatTwoImagesNode": {
+        "title": "双图像拼接节点",
+        "inputs": {
+            "imageA": "图像A",
+            "imageB": "图像B"
+        },
+        "widgets": {
+            "direction": "方向",
+            "match_method": "匹配方式"
+        },
+        "outputs": {},
+        "description": "拼接恰好两张图像（图像A、图像B）。\n\n方向：\n    - \"horizontal\"：并排排列\n    - \"vertical\"：从上到下放置\n\n匹配方式：\n    - \"re尺寸\"：缩放图像使其匹配维度相同\n      （水平对应高度，垂直对应宽度）\n    - \"pad\"：保留原始尺寸并填充，使匹配维度相同"
+    },
+    "SaveCustomJPGNode": {
+        "title": "自定义JPG保存节点",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "subfolder_dir": "子文件夹目录",
+            "quality": "质量",
+            "optimize": "优化",
+            "metadata_string": "元数据字符串"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "SaveImageWebpCustomNode": {
+        "title": "自定义WebP图像保存节点",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "subfolder_dir": "子文件夹目录",
+            "quality": "质量",
+            "lossless": "无损",
+            "compression": "压缩",
+            "optimize": "优化",
+            "metadata_string": "元数据字符串",
+            "optional_additional_metadata": "可选附加元数据"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "ComposeRGBAImageFromMask": {
+        "title": "从遮罩合成RGBA图像",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "invert": "反转"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "ResizeImageNode": {
+        "title": "图像调整大小节点",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "method": "方法"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "ResizeImageResolution": {
+        "title": "调整图像分辨率",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "resolution": "分辨率",
+            "method": "方法"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "ResizeImageEnsuringMultiple": {
+        "title": "调整图像尺寸至倍数",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "multiple": "倍数",
+            "method": "方法"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "ResizeImageResolutionIfBigger": {
+        "title": "图像过大时调整分辨率",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "resolution": "分辨率",
+            "method": "方法"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "ResizeImageResolutionIfSmaller": {
+        "title": "图像过小时调整分辨率",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "resolution": "分辨率",
+            "method": "方法"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "Base64DecodeNode": {
+        "title": "Base64解码节点",
+        "inputs": {},
+        "widgets": {
+            "base64_string": "Base64字符串"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "ImageFromURLNode": {
+        "title": "从URL获取图像节点",
+        "inputs": {},
+        "widgets": {
+            "url": "URL"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "Base64EncodeNode": {
+        "title": "Base64编码节点",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "quality": "质量",
+            "format": "格式",
+            "gzip_compress": "Gzip压缩"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "StringToBase64Node": {
+        "title": "字符串转Base64节点",
+        "inputs": {},
+        "widgets": {
+            "string": "字符串",
+            "gzip_compress": "gzip压缩"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "Base64ToStringNode": {
+        "title": "Base64转字符串节点",
+        "inputs": {},
+        "widgets": {
+            "base64_string": "Base64字符串"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "InvertImageNode": {
+        "title": "图像反色节点",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": ""
+    },
+    "ResizeScaleImageNode": {
+        "title": "缩放图像节点",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "scale": "缩放比例",
+            "method": "方法"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "ResizeShortestToNode": {
+        "title": "缩放到最短边节点",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "size": "尺寸",
+            "method": "方法"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "ResizeLongestToNode": {
+        "title": "缩放到最长边节点",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "size": "尺寸",
+            "method": "方法"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "ConvertGreyscaleNode": {
+        "title": "转灰度图节点",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": ""
+    },
+    "RotateImageNode": {
+        "title": "旋转图像节点",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "angle": "角度"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "BrightnessNode": {
+        "title": "亮度调整节点",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "factor": "系数"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "ContrastNode": {
+        "title": "对比度调整节点",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "factor": "系数"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "SharpnessNode": {
+        "title": "锐度调整节点",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "factor": "系数"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "ColorNode": {
+        "title": "色彩调整节点",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "factor": "系数"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "ConvertRGBNode": {
+        "title": "转RGB节点",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": ""
+    },
+    "FFTNode": {
+        "title": "FFT节点",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "mask_radius": "遮罩半径"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "GetImageInfoNode": {
+        "title": "获取图像信息节点",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": ""
+    },
+    "ThresholdNode": {
+        "title": "阈值节点",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "threshold": "阈值"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "LogicGateInvertBasic": {
+        "title": "基础逻辑非门",
+        "inputs": {
+            "input1": "输入1"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "将1转为0，0转为1"
+    },
+    "LogicGateNegateValue": {
+        "title": "数值取反门",
+        "inputs": {
+            "input1": "输入1"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "将x取反为-x"
+    },
+    "LogicGateBitwiseShift": {
+        "title": "按位移位门",
+        "inputs": {},
+        "widgets": {
+            "input1": "输入1",
+            "input2": "输入2"
+        },
+        "outputs": {},
+        "description": "将输入1按输入2位移位\n仅适用于整数\n输入2为负时右移，为正时左移"
+    },
+    "LogicGateBitwiseAnd": {
+        "title": "按位与门",
+        "inputs": {},
+        "widgets": {
+            "input1": "输入1",
+            "input2": "输入2"
+        },
+        "outputs": {},
+        "description": "输入1和输入2的按位与运算\n仅适用于整数"
+    },
+    "LogicGateBitwiseOr": {
+        "title": "按位或逻辑门",
+        "inputs": {},
+        "widgets": {
+            "input1": "输入1",
+            "input2": "输入2"
+        },
+        "outputs": {},
+        "description": "输入1和输入2的按位或运算，仅适用于整数"
+    },
+    "LogicGateBitwiseXor": {
+        "title": "按位异或逻辑门",
+        "inputs": {},
+        "widgets": {
+            "input1": "输入1",
+            "input2": "输入2"
+        },
+        "outputs": {},
+        "description": "输入1和输入2的按位异或运算，仅适用于整数"
+    },
+    "LogicGateBitwiseNot": {
+        "title": "按位非逻辑门",
+        "inputs": {},
+        "widgets": {
+            "input1": "输入1"
+        },
+        "outputs": {},
+        "description": "输入1的按位非运算，仅适用于整数"
+    },
+    "LogicGateCompare": {
+        "title": "比较逻辑门",
+        "inputs": {
+            "input1": "输入1",
+            "input2": "输入2"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "如果输入1大于输入2则返回1，否则返回0"
+    },
+    "LogicGateCompareString": {
+        "title": "字符串比较逻辑门",
+        "inputs": {},
+        "widgets": {
+            "regex": "正则表达式",
+            "input2": "输入2"
+        },
+        "outputs": {},
+        "description": "如果给定的正则表达式（1）在给定字符串（2）中找到则返回结果"
+    },
+    "GetLengthString": {
+        "title": "获取字符串长度",
+        "inputs": {},
+        "widgets": {
+            "string": "字符串"
+        },
+        "outputs": {},
+        "description": "返回输入字符串的长度"
+    },
+    "StaticNumberInt": {
+        "title": "静态整数",
+        "inputs": {},
+        "widgets": {
+            "number": "数值"
+        },
+        "outputs": {},
+        "description": "返回一个静态整数"
+    },
+    "StaticNumberFloat": {
+        "title": "静态浮点数",
+        "inputs": {},
+        "widgets": {
+            "number": "数值"
+        },
+        "outputs": {},
+        "description": "返回一个静态浮点数"
+    },
+    "StaticString": {
+        "title": "静态字符串",
+        "inputs": {},
+        "widgets": {
+            "string": "字符串"
+        },
+        "outputs": {},
+        "description": "返回一个静态字符串"
+    },
+    "LogicGateAnd": {
+        "title": "与逻辑门",
+        "inputs": {
+            "input1": "输入1",
+            "input2": "输入2"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "如果所有输入都为真则返回1，否则返回0"
+    },
+    "LogicGateOr": {
+        "title": "或逻辑门",
+        "inputs": {
+            "input1": "输入1",
+            "input2": "输入2"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "如果任意输入为真则返回1，否则返回0"
+    },
+    "LogicGateEither": {
+        "title": "选择逻辑门",
+        "inputs": {
+            "condition": "条件",
+            "input1": "输入1",
+            "input2": "输入2"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "如果条件为真则返回输入1，否则返回输入2"
+    },
+    "AddNode": {
+        "title": "加法节点",
+        "inputs": {
+            "input1": "输入1",
+            "input2": "输入2"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "返回输入的总和"
+    },
+    "MergeString": {
+        "title": "字符串合并",
+        "inputs": {
+            "input1": "输入1",
+            "input2": "输入2"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "返回输入的拼接结果"
+    },
+    "ReplaceString": {
+        "title": "字符串替换",
+        "inputs": {},
+        "widgets": {
+            "String": "字符串",
+            "Regex": "正则表达式",
+            "ReplaceWith": "替换为"
+        },
+        "outputs": {},
+        "description": "返回输入的拼接结果"
+    },
+    "MemoryNode": {
+        "title": "内存节点",
+        "inputs": {
+            "input1": "输入1",
+            "flag": "标志"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "将值存储在内存中，采用触发器行为"
+    },
+    "MinNode": {
+        "title": "最小值节点",
+        "inputs": {
+            "input1": "输入1",
+            "input2": "输入2"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "返回两个值中的较小者"
+    },
+    "MaxNode": {
+        "title": "最大值节点",
+        "inputs": {
+            "input1": "输入1",
+            "input2": "输入2"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "返回两个值中的较大者"
+    },
+    "RoundNode": {
+        "title": "四舍五入节点",
+        "inputs": {
+            "input1": "输入1"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "将数值四舍五入到最近的整数"
+    },
+    "AbsNode": {
+        "title": "绝对值节点",
+        "inputs": {
+            "input1": "输入1"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "返回数值的绝对值"
+    },
+    "FloorNode": {
+        "title": "向下取整节点",
+        "inputs": {
+            "input1": "输入1"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "返回数字的向下取整值"
+    },
+    "CeilNode": {
+        "title": "向上取整节点",
+        "inputs": {
+            "input1": "输入1"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "返回数字的向上取整值"
+    },
+    "PowerNode": {
+        "title": "幂运算节点",
+        "inputs": {
+            "input1": "输入1",
+            "power": "幂"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "返回数字的幂运算结果"
+    },
+    "SigmoidNode": {
+        "title": "Sigmoid节点",
+        "inputs": {},
+        "widgets": {
+            "input1": "输入1"
+        },
+        "outputs": {},
+        "description": "返回数字的Sigmoid值"
+    },
+    "IsPrimeNode": {
+        "title": "质数判断节点",
+        "inputs": {},
+        "widgets": {
+            "value": "值",
+            "threshold": "阈值",
+            "miller_rabin_rounds": "Miller-Rabin轮数"
+        },
+        "outputs": {},
+        "description": "判断整数是否为质数。\n\n- 若整数|值|小于阈值，则使用确定性的小规模检查（试除法）。\n- 否则，使用Miller-Rabin伪素数测试以实现更快的检查（概率性）。\n\n返回布尔值（质数则为True，合数则为False）"
+    },
+    "RAMPNode": {
+        "title": "斜坡节点",
+        "inputs": {},
+        "widgets": {
+            "input1": "输入1"
+        },
+        "outputs": {},
+        "description": "返回数字的斜坡值"
+    },
+    "ModuloNode": {
+        "title": "取模节点",
+        "inputs": {},
+        "widgets": {
+            "input1": "输入1",
+            "modulo": "模数"
+        },
+        "outputs": {},
+        "description": "返回数字的取模结果"
+    },
+    "LogNode": {
+        "title": "对数节点",
+        "inputs": {},
+        "widgets": {
+            "input1": "输入1",
+            "base": "底数"
+        },
+        "outputs": {},
+        "description": "返回数字的对数值"
+    },
+    "MultiplyNode": {
+        "title": "乘法节点",
+        "inputs": {
+            "input1": "输入1",
+            "input2": "输入2"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "返回两个数字的乘积"
+    },
+    "DivideNode": {
+        "title": "除法节点",
+        "inputs": {
+            "input1": "输入1",
+            "input2": "输入2"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "返回两个数字的商"
+    },
+    "JsonParseNode": {
+        "title": "JSON解析节点",
+        "inputs": {},
+        "widgets": {
+            "json_string": "JSON字符串"
+        },
+        "outputs": {},
+        "description": "将JSON字符串转换为存储在'任意信号类型'中的Python对象（字典、列表等）"
+    },
+    "JsonDumpNode": {
+        "title": "JSON序列化节点",
+        "inputs": {
+            "py_obj": "Python对象"
+        },
+        "widgets": {
+            "indent": "缩进"
+        },
+        "outputs": {},
+        "description": "将Python对象（字典、列表等）转换为JSON字符串"
+    },
+    "JsonDumpAnyStructureNode": {
+        "title": "JSON序列化任意结构节点",
+        "inputs": {
+            "py_obj": "Python对象"
+        },
+        "widgets": {
+            "indent": "缩进"
+        },
+        "outputs": {},
+        "description": "将DICT、LIST或SET（任意Python结构）序列化为JSON字符串"
+    },
+    "DictCreateNode": {
+        "title": "字典创建节点",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {},
+        "description": "创建一个新的空字典（类型为DICT）"
+    },
+    "DictSetNode": {
+        "title": "字典设置节点",
+        "inputs": {
+            "py_dict": "Python字典",
+            "value": "值"
+        },
+        "widgets": {
+            "key": "键"
+        },
+        "outputs": {},
+        "description": "dict[密钥] = 值。返回更新后的字典"
+    },
+    "DictGetNode": {
+        "title": "字典获取节点",
+        "inputs": {
+            "py_dict": "Python字典"
+        },
+        "widgets": {
+            "key": "键"
+        },
+        "outputs": {},
+        "description": "返回dict[密钥]。若未找到键，则返回None"
+    },
+    "DictRemoveKeyNode": {
+        "title": "字典删除键节点",
+        "inputs": {
+            "py_dict": "Python字典"
+        },
+        "widgets": {
+            "key": "键"
+        },
+        "outputs": {},
+        "description": "从字典中删除键（若存在）。返回更新后的字典"
+    },
+    "DictMergeNode": {
+        "title": "字典合并节点",
+        "inputs": {
+            "dict_a": "字典A",
+            "dict_b": "字典B"
+        },
+        "widgets": {
+            "in_place": "就地"
+        },
+        "outputs": {},
+        "description": "合并两个字典。若存在重复键，第二个字典的值会覆盖第一个。返回新字典（或就地修改第一个字典，见下文）"
+    },
+    "DictKeysNode": {
+        "title": "字典键列表节点",
+        "inputs": {
+            "py_dict": "Python字典"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "返回字典中的键列表，类型为LIST"
+    },
+    "DictValuesNode": {
+        "title": "字典值列表节点",
+        "inputs": {
+            "py_dict": "Python字典"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "返回字典中的值列表，类型为LIST"
+    },
+    "DictItemsNode": {
+        "title": "字典项节点",
+        "inputs": {
+            "py_dict": "Python字典"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "以列表类型返回字典中的（键，值）对列表。列表中的每个项是一个二元组 [键，值]。"
+    },
+    "DictPointer": {
+        "title": "字典指针",
+        "inputs": {
+            "py_dict": "Python字典"
+        },
+        "widgets": {
+            "reset": "重置"
+        },
+        "outputs": {},
+        "description": "一个有状态节点的示例：会保留传入的字典，直到被重置。"
+    },
+    "GlobalVarSetNode": {
+        "title": "全局变量设置节点",
+        "inputs": {
+            "value": "值"
+        },
+        "widgets": {
+            "key": "键"
+        },
+        "outputs": {},
+        "description": "将Python对象存储到全局字典中，使用指定的键。返回存储的值，类型为任意类型。"
+    },
+    "GlobalVarSetIfNotExistsNode": {
+        "title": "全局变量不存在时设置节点",
+        "inputs": {
+            "value": "值"
+        },
+        "widgets": {
+            "key": "键"
+        },
+        "outputs": {},
+        "description": "仅当指定的键不存在时，将Python对象存储到全局字典中。"
+    },
+    "GlobalVarGetNode": {
+        "title": "全局变量获取节点",
+        "inputs": {
+            "trigger": "触发器"
+        },
+        "widgets": {
+            "key": "键"
+        },
+        "outputs": {},
+        "description": "通过键从全局字典中检索Python对象。如果未找到，默认返回None。"
+    },
+    "GlobalVarRemoveNode": {
+        "title": "全局变量移除节点",
+        "inputs": {},
+        "widgets": {
+            "key": "键"
+        },
+        "outputs": {},
+        "description": "从全局字典中移除指定的键（如果存在）。返回被移除的值，若键不存在则返回None。"
+    },
+    "GlobalVarSaveNode": {
+        "title": "全局变量保存节点",
+        "inputs": {},
+        "widgets": {
+            "key": "键",
+            "filepath": "文件路径",
+            "allow_missing": "允许缺失"
+        },
+        "outputs": {},
+        "description": "将GLOBAL_STORAGE[键]的值保存到磁盘上的JSON文件中。如果键不在存储中，当全部ow_missing=True时返回错误或保存None。"
+    },
+    "GlobalVarLoadNode": {
+        "title": "全局变量加载节点",
+        "inputs": {},
+        "widgets": {
+            "key": "键",
+            "filepath": "文件路径",
+            "allow_missing": "允许缺失"
+        },
+        "outputs": {},
+        "description": "从文件中加载JSON数据，并存储到GLOBAL_STORAGE的指定键下。返回加载的值。"
+    },
+    "ListCreateNode": {
+        "title": "列表创建节点",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {},
+        "description": "创建一个新的空列表（类型为LIST）。"
+    },
+    "ListAppendNode": {
+        "title": "列表追加节点",
+        "inputs": {
+            "py_list": "Python列表",
+            "item": "项"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "将项追加到Python列表中。返回更新后的列表。"
+    },
+    "ListGetNode": {
+        "title": "列表获取节点",
+        "inputs": {
+            "py_list": "Python列表"
+        },
+        "widgets": {
+            "index": "索引"
+        },
+        "outputs": {},
+        "description": "通过索引从列表中返回一个元素，类型为任意类型。"
+    },
+    "ListRemoveNode": {
+        "title": "列表移除节点",
+        "inputs": {
+            "py_list": "Python列表",
+            "item": "项"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "从列表中移除第一个出现的'项'（如果存在）。返回更新后的列表。"
+    },
+    "ListPopNode": {
+        "title": "列表弹出节点",
+        "inputs": {
+            "py_list": "Python列表"
+        },
+        "widgets": {
+            "index": "索引"
+        },
+        "outputs": {},
+        "description": "通过索引从列表中弹出一个项。返回（弹出的项，更新后的列表）。"
+    },
+    "ListInsertNode": {
+        "title": "列表插入节点",
+        "inputs": {
+            "py_list": "Python列表",
+            "item": "项"
+        },
+        "widgets": {
+            "index": "索引"
+        },
+        "outputs": {},
+        "description": "将项插入到列表的指定索引位置。返回更新后的列表。"
+    },
+    "ListExtendNode": {
+        "title": "列表扩展节点",
+        "inputs": {
+            "list_a": "列表A",
+            "list_b": "列表B"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "通过追加列表B中的元素来扩展列表A。返回更新后的列表A。"
+    },
+    "ToListTypeNode": {
+        "title": "转换为列表类型节点",
+        "inputs": {
+            "py_obj": "Python对象"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "接受任何实际可迭代的Python对象，将其作为列表类型返回。（通过调用list(obj)将字典/集合/元组转换为列表）。"
+    },
+    "ToSetTypeNode": {
+        "title": "转换为集合类型节点",
+        "inputs": {
+            "py_obj": "Python对象"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "接受任何可迭代的Python对象，将其作为集合类型返回。（通过调用set(obj)将字典/列表/元组转换为集合；对于字典，使用字典的键）。"
+    },
+    "SetCreateNode": {
+        "title": "集合创建节点",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {},
+        "description": "创建一个新的空集合（类型为SET）。"
+    },
+    "SetAddNode": {
+        "title": "集合添加节点",
+        "inputs": {
+            "py_set": "Python集合",
+            "item": "项"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "将项添加到集合中。"
+    },
+    "SetRemoveNode": {
+        "title": "集合移除节点",
+        "inputs": {
+            "py_set": "Python集合",
+            "item": "项"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "从集合中移除项（如果存在）。"
+    },
+    "SetUnionNode": {
+        "title": "集合并集节点",
+        "inputs": {
+            "py_set_a": "Python集合A",
+            "py_set_b": "Python集合B"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "返回两个集合的并集。"
+    },
+    "SetIntersectionNode": {
+        "title": "集合交集节点",
+        "inputs": {
+            "py_set_a": "Python集合A",
+            "py_set_b": "Python集合B"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "返回两个集合的交集。"
+    },
+    "SetDifferenceNode": {
+        "title": "集合差集节点",
+        "inputs": {
+            "py_set_a": "Python集合A",
+            "py_set_b": "Python集合B"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "返回两个集合的差集：A - B。"
+    },
+    "SetSymDifferenceNode": {
+        "title": "集合对称差集节点",
+        "inputs": {
+            "py_set_a": "Python集合A",
+            "py_set_b": "Python集合B"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "返回对称差集（A或B中的元素，但不同时在两者中）。"
+    },
+    "SetClearNode": {
+        "title": "集合清空节点",
+        "inputs": {
+            "py_set": "Python集合"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "清空集合中的所有元素。返回现在为空的集合。"
+    },
+    "SetToListNode": {
+        "title": "集合转列表节点",
+        "inputs": {
+            "py_set": "Python集合"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "将集合转换为列表。以LIST类型返回该列表。"
+    },
+    "SystemRandomFloat": {
+        "title": "系统随机浮点数",
+        "inputs": {},
+        "widgets": {
+            "min_val": "最小值",
+            "max_val": "最大值",
+            "precision": "精度"
+        },
+        "outputs": {},
+        "description": "使用系统随机性的随机数生成器"
+    },
+    "DimensionSelectorWithSeedNode": {
+        "title": "带随机种子的尺寸选择器",
+        "inputs": {},
+        "widgets": {
+            "resolution": "分辨率",
+            "min_ratio": "最小比例",
+            "max_ratio": "最大比例",
+            "multiples": "倍数",
+            "seed": "随机随机随机种子"
+        },
+        "outputs": {},
+        "description": "寻找（宽度，高度）使得宽度*高度接近（分辨率²），比例=宽度/高度在[最小比例，最大比例]范围内，两者均为“倍数”的整数倍，并使用随机随机随机种子进行随机平局决胜。"
+    },
+    "SystemRandomInt": {
+        "title": "系统随机整数",
+        "inputs": {},
+        "widgets": {
+            "min_val": "最小值",
+            "max_val": "最大值"
+        },
+        "outputs": {},
+        "description": "使用系统随机性的随机数生成器，生成0到2^32-1之间的整数值"
+    },
+    "SystemUUIDGenerator": {
+        "title": "系统UUID生成器",
+        "inputs": {},
+        "widgets": {
+            "length": "长度"
+        },
+        "outputs": {},
+        "description": "生成随机UUID"
+    },
+    "UniformRandomFloat": {
+        "title": "均匀分布随机浮点数",
+        "inputs": {},
+        "widgets": {
+            "min_val": "最小值",
+            "max_val": "最大值",
+            "decimal_places": "小数位数",
+            "seed": "随机随机随机种子"
+        },
+        "outputs": {},
+        "description": "从最小值到最大值中随机选择一个浮点数；如果最小值大于最大值，则回退到默认值"
+    },
+    "TriangularRandomFloat": {
+        "title": "三角分布随机浮点数",
+        "inputs": {},
+        "widgets": {
+            "low": "下限",
+            "high": "上限",
+            "mode": "众数",
+            "seed": "随机随机随机种子"
+        },
+        "outputs": {},
+        "description": "从下限到上限中随机选择一个浮点数；如果下限大于上限，则回退到默认值"
+    },
+    "WeightedRandomChoice": {
+        "title": "加权随机选择",
+        "inputs": {},
+        "widgets": {
+            "input_string": "输入字符串",
+            "separator": "分隔符",
+            "seed": "随机随机随机种子"
+        },
+        "outputs": {},
+        "description": "从带权重的列表中随机选择一项。输入字符串的解析格式为“值|权重$值2|权重2…”，例如：“苹果|10$香蕉|1$橙子|3”"
+    },
+    "RandomGaussianFloat": {
+        "title": "高斯分布随机浮点数",
+        "inputs": {},
+        "widgets": {
+            "mean": "均值",
+            "std_dev": "标准差",
+            "decimal_places": "小数位数",
+            "seed": "随机随机随机种子"
+        },
+        "outputs": {},
+        "description": "从指定均值和标准差的正态（高斯）分布中生成随机浮点数"
+    },
+    "SystemRandomGaussianFloat": {
+        "title": "系统高斯分布随机浮点数",
+        "inputs": {},
+        "widgets": {
+            "mean": "均值",
+            "std_dev": "标准差",
+            "decimal_places": "小数位数"
+        },
+        "outputs": {},
+        "description": "从指定均值和标准差的正态（高斯）分布中生成随机浮点数"
+    },
+    "ProbabilityGate": {
+        "title": "概率门",
+        "inputs": {},
+        "widgets": {
+            "probability": "概率",
+            "seed": "随机随机随机种子"
+        },
+        "outputs": {},
+        "description": "以概率p返回TRUE，否则返回FALSE。"
+    },
+    "UniformRandomInt": {
+        "title": "均匀分布随机整数",
+        "inputs": {},
+        "widgets": {
+            "min_val": "最小值",
+            "max_val": "最大值",
+            "seed": "随机随机随机种子"
+        },
+        "outputs": {},
+        "description": "从最小值到最大值中随机选择一个整数；如果最小值大于最大值，则回退到默认值"
+    },
+    "UniformRandomChoice": {
+        "title": "均匀随机选择",
+        "inputs": {},
+        "widgets": {
+            "input_string": "输入字符串",
+            "separator": "分隔符",
+            "seed": "随机随机随机种子"
+        },
+        "outputs": {},
+        "description": "使用“$”作为分隔符解析输入字符串，并返回随机选择项；分隔符可在输入中修改"
+    },
+    "ManualChoiceString": {
+        "title": "手动选择字符串",
+        "inputs": {},
+        "widgets": {
+            "input_string": "输入字符串",
+            "separator": "分隔符",
+            "index": "索引"
+        },
+        "outputs": {},
+        "description": "使用“$”作为分隔符解析输入字符串，并返回随机选择项；分隔符可在输入中修改；接受选择项的索引作为输入"
+    },
+    "ManualChoiceInt": {
+        "title": "手动选择整数",
+        "inputs": {},
+        "widgets": {
+            "input_string": "输入字符串",
+            "separator": "分隔符",
+            "index": "索引"
+        },
+        "outputs": {},
+        "description": "使用“$”作为分隔符解析输入字符串，并返回随机选择项；以整数形式返回；分隔符可在输入中修改；接受选择项的索引作为输入"
+    },
+    "ManualChoiceFloat": {
+        "title": "手动选择浮点数",
+        "inputs": {},
+        "widgets": {
+            "input_string": "输入字符串",
+            "separator": "分隔符",
+            "index": "索引"
+        },
+        "outputs": {},
+        "description": "用分隔符'$'解析输入字符串并返回随机选择结果，以浮点数形式返回；分隔符可在输入中修改；支持将选择项的索引作为输入"
+    },
+    "RandomShuffleInt": {
+        "title": "随机打乱整数",
+        "inputs": {},
+        "widgets": {
+            "input_string": "输入字符串",
+            "separator": "分隔符",
+            "seed": "随机随机随机随机种子"
+        },
+        "outputs": {},
+        "description": "获取从起始到结束的整数打乱列表；输入和输出类型均为整数列表"
+    },
+    "RandomShuffleFloat": {
+        "title": "随机打乱浮点数",
+        "inputs": {},
+        "widgets": {
+            "input_string": "输入字符串",
+            "separator": "分隔符",
+            "seed": "随机随机随机随机种子"
+        },
+        "outputs": {},
+        "description": "获取从起始到结束的浮点数打乱列表；输入和输出类型均为浮点数列表"
+    },
+    "RandomShuffleString": {
+        "title": "随机打乱字符串",
+        "inputs": {},
+        "widgets": {
+            "input_string": "输入字符串",
+            "separator": "分隔符",
+            "seed": "随机随机随机随机种子"
+        },
+        "outputs": {},
+        "description": "获取从起始到结束的字符串打乱列表；输入和输出类型均为字符串列表"
+    },
+    "CounterInteger": {
+        "title": "整数计数器",
+        "inputs": {},
+        "widgets": {
+            "start": "起始值",
+            "reset": "重置"
+        },
+        "outputs": {},
+        "description": "生成一个每次递增1的计数器"
+    },
+    "CounterFloat": {
+        "title": "浮点数计数器",
+        "inputs": {},
+        "widgets": {
+            "start": "起始值",
+            "reset": "重置",
+            "step": "step"
+        },
+        "outputs": {},
+        "description": "生成一个每次递增1的计数器"
+    },
+    "YieldableIteratorString": {
+        "title": "可生成字符串迭代器",
+        "inputs": {},
+        "widgets": {
+            "input_string": "输入字符串",
+            "separator": "分隔符",
+            "reset": "重置"
+        },
+        "outputs": {},
+        "description": "从输入列表（带分隔符）中依次生成元素；若重置为True，则从头开始"
+    },
+    "ConvertAny2Int": {
+        "title": "转换为整数",
+        "inputs": {
+            "input1": "输入1"
+        },
+        "widgets": {
+        },
+        "outputs": {
+            "Int": "整数"
+        },
+        "description": ""
+    },
+    "ConvertAny2Float": {
+        "title": "转换为浮点数",
+        "inputs": {
+            "input1": "输入1"
+        },
+        "widgets": {
+        },
+        "outputs": {
+            "Float": "浮点数"
+        },
+        "description": ""
+    },
+    "ConvertAny2Boolean": {
+        "title": "转换为布尔值",
+        "inputs": {
+            "input1": "输入1"
+        },
+        "widgets": {
+        },
+        "outputs": {
+            "Boolean": "布尔值"
+        },
+        "description": ""
+    },
+    "ConvertAny2String": {
+        "title": "转换为字符串",
+        "inputs": {
+            "input1": "输入1"
+        },
+        "widgets": {
+        },
+        "outputs": {
+            "String": "字符串"
+        },
+        "description": ""
+    },
+    "ConvertAny2Dict": {
+        "title": "转换为字典",
+        "inputs": {
+            "input1": "输入1"
+        },
+        "widgets": {
+        },
+        "outputs": {
+            "Dict": "字典"
+        },
+        "description": ""
+    },
+    "ConvertAny2List": {
+        "title": "转换为列表",
+        "inputs": {
+            "input1": "输入1"
+        },
+        "widgets": {
+        },
+        "outputs": {
+            "LIST": "列表"
+        },
+        "description": ""
+    },
+    "ConvertAny2Tuple": {
+        "title": "转换为元组",
+        "inputs": {
+            "input1": "输入1"
+        },
+        "widgets": {
+        },
+        "outputs": {
+            "TUPLE": "元组"
+        },
+        "description": ""
+    },
+    "ConvertAny2Set": {
+        "title": "转换为集合",
+        "inputs": {
+            "input1": "输入1"
+        },
+        "widgets": {
+        },
+        "outputs": {
+            "SET": "集合"
+        },
+        "description": ""
+    },
+    "YieldableIteratorInt": {
+        "title": "可生成整数迭代器",
+        "inputs": {},
+        "widgets": {
+            "start": "起始值",
+            "end": "结束值",
+            "step": "step",
+            "reset": "重置"
+        },
+        "outputs": {},
+        "description": "按start、end、step依次生成元素；若重置为True则重置"
+    }
+}

@@ -52,6 +52,10 @@
     "Deferring message and showing small window": "正在推迟消息并显示小窗口",
     "Image Filter Timeout": "图像滤镜超时",
     "No node found with uid {uid}. Maybe it's been removed. Continuing with caution": "未找到 UID 为 {uid} 的节点。可能已被移除。谨慎继续。",
+    "Allow multiple images to be selected": "允许选择多个图像",
+    "No - selecting sends image": "否 - 选择后，发送图片  ",
+    "No - selecting unselects previous": "否 - 选择后，取消上一步的选择",
+    "Reminder sound every x seconds": "每 x 秒提醒一次声音",
     "cg-image-filter: could not link graph to tab": "cg-image-filter: 无法将图表链接到标签页"
 
 }

@@ -1,4 +1,118 @@
 {
+    "LanPaint_UpSale_LatentNoiseMask": {
+        "title": "Latent修复 放大 Latent噪声遮罩",
+        "inputs": {
+            "samples": "采样"
+        },
+        "widgets": {
+            "scale": "缩放"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "LanPaint_MiniMaxAudioEncode": {
+        "title": "Latent修复 MiniMax音频编码",
+        "inputs": {
+            "audio": "音频",
+            "vae": "VAE"
+        },
+        "widgets": {},
+        "outputs": {
+            "latent": "Latent"
+        },
+        "description": "使用MiniMax H3音频VAE（正确布局）对音频进行编码。音频重绘遮罩通过SetLatentNoiseMask来自视频遮罩编辑器。"
+    },
+    "LanPaint_MiniMaxAudioDecode": {
+        "title": "Latent修复 MiniMax音频解码",
+        "inputs": {
+            "samples": "采样",
+            "vae": "VAE"
+        },
+        "widgets": {},
+        "outputs": {
+            "audio": "音频"
+        },
+        "description": "将MiniMax H3音频Latent解码为波形。"
+    },
+    "LanPaint_VideoMaskEditor": {
+        "title": "Latent修复 视频遮罩编辑器",
+        "inputs": {},
+        "widgets": {
+            "video": "视频",
+            "Edit Video Mask": "编辑视频遮罩",
+            "choose video to upload": "选择要上传的视频"
+        },
+        "outputs": {
+            "video": "视频",
+            "mask": "遮罩",
+            "audio_mask": "音频遮罩"
+        },
+        "description": "加载视频（类似LoadVideo），并输出逐帧视频重绘遮罩和逐帧音频遮罩（在遮罩编辑器中绘制，1=重新生成，0=保留）。"
+    },
+    "LanPaint_AVEncode": {
+        "title": "Latent修复 音视频编码",
+        "inputs": {
+            "video": "视频",
+            "vae": "VAE",
+            "audio_vae": "音频VAE",
+            "mask": "遮罩",
+            "audio_mask": "音频遮罩"
+        },
+        "widgets": {},
+        "outputs": {
+            "latent": "Latent"
+        },
+        "description": "将视频帧和音频编码为嵌套的音视频Latent，包含逐流视频和音频遮罩（1=重新生成，0=保留）。"
+    },
+    "LanPaint_AVDecode": {
+        "title": "Latent修复 音视频解码",
+        "inputs": {
+            "samples": "采样",
+            "video": "视频",
+            "vae": "VAE",
+            "audio_vae": "音频VAE",
+            "mask": "遮罩",
+            "audio_mask": "音频遮罩"
+        },
+        "widgets": {
+            "blend_overlap": "混合重叠",
+            "audio_crossfade": "音频交叉淡入淡出"
+        },
+        "outputs": {
+            "video": "视频",
+            "audio": "音频"
+        },
+        "description": "解码嵌套的音视频Latent，将重绘后的视频和音频与原始内容（通过遮罩混合）合并，并以原始帧率和位深写入结果。"
+    },
+    "LanPaint_ImageEncode": {
+        "title": "Latent修复 图像编码",
+        "inputs": {
+            "image": "图像",
+            "vae": "VAE",
+            "mask": "遮罩"
+        },
+        "widgets": {},
+        "outputs": {
+            "latent": "Latent"
+        },
+        "description": "对图像进行编码，并将重绘遮罩附加到Latent（替代VAEEncode + SetLatentNoiseMask）。"
+    },
+    "LanPaint_ImageDecode": {
+        "title": "Latent修复 图像解码",
+        "inputs": {
+            "samples": "采样",
+            "vae": "VAE",
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "blend_overlap": "混合重叠"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "解码重绘后的Latent，调整大小至原始图像的精确尺寸，并在遮罩内与原始内容合并（替代VAEDecode + MaskBlend）。"
+    },
     "LanPaint_KSampler": {
         "title": "Latent修复_K采样器",
         "inputs": {
