@@ -1,0 +1,39 @@
+{
+    "Krea2EditModelPatch": {
+        "title": "🎬 Krea2 模型源修补",
+        "inputs": {
+            "model": "模型",
+            "source_latent": "源图像潜空间",
+            "source_latent_b": "源图像潜空间B（第二参考）",
+            "ref_boost_mask": "参考增强遮罩",
+            "vae": "VAE",
+            "source_image": "源图像",
+            "source_image_b": "源图像B（第二参考）",
+            "target_latent": "目标潜空间"
+        },
+        "widgets": {
+            "ref_boost": "参考保真度",
+            "ref_boost_a": "参考保真度A（首参考）",
+            "fit_mode": "适配模式"
+        },
+        "outputs": {
+            "MODEL": "模型（已修补）"
+        }
+    },
+    "Krea2EditGroundedEncode": {
+        "title": "🎬 Krea2 图像锚定编码",
+        "inputs": {
+            "clip": "CLIP文本编码器",
+            "image": "源图像",
+            "image_b": "源图像B（第二参考）"
+        },
+        "widgets": {
+            "prompt": "编辑指令",
+            "grounding_px": "锚定分辨率",
+            "system_prompt": "系统提示词"
+        },
+        "outputs": {
+            "CONDITIONING": "条件（已锚定）"
+        }
+    }
+}
