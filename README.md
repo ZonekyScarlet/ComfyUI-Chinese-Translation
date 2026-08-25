@@ -84,7 +84,11 @@ ComfyUI-Chinese-Translation 是一个专为 ComfyUI 设计的中文汉化插件�
 
 <img width="900" height="180" alt="新版开" src="https://github.com/user-attachments/assets/0e6751fb-4196-4f09-9a64-818bda07f343" />
 
-<img width="1000" height="180" alt="新版-关" src="https://github.com/user-attachments/assets/13810712-12df-4bea-bdfd-5e86f3d7686e" />
+<img width="900" height="180" alt="新版-关" src="https://github.com/user-attachments/assets/13810712-12df-4bea-bdfd-5e86f3d7686e" />
+
+<img width="900" height="180" alt="新增按钮位置" src="https://github.com/user-attachments/assets/3ce2f0c0-bad9-4d8b-99fb-ae2b37dcaa2e" />
+
+<img width="900" height="180" alt="新增按钮位置2" src="https://github.com/user-attachments/assets/f1ca599b-7611-4120-b05d-317aced6cb75" />
 
 ### 界面效果
 

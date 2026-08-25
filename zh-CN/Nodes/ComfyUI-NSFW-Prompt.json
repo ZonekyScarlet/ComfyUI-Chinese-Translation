@@ -1,0 +1,102 @@
+{
+    "NSFWRandomizePersonNode": {
+        "title": "NSFW 随机化人物",
+        "inputs": {
+            "prompt": "提示词"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "seed": "随机种子",
+            "height": "身高",
+            "hair_color": "发色",
+            "hair_length": "发长",
+            "hair_type": "发型",
+            "skin_color": "肤色",
+            "skin_details": "皮肤细节",
+            "face_shape": "脸型",
+            "shoulders": "肩膀",
+            "neck": "脖子",
+            "collarbones": "锁骨",
+            "ears": "耳朵",
+            "nose": "鼻子",
+            "eyes": "眼睛",
+            "lips": "嘴唇",
+            "teeth": "牙齿",
+            "eyebrows": "眉毛",
+            "cheekbones": "颧骨",
+            "hands": "手部",
+            "makeup": "妆容",
+            "manicure": "美甲"
+        },
+        "outputs": {
+            "prompt": "提示词",
+            "seed": "随机种子"
+        },
+        "description": "用于随机化 NSFW 人物特征的节点，可调整身高、五官、皮肤等细节。"
+    },
+    "NSFWPromptNode": {
+        "title": "NSFW 提示词",
+        "inputs": {
+            "prompt": "提示词"
+        },
+        "widgets": {
+            "seed": "随机种子",
+            "prefix": "前缀",
+            "shot": "镜头",
+            "age": "年龄",
+            "body": "身体",
+            "look": "外观",
+            "gender": "性别",
+            "emotion": "表情",
+            "top": "上装",
+            "bottom": "下装",
+            "hosiery": "丝袜",
+            "headwear": "头饰",
+            "footwear": "鞋履",
+            "accessory": "配饰",
+            "addon": "附加物",
+            "toy": "玩具",
+            "pose": "姿态",
+            "action": "动作",
+            "cover": "痕迹",
+            "place": "地点",
+            "lighting": "灯光",
+            "atmosphere": "氛围",
+            "camera": "相机",
+            "postfix": "后缀"
+        },
+        "outputs": {
+            "prompt": "提示词",
+            "seed": "随机种子"
+        },
+        "description": "用于生成包含 NSFW 元素的提示词，提供包括身体部位、服装、姿态、场景等在内的详细随机化选项。"
+    },
+    "NSFWBodyBuilderNode": {
+        "title": "NSFW 健身教练",
+        "inputs": {
+            "prompt": "提示词"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "seed": "随机种子",
+            "randomize": "随机化",
+            "musculature": "肌肉",
+            "breasts": "胸部",
+            "nipples": "乳头",
+            "waist": "腰部",
+            "belly": "腹部",
+            "hips": "臀部",
+            "butt": "屁股",
+            "legs": "腿部",
+            "thighs": "大腿",
+            "arms": "手臂",
+            "pubic": "阴部",
+            "feet": "脚部"
+        },
+        "outputs": {
+            "prompt": "提示词",
+            "seed": "随机种子"
+        },
+        "description": "用于构建包含特定身体特征（如肌肉、胸部等）的 NSFW 提示词的节点。"
+    }
+}
